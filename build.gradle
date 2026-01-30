@@ -1,0 +1,68 @@
+plugins {
+    id 'eclipse'
+    id 'net.neoforged.moddev.legacyforge' version '2.0.115'
+}
+
+version = '1.0'
+base.archivesName = "modid"
+
+java.toolchain.languageVersion = JavaLanguageVersion.of(17)
+
+legacyForge {
+    version = "1.20.1-47.4.10"
+
+    runs {
+        client {
+            client()
+
+            def mcreatorJvmOptions = System.getenv('MCREATOR_JVM_OPTIONS')
+            if (mcreatorJvmOptions) {
+                mcreatorJvmOptions.split("\\s+").findAll { it.trim() }.each { arg ->
+                    jvmArgument(arg)
+                }
+            }
+        }
+        server {
+            server()
+        }
+
+        configureEach {
+            systemProperty 'forge.logging.markers', 'REGISTRIES'
+            logLevel = org.slf4j.event.Level.DEBUG
+        }
+    }
+
+    mods {
+        mcreator {
+            sourceSet sourceSets.main
+        }
+    }
+}
+
+tasks.withType(JavaCompile).configureEach {
+    options.encoding = 'UTF-8' // Use the UTF-8 charset for Java compilation
+}
+
+mixin {
+    if (file("src/main/resources/ironblood.mixins.json").exists()) {
+        add sourceSets.main, "ironblood.refmap.json"
+        config "ironblood.mixins.json"
+    }
+}
+
+dependencies {
+    implementation(jarJar("io.github.llamalad7:mixinextras-neoforge:0.5.0"))
+    annotationProcessor 'org.spongepowered:mixin:0.8.5:processor'
+}
+
+jar {
+    if (file("src/main/resources/ironblood.mixins.json").exists()) {
+        manifest.attributes([
+                "MixinConfigs": "ironblood.mixins.json"
+        ])
+    }
+}
+
+apply from: 'mcreator.gradle'
+if (file("mixin.gradle").exists())
+    apply from: 'mixin.gradle'

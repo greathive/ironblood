@@ -1,0 +1,18 @@
+mixin {
+    if (file("src/main/resources/usermixins.ironblood.json").exists()) {
+        config 'usermixins.ironblood.json'
+    }
+}
+
+jar {
+    var mixins = new ArrayList<String>()
+    if (file("src/main/resources/ironblood.mixins.json").exists()) {
+        mixins.add("ironblood.mixins.json")
+    }
+    if (file("src/main/resources/usermixins.ironblood.json").exists()) {
+        mixins.add("usermixins.ironblood.json")
+    }
+    manifest.attributes([
+            "MixinConfigs": String.join(",",mixins)
+    ])
+}

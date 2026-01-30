@@ -11,6 +11,7 @@
     "files": [
       "src/main/resources/META-INF/mods.toml",
       "src/main/java/net/mcreator/ironblood/IronbloodMod.java",
+      "src/main/resources/META-INF/accesstransformer.cfg",
       "src/main/resources/pack.mcmeta"
     ]
   },
@@ -21,9 +22,9 @@
   "workspaceSettings": {
     "modid": "ironblood",
     "modName": "ironblood",
-    "version": "1.0.0",
-    "author": "MCreator",
-    "websiteURL": "https://mcreator.net",
+    "version": "0.0.0",
+    "author": "greathive",
+    "websiteURL": "https://github.com/greathive/ironblood",
     "license": "Not specified",
     "serverSideOnly": false,
     "requiredMods": [],
@@ -31,8 +32,8 @@
     "dependants": [],
     "mcreatorDependencies": [],
     "currentGenerator": "forge-1.20.1",
-    "credits": "Created using mod maker MCreator - https://mcreator.net/about",
+    "credits": "greathive",
     "modElementsPackage": "net.mcreator.ironblood"
   },
-  "mcreatorVersion": 202500228610
+  "mcreatorVersion": 202500345720
 }

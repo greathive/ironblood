@@ -1,0 +1,14 @@
+{
+  "parent": "item/generated",
+  "textures": {
+    "layer0": "ironblood:item/assemblyscanner"
+  },
+  "overrides": [
+    {
+      "predicate": {
+        "ironblood:assembly_scanner_state": 1
+      },
+      "model": "ironblood:item/assembly_scanner_0"
+    }
+  ]
+}

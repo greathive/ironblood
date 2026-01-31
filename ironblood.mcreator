@@ -1,0 +1,160 @@
+{
+  "mod_elements": [
+    {
+      "name": "MechanicalJoint",
+      "type": "block",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "mechanical_joint",
+      "metadata": {
+        "files": [
+          "src/main/resources/assets/ironblood/models/item/mechanical_joint.json",
+          "src/main/resources/data/ironblood/loot_tables/blocks/mechanical_joint.json",
+          "src/main/resources/assets/ironblood/blockstates/mechanical_joint.json",
+          "src/main/java/net/mcreator/ironblood/block/MechanicalJointBlock.java",
+          "src/main/resources/assets/ironblood/models/block/mechanical_joint.json"
+        ]
+      }
+    },
+    {
+      "name": "AssemblyScanner",
+      "type": "item",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "assembly_scanner",
+      "metadata": {
+        "files": [
+          "src/main/java/net/mcreator/ironblood/item/AssemblyScannerItem.java",
+          "src/main/resources/assets/ironblood/models/item/assembly_scanner.json",
+          "src/main/resources/assets/ironblood/models/item/assembly_scanner_0.json"
+        ]
+      }
+    },
+    {
+      "name": "Ironblood",
+      "type": "tab",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "ironblood",
+      "metadata": {
+        "files": []
+      }
+    },
+    {
+      "name": "AssemblyScannerRightclickedOnBlock",
+      "type": "procedure",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "assembly_scanner_rightclicked_on_block",
+      "metadata": {
+        "files": [
+          "src/main/java/net/mcreator/ironblood/procedures/AssemblyScannerRightclickedOnBlockProcedure.java"
+        ],
+        "dependencies": [
+          {
+            "name": "entity",
+            "type": "entity"
+          },
+          {
+            "name": "itemstack",
+            "type": "itemstack"
+          },
+          {
+            "name": "x",
+            "type": "number"
+          },
+          {
+            "name": "y",
+            "type": "number"
+          },
+          {
+            "name": "z",
+            "type": "number"
+          }
+        ]
+      }
+    },
+    {
+      "name": "AssemblyScannerShiftRightclicked",
+      "type": "procedure",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "assembly_scanner_shift_rightclicked",
+      "metadata": {
+        "files": [
+          "src/main/java/net/mcreator/ironblood/procedures/AssemblyScannerShiftRightclickedProcedure.java"
+        ],
+        "dependencies": [
+          {
+            "name": "entity",
+            "type": "entity"
+          },
+          {
+            "name": "itemstack",
+            "type": "itemstack"
+          }
+        ]
+      }
+    },
+    {
+      "name": "AssemblyScannerPropertyValueProvider",
+      "type": "procedure",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "assembly_scanner_property_value_provider",
+      "metadata": {
+        "return_type": "number",
+        "files": [
+          "src/main/java/net/mcreator/ironblood/procedures/AssemblyScannerPropertyValueProviderProcedure.java"
+        ],
+        "dependencies": [
+          {
+            "name": "itemstack",
+            "type": "itemstack"
+          }
+        ]
+      }
+    }
+  ],
+  "variable_elements": [],
+  "sound_elements": [],
+  "tag_elements": {},
+  "tab_element_order": {
+    "CUSTOM:Ironblood": [
+      "AssemblyScanner",
+      "MechanicalJoint"
+    ]
+  },
+  "language_map": {
+    "en_us": {
+      "item_group.ironblood.ironblood": "Ironblood",
+      "item.ironblood.assembly_scanner": "Assembly Scanner",
+      "item.ironblood.assembly_scanner.description_0": "Right-Click on a block to store its location.",
+      "item.ironblood.assembly_scanner.description_1": "Shift + Right-Click to erase stored blocks.",
+      "block.ironblood.mechanical_joint": "Mechanical Joint"
+    }
+  },
+  "foldersRoot": {
+    "name": "~",
+    "children": []
+  },
+  "workspaceSettings": {
+    "modid": "ironblood",
+    "modName": "IRONBLOOD",
+    "version": "1.0.0",
+    "author": "User, MCreator",
+    "websiteURL": "https://mcreator.net",
+    "license": "Not specified",
+    "serverSideOnly": false,
+    "requiredMods": [],
+    "dependencies": [],
+    "dependants": [],
+    "mcreatorDependencies": [
+      "valkyrienskies"
+    ],
+    "currentGenerator": "forge-1.20.1",
+    "credits": "Created using mod maker MCreator - https://mcreator.net/about",
+    "modElementsPackage": "net.mcreator.ironblood"
+  },
+  "mcreatorVersion": 202400452410
+}

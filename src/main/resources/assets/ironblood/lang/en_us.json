@@ -1,0 +1,7 @@
+{
+  "item_group.ironblood.ironblood": "Ironblood",
+  "item.ironblood.assembly_scanner": "Assembly Scanner",
+  "item.ironblood.assembly_scanner.description_0": "Right-Click on a block to store its location.",
+  "item.ironblood.assembly_scanner.description_1": "Shift + Right-Click to erase stored blocks.",
+  "block.ironblood.mechanical_joint": "Mechanical Joint"
+}

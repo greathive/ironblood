@@ -1,5 +1,7 @@
 package net.mcreator.ironblood;
 
+import org.valkyrienskies.core.impl.shadow.e;
+
 import org.apache.logging.log4j.Logger;
 import org.apache.logging.log4j.LogManager;
 
@@ -20,7 +22,6 @@ import net.minecraft.network.FriendlyByteBuf;
 import net.mcreator.ironblood.init.IronbloodModTabs;
 import net.mcreator.ironblood.init.IronbloodModItems;
 import net.mcreator.ironblood.init.IronbloodModBlocks;
-import net.mcreator.ironblood.init.IronbloodModBlockEntities;
 
 import java.util.function.Supplier;
 import java.util.function.Function;
@@ -42,7 +43,6 @@ public class IronbloodMod {
 		MinecraftForge.EVENT_BUS.register(this);
 		IEventBus bus = context.getModEventBus();
 		IronbloodModBlocks.REGISTRY.register(bus);
-		IronbloodModBlockEntities.REGISTRY.register(bus);
 		IronbloodModItems.REGISTRY.register(bus);
 		IronbloodModTabs.REGISTRY.register(bus);
 		// Start of user code block mod init

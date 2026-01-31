@@ -10,7 +10,7 @@
     "textureBack": "",
     "renderType": 2,
     "customModelName": "mechanical_joint:default",
-    "rotationMode": 4,
+    "rotationMode": 0,
     "enablePitch": false,
     "emissiveRendering": false,
     "displayFluidOverlay": false,
@@ -129,7 +129,7 @@
     "vibrationSensitivityRadius": {
       "fixedValue": 7.0
     },
-    "hasInventory": true,
+    "hasInventory": false,
     "openGUIOnRightClick": false,
     "inventorySize": 0,
     "inventoryStackSize": 1,

@@ -1,56 +1,7 @@
 {
   "variants": {
-    "facing=down,alt=false": {
-      "model": "ironblood:block/mechanical_joint",
-      "x": 180
-    },
-    "facing=down,alt=true": {
-      "model": "ironblood:block/mechanical_jointalt",
-      "x": 180
-    },
-    "facing=east,alt=false": {
-      "model": "ironblood:block/mechanical_joint",
-      "x": 90,
-      "y": 90
-    },
-    "facing=east,alt=true": {
-      "model": "ironblood:block/mechanical_jointalt",
-      "x": 90,
-      "y": 90
-    },
-    "facing=north,alt=false": {
-      "model": "ironblood:block/mechanical_joint",
-      "x": 90
-    },
-    "facing=north,alt=true": {
-      "model": "ironblood:block/mechanical_jointalt",
-      "x": 90
-    },
-    "facing=south,alt=false": {
-      "model": "ironblood:block/mechanical_joint",
-      "x": 90,
-      "y": 180
-    },
-    "facing=south,alt=true": {
-      "model": "ironblood:block/mechanical_jointalt",
-      "x": 90,
-      "y": 180
-    },
-    "facing=up,alt=false": {
+    "": {
       "model": "ironblood:block/mechanical_joint"
-    },
-    "facing=up,alt=true": {
-      "model": "ironblood:block/mechanical_jointalt"
-    },
-    "facing=west,alt=false": {
-      "model": "ironblood:block/mechanical_joint",
-      "x": 90,
-      "y": 270
-    },
-    "facing=west,alt=true": {
-      "model": "ironblood:block/mechanical_jointalt",
-      "x": 90,
-      "y": 270
     }
   }
 }

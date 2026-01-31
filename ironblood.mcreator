@@ -9,7 +9,6 @@
       "metadata": {
         "files": [
           "src/main/resources/assets/ironblood/models/item/mechanical_joint.json",
-          "src/main/java/net/mcreator/ironblood/block/entity/MechanicalJointBlockEntity.java",
           "src/main/resources/data/ironblood/loot_tables/blocks/mechanical_joint.json",
           "src/main/resources/assets/ironblood/blockstates/mechanical_joint.json",
           "src/main/java/net/mcreator/ironblood/block/MechanicalJointBlock.java",
@@ -28,6 +27,10 @@
           {
             "name": "blockstate",
             "type": "blockstate"
+          },
+          {
+            "name": "entity",
+            "type": "entity"
           },
           {
             "name": "x",
@@ -63,7 +66,6 @@
           "src/main/resources/assets/ironblood/models/item/mechanical_jointalt.json",
           "src/main/resources/data/ironblood/loot_tables/blocks/mechanical_jointalt.json",
           "src/main/resources/assets/ironblood/blockstates/mechanical_jointalt.json",
-          "src/main/java/net/mcreator/ironblood/block/entity/MechanicalJointaltBlockEntity.java",
           "src/main/resources/assets/ironblood/models/block/mechanical_jointalt.json"
         ]
       }
@@ -98,7 +100,6 @@
   "metadata": {
     "files": [
       "src/main/java/net/mcreator/ironblood/init/IronbloodModBlocks.java",
-      "src/main/java/net/mcreator/ironblood/init/IronbloodModBlockEntities.java",
       "src/main/java/net/mcreator/ironblood/init/IronbloodModItems.java",
       "src/main/resources/META-INF/mods.toml",
       "src/main/java/net/mcreator/ironblood/IronbloodMod.java",

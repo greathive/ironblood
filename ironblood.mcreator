@@ -1,18 +1,110 @@
 {
-  "mod_elements": [],
+  "mod_elements": [
+    {
+      "name": "MechanicalJoint",
+      "type": "block",
+      "compiles": true,
+      "locked_code": true,
+      "registry_name": "mechanical_joint",
+      "metadata": {
+        "files": [
+          "src/main/resources/assets/ironblood/models/item/mechanical_joint.json",
+          "src/main/java/net/mcreator/ironblood/block/entity/MechanicalJointBlockEntity.java",
+          "src/main/resources/data/ironblood/loot_tables/blocks/mechanical_joint.json",
+          "src/main/resources/assets/ironblood/blockstates/mechanical_joint.json",
+          "src/main/java/net/mcreator/ironblood/block/MechanicalJointBlock.java",
+          "src/main/resources/assets/ironblood/models/block/mechanical_joint.json"
+        ]
+      }
+    },
+    {
+      "name": "MechanicalJointOnBlockRightclicked",
+      "type": "procedure",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "mechanical_joint_on_block_rightclicked",
+      "metadata": {
+        "dependencies": [
+          {
+            "name": "blockstate",
+            "type": "blockstate"
+          },
+          {
+            "name": "x",
+            "type": "number"
+          },
+          {
+            "name": "y",
+            "type": "number"
+          },
+          {
+            "name": "z",
+            "type": "number"
+          },
+          {
+            "name": "world",
+            "type": "world"
+          }
+        ],
+        "files": [
+          "src/main/java/net/mcreator/ironblood/procedures/MechanicalJointOnBlockRightclickedProcedure.java"
+        ]
+      }
+    },
+    {
+      "name": "MechanicalJointalt",
+      "type": "block",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "mechanical_jointalt",
+      "metadata": {
+        "files": [
+          "src/main/java/net/mcreator/ironblood/block/MechanicalJointaltBlock.java",
+          "src/main/resources/assets/ironblood/models/item/mechanical_jointalt.json",
+          "src/main/resources/data/ironblood/loot_tables/blocks/mechanical_jointalt.json",
+          "src/main/resources/assets/ironblood/blockstates/mechanical_jointalt.json",
+          "src/main/java/net/mcreator/ironblood/block/entity/MechanicalJointaltBlockEntity.java",
+          "src/main/resources/assets/ironblood/models/block/mechanical_jointalt.json"
+        ]
+      }
+    },
+    {
+      "name": "Ironblood",
+      "type": "tab",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "ironblood",
+      "metadata": {
+        "files": []
+      }
+    }
+  ],
   "variable_elements": [],
   "sound_elements": [],
-  "tag_elements": {},
+  "tag_elements": {
+    "BLOCKS:minecraft:mineable/pickaxe": [
+      "~CUSTOM:MechanicalJointalt",
+      "~CUSTOM:MechanicalJoint"
+    ]
+  },
   "tab_element_order": {},
   "language_map": {
-    "en_us": {}
+    "en_us": {
+      "block.ironblood.mechanical_joint": "Mechanical Joint",
+      "block.ironblood.mechanical_jointalt": "Mechanical Joint",
+      "item_group.ironblood.ironblood": "Ironblood"
+    }
   },
   "metadata": {
     "files": [
+      "src/main/java/net/mcreator/ironblood/init/IronbloodModBlocks.java",
+      "src/main/java/net/mcreator/ironblood/init/IronbloodModBlockEntities.java",
+      "src/main/java/net/mcreator/ironblood/init/IronbloodModItems.java",
       "src/main/resources/META-INF/mods.toml",
       "src/main/java/net/mcreator/ironblood/IronbloodMod.java",
       "src/main/resources/META-INF/accesstransformer.cfg",
-      "src/main/resources/pack.mcmeta"
+      "src/main/resources/pack.mcmeta",
+      "src/main/java/net/mcreator/ironblood/init/IronbloodModTabs.java"
     ]
   },
   "foldersRoot": {

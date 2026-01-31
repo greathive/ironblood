@@ -1,1 +1,5 @@
-{}
+{
+  "block.ironblood.mechanical_joint": "Mechanical Joint",
+  "block.ironblood.mechanical_jointalt": "Mechanical Joint",
+  "item_group.ironblood.ironblood": "Ironblood"
+}

@@ -1,0 +1,9 @@
+{
+  "parent": "ironblood:custom/mechanical_joint",
+  "textures": {
+    "all": "ironblood:block/mechanical_joint",
+    "particle": "ironblood:block/mechanical_joint",
+    "1": "ironblood:block/mechanical_joint"
+  },
+  "render_type": "cutout_mipped"
+}

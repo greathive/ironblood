@@ -1,5 +1,5 @@
 {
-  "parent": "ironblood:custom/mechanical_hinge",
+  "parent": "ironblood:custom/mechanical_hinge_alt",
   "textures": {
     "all": "ironblood:block/mechanicalhinge",
     "particle": "ironblood:block/mechanicalhinge",

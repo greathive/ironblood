@@ -19,6 +19,7 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.client.renderer.item.ItemProperties;
 
 import net.mcreator.ironblood.procedures.AssemblyScannerPropertyValueProviderProcedure;
+import net.mcreator.ironblood.item.LinkWrenchItem;
 import net.mcreator.ironblood.item.AssemblyScannerItem;
 import net.mcreator.ironblood.IronbloodMod;
 
@@ -28,6 +29,8 @@ public class IronbloodModItems {
 	public static final RegistryObject<Item> MECHANICAL_JOINT = block(IronbloodModBlocks.MECHANICAL_JOINT);
 	public static final RegistryObject<Item> ASSEMBLY_SCANNER = REGISTRY.register("assembly_scanner", () -> new AssemblyScannerItem());
 	public static final RegistryObject<Item> ASSEMBLER = block(IronbloodModBlocks.ASSEMBLER);
+	public static final RegistryObject<Item> MECHANICAL_JOINT_ALT = block(IronbloodModBlocks.MECHANICAL_JOINT_ALT);
+	public static final RegistryObject<Item> LINK_WRENCH = REGISTRY.register("link_wrench", () -> new LinkWrenchItem());
 
 	// Start of user code block custom items
 	// End of user code block custom items

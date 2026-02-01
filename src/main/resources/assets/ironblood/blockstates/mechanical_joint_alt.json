@@ -1,0 +1,27 @@
+{
+  "variants": {
+    "facing=north": {
+      "model": "ironblood:block/mechanical_joint_alt"
+    },
+    "facing=east": {
+      "model": "ironblood:block/mechanical_joint_alt",
+      "y": 90
+    },
+    "facing=south": {
+      "model": "ironblood:block/mechanical_joint_alt",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "ironblood:block/mechanical_joint_alt",
+      "y": 270
+    },
+    "facing=up": {
+      "model": "ironblood:block/mechanical_joint_alt",
+      "x": 270
+    },
+    "facing=down": {
+      "model": "ironblood:block/mechanical_joint_alt",
+      "x": 90
+    }
+  }
+}

@@ -22,10 +22,10 @@ import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.core.Direction;
 import net.minecraft.core.BlockPos;
 
-public class MechanicalJointBlock extends Block {
+public class MechanicalJointAltBlock extends Block {
 	public static final DirectionProperty FACING = DirectionalBlock.FACING;
 
-	public MechanicalJointBlock() {
+	public MechanicalJointAltBlock() {
 		super(BlockBehaviour.Properties.of().sound(SoundType.METAL).strength(60f, 50f).noOcclusion().isRedstoneConductor((bs, br, bp) -> false));
 		this.registerDefaultState(this.stateDefinition.any().setValue(FACING, Direction.NORTH));
 	}
@@ -48,12 +48,12 @@ public class MechanicalJointBlock extends Block {
 	@Override
 	public VoxelShape getShape(BlockState state, BlockGetter world, BlockPos pos, CollisionContext context) {
 		return switch (state.getValue(FACING)) {
-			default -> Shapes.or(box(0, 0, 0, 5, 16, 12), box(11, 0, 0, 16, 16, 12));
-			case NORTH -> Shapes.or(box(11, 0, 4, 16, 16, 16), box(0, 0, 4, 5, 16, 16));
-			case EAST -> Shapes.or(box(0, 0, 11, 12, 16, 16), box(0, 0, 0, 12, 16, 5));
-			case WEST -> Shapes.or(box(4, 0, 0, 16, 16, 5), box(4, 0, 11, 16, 16, 16));
-			case UP -> Shapes.or(box(11, 0, 0, 16, 12, 16), box(0, 0, 0, 5, 12, 16));
-			case DOWN -> Shapes.or(box(11, 4, 0, 16, 16, 16), box(0, 4, 0, 5, 16, 16));
+			default -> box(5, 0, 0, 11, 16, 12);
+			case NORTH -> box(5, 0, 4, 11, 16, 16);
+			case EAST -> box(0, 0, 5, 12, 16, 11);
+			case WEST -> box(4, 0, 5, 16, 16, 11);
+			case UP -> box(5, 0, 0, 11, 12, 16);
+			case DOWN -> box(5, 4, 0, 11, 16, 16);
 		};
 	}
 

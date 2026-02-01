@@ -185,6 +185,78 @@
           }
         ]
       }
+    },
+    {
+      "name": "MechanicalJointAlt",
+      "type": "block",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "mechanical_joint_alt",
+      "metadata": {
+        "files": [
+          "src/main/java/net/mcreator/ironblood/block/MechanicalJointAltBlock.java",
+          "src/main/resources/assets/ironblood/models/item/mechanical_joint_alt.json",
+          "src/main/resources/assets/ironblood/models/block/mechanical_joint_alt.json",
+          "src/main/resources/assets/ironblood/blockstates/mechanical_joint_alt.json",
+          "src/main/resources/data/ironblood/loot_tables/blocks/mechanical_joint_alt.json"
+        ]
+      }
+    },
+    {
+      "name": "LinkWrench",
+      "type": "item",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "link_wrench",
+      "metadata": {
+        "files": [
+          "src/main/java/net/mcreator/ironblood/item/LinkWrenchItem.java",
+          "src/main/resources/assets/ironblood/models/item/link_wrench.json"
+        ]
+      }
+    },
+    {
+      "name": "LinkWrenchRightclickedOnBlock",
+      "type": "procedure",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "link_wrench_rightclicked_on_block",
+      "metadata": {
+        "files": [
+          "src/main/java/net/mcreator/ironblood/procedures/LinkWrenchRightclickedOnBlockProcedure.java"
+        ],
+        "dependencies": [
+          {
+            "name": "x",
+            "type": "number"
+          },
+          {
+            "name": "y",
+            "type": "number"
+          },
+          {
+            "name": "z",
+            "type": "number"
+          },
+          {
+            "name": "world",
+            "type": "world"
+          }
+        ]
+      }
+    },
+    {
+      "name": "Shipnamerassembler",
+      "type": "gui",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "shipnamerassembler",
+      "metadata": {
+        "files": [
+          "src/main/java/net/mcreator/ironblood/client/gui/ShipnamerassemblerScreen.java",
+          "src/main/java/net/mcreator/ironblood/world/inventory/ShipnamerassemblerMenu.java"
+        ]
+      }
     }
   ],
   "variable_elements": [],
@@ -211,12 +283,17 @@
     "CUSTOM:Ironblood": [
       "AssemblyScanner",
       "MechanicalJoint",
-      "Assembler"
+      "Assembler",
+      "MechanicalJointAlt",
+      "LinkWrench"
     ]
   },
   "language_map": {
     "en_us": {
       "item_group.ironblood.ironblood": "Ironblood",
+      "item.ironblood.link_wrench": "Link Wrench",
+      "gui.ironblood.shipnamerassembler.AssembledName": "Unnamed Assembly",
+      "block.ironblood.mechanical_joint_alt": "Alternate Mechanical Joint",
       "block.ironblood.assembler": "Assembler",
       "item.ironblood.assembly_scanner": "Assembly Scanner",
       "item.ironblood.assembly_scanner.description_0": "Right-Click on a block to store its location.",

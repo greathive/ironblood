@@ -11,10 +11,12 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.sounds.SoundSource;
+import net.minecraft.server.level.ServerLevel;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.network.chat.Component;
 import net.minecraft.core.BlockPos;
 
+import net.mcreator.ironblood.ships.MultiBlockShipMaker;
 import net.mcreator.ironblood.init.IronbloodModItems;
 
 public class AssemblerOnBlockRightClickedProcedure {
@@ -78,8 +80,41 @@ public class AssemblerOnBlockRightClickedProcedure {
 				if (world instanceof Level _level)
 					_level.sendBlockUpdated(_bp, _bs, _bs, 3);
 			}
-			if (entity instanceof Player _player && !_player.level().isClientSide())
-				_player.displayClientMessage(Component.literal("Assembling blocks!"), true);
+			
+			// Validate selection size
+			if (!MultiBlockShipMaker.validateSelectionSize(selectiontext)) {
+				if (entity instanceof Player _player && !_player.level().isClientSide())
+					_player.displayClientMessage(Component.literal("Selected area was too large to assemble!"), true);
+				return;
+			}
+			
+			// Validate selection distance
+			BlockPos assemblerPos = BlockPos.containing(x, y, z);
+			if (!MultiBlockShipMaker.validateSelectionDistance(selectiontext, assemblerPos, 16)) {
+				if (entity instanceof Player _player && !_player.level().isClientSide())
+					_player.displayClientMessage(Component.literal("Selected area was too far to assemble!"), true);
+				return;
+			}
+			
+			// Assemble the ship from the selection
+			if (world instanceof ServerLevel serverLevel) {
+				try {
+					var ship = MultiBlockShipMaker.assembleShipFromSelection(serverLevel, selectiontext, 1.0);
+					if (ship != null) {
+						if (entity instanceof Player _player && !_player.level().isClientSide())
+							_player.displayClientMessage(Component.literal("Ship assembled successfully!"), true);
+					} else {
+						if (entity instanceof Player _player && !_player.level().isClientSide())
+							_player.displayClientMessage(Component.literal("Failed to assemble ship!"), true);
+					}
+				} catch (Exception e) {
+					if (entity instanceof Player _player && !_player.level().isClientSide())
+						_player.displayClientMessage(Component.literal("Error assembling ship: " + e.getMessage()), true);
+				}
+			} else {
+				if (entity instanceof Player _player && !_player.level().isClientSide())
+					_player.displayClientMessage(Component.literal("Assembling blocks!"), true);
+			}
 		} else {
 			if (entity instanceof Player _player && !_player.level().isClientSide())
 				_player.displayClientMessage(Component.literal("No valid blocks to assemble."), true);

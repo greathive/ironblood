@@ -136,24 +136,6 @@
       }
     },
     {
-      "name": "CreateShipFromAssemblyScanner",
-      "type": "procedure",
-      "compiles": true,
-      "locked_code": false,
-      "registry_name": "create_ship_from_assembly_scanner",
-      "metadata": {
-        "files": [
-          "src/main/java/net/mcreator/ironblood/procedures/CreateShipFromAssemblyScannerProcedure.java"
-        ],
-        "dependencies": [
-          {
-            "name": "world",
-            "type": "world"
-          }
-        ]
-      }
-    },
-    {
       "name": "Assembler",
       "type": "block",
       "compiles": true,
@@ -174,7 +156,7 @@
       "name": "AssemblerOnBlockRightClicked",
       "type": "procedure",
       "compiles": true,
-      "locked_code": false,
+      "locked_code": true,
       "registry_name": "assembler_on_block_right_clicked",
       "metadata": {
         "files": [

@@ -20,8 +20,10 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.network.FriendlyByteBuf;
 
 import net.mcreator.ironblood.init.IronbloodModTabs;
+import net.mcreator.ironblood.init.IronbloodModSounds;
 import net.mcreator.ironblood.init.IronbloodModItems;
 import net.mcreator.ironblood.init.IronbloodModBlocks;
+import net.mcreator.ironblood.init.IronbloodModBlockEntities;
 
 import java.util.function.Supplier;
 import java.util.function.Function;
@@ -42,9 +44,9 @@ public class IronbloodMod {
 		// End of user code block mod constructor
 		MinecraftForge.EVENT_BUS.register(this);
 		IEventBus bus = FMLJavaModLoadingContext.get().getModEventBus();
-
+		IronbloodModSounds.REGISTRY.register(bus);
 		IronbloodModBlocks.REGISTRY.register(bus);
-
+		IronbloodModBlockEntities.REGISTRY.register(bus);
 		IronbloodModItems.REGISTRY.register(bus);
 
 		IronbloodModTabs.REGISTRY.register(bus);

@@ -70,6 +70,10 @@
           {
             "name": "z",
             "type": "number"
+          },
+          {
+            "name": "world",
+            "type": "world"
           }
         ]
       }
@@ -92,6 +96,22 @@
           {
             "name": "itemstack",
             "type": "itemstack"
+          },
+          {
+            "name": "x",
+            "type": "number"
+          },
+          {
+            "name": "y",
+            "type": "number"
+          },
+          {
+            "name": "z",
+            "type": "number"
+          },
+          {
+            "name": "world",
+            "type": "world"
           }
         ]
       }
@@ -114,24 +134,114 @@
           }
         ]
       }
+    },
+    {
+      "name": "CreateShipFromAssemblyScanner",
+      "type": "procedure",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "create_ship_from_assembly_scanner",
+      "metadata": {
+        "files": [
+          "src/main/java/net/mcreator/ironblood/procedures/CreateShipFromAssemblyScannerProcedure.java"
+        ],
+        "dependencies": [
+          {
+            "name": "world",
+            "type": "world"
+          }
+        ]
+      }
+    },
+    {
+      "name": "Assembler",
+      "type": "block",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "assembler",
+      "metadata": {
+        "files": [
+          "src/main/resources/assets/ironblood/models/block/assembler.json",
+          "src/main/java/net/mcreator/ironblood/block/entity/AssemblerBlockEntity.java",
+          "src/main/resources/data/ironblood/loot_tables/blocks/assembler.json",
+          "src/main/java/net/mcreator/ironblood/block/AssemblerBlock.java",
+          "src/main/resources/assets/ironblood/blockstates/assembler.json",
+          "src/main/resources/assets/ironblood/models/item/assembler.json"
+        ]
+      }
+    },
+    {
+      "name": "AssemblerOnBlockRightClicked",
+      "type": "procedure",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "assembler_on_block_right_clicked",
+      "metadata": {
+        "files": [
+          "src/main/java/net/mcreator/ironblood/procedures/AssemblerOnBlockRightClickedProcedure.java"
+        ],
+        "dependencies": [
+          {
+            "name": "entity",
+            "type": "entity"
+          },
+          {
+            "name": "x",
+            "type": "number"
+          },
+          {
+            "name": "y",
+            "type": "number"
+          },
+          {
+            "name": "z",
+            "type": "number"
+          },
+          {
+            "name": "world",
+            "type": "world"
+          }
+        ]
+      }
     }
   ],
   "variable_elements": [],
-  "sound_elements": [],
+  "sound_elements": [
+    {
+      "name": "scanner-activate",
+      "files": [
+        "scanner-activate"
+      ],
+      "category": "player",
+      "subtitle": "Assembly Scanner selection"
+    },
+    {
+      "name": "scanner-deactivate",
+      "files": [
+        "scanner-deactivate"
+      ],
+      "category": "player",
+      "subtitle": "Assembly Scanner discards selection"
+    }
+  ],
   "tag_elements": {},
   "tab_element_order": {
     "CUSTOM:Ironblood": [
       "AssemblyScanner",
-      "MechanicalJoint"
+      "MechanicalJoint",
+      "Assembler"
     ]
   },
   "language_map": {
     "en_us": {
       "item_group.ironblood.ironblood": "Ironblood",
+      "block.ironblood.assembler": "Assembler",
       "item.ironblood.assembly_scanner": "Assembly Scanner",
       "item.ironblood.assembly_scanner.description_0": "Right-Click on a block to store its location.",
       "item.ironblood.assembly_scanner.description_1": "Shift + Right-Click to erase stored blocks.",
-      "block.ironblood.mechanical_joint": "Mechanical Joint"
+      "block.ironblood.mechanical_joint": "Mechanical Joint",
+      "subtitles.scanner-deactivate": "Assembly Scanner discards selection",
+      "subtitles.scanner-activate": "Assembly Scanner selection"
     }
   },
   "foldersRoot": {

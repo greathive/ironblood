@@ -1,7 +1,10 @@
 {
   "item_group.ironblood.ironblood": "Ironblood",
+  "block.ironblood.assembler": "Assembler",
   "item.ironblood.assembly_scanner": "Assembly Scanner",
   "item.ironblood.assembly_scanner.description_0": "Right-Click on a block to store its location.",
   "item.ironblood.assembly_scanner.description_1": "Shift + Right-Click to erase stored blocks.",
-  "block.ironblood.mechanical_joint": "Mechanical Joint"
+  "block.ironblood.mechanical_joint": "Mechanical Joint",
+  "subtitles.scanner-deactivate": "Assembly Scanner discards selection",
+  "subtitles.scanner-activate": "Assembly Scanner selection"
 }

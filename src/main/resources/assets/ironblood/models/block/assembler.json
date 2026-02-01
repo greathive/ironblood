@@ -1,0 +1,13 @@
+{
+  "parent": "block/cube",
+  "textures": {
+    "down": "ironblood:block/assemblerside",
+    "up": "ironblood:block/assemblertop",
+    "north": "ironblood:block/assemblerfront",
+    "east": "ironblood:block/assemblerbottom",
+    "south": "ironblood:block/assemblerbottom",
+    "west": "ironblood:block/assemblerbottom",
+    "particle": "ironblood:block/assemblerside"
+  },
+  "render_type": "solid"
+}

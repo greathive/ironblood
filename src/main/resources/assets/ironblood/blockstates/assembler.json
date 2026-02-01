@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=north": {
+      "model": "ironblood:block/assembler"
+    },
+    "facing=east": {
+      "model": "ironblood:block/assembler",
+      "y": 90
+    },
+    "facing=south": {
+      "model": "ironblood:block/assembler",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "ironblood:block/assembler",
+      "y": 270
+    }
+  }
+}

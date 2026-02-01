@@ -1,0 +1,20 @@
+{
+  "scanner-activate": {
+    "subtitle": "subtitles.scanner-activate",
+    "sounds": [
+      {
+        "name": "ironblood:scanner-activate",
+        "stream": false
+      }
+    ]
+  },
+  "scanner-deactivate": {
+    "subtitle": "subtitles.scanner-deactivate",
+    "sounds": [
+      {
+        "name": "ironblood:scanner-deactivate",
+        "stream": false
+      }
+    ]
+  }
+}

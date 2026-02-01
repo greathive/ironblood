@@ -27,6 +27,7 @@ public class IronbloodModItems {
 	public static final DeferredRegister<Item> REGISTRY = DeferredRegister.create(ForgeRegistries.ITEMS, IronbloodMod.MODID);
 	public static final RegistryObject<Item> MECHANICAL_JOINT = block(IronbloodModBlocks.MECHANICAL_JOINT);
 	public static final RegistryObject<Item> ASSEMBLY_SCANNER = REGISTRY.register("assembly_scanner", () -> new AssemblyScannerItem());
+	public static final RegistryObject<Item> ASSEMBLER = block(IronbloodModBlocks.ASSEMBLER);
 
 	// Start of user code block custom items
 	// End of user code block custom items

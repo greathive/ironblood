@@ -1,6 +1,6 @@
-
 package net.mcreator.ironblood.item;
 
+import net.minecraft.world.level.Level;
 import net.minecraft.world.item.context.UseOnContext;
 import net.minecraft.world.item.Rarity;
 import net.minecraft.world.item.Item;
@@ -16,7 +16,13 @@ public class LinkWrenchItem extends Item {
 	@Override
 	public InteractionResult useOn(UseOnContext context) {
 		super.useOn(context);
-		LinkWrenchRightclickedOnBlockProcedure.execute(context.getLevel(), context.getClickedPos().getX(), context.getClickedPos().getY(), context.getClickedPos().getZ());
+		LinkWrenchRightclickedOnBlockProcedure.execute(
+			context.getLevel(), 
+			context.getClickedPos().getX(), 
+			context.getClickedPos().getY(), 
+			context.getClickedPos().getZ(), 
+			context.getPlayer()
+		);
 		return InteractionResult.SUCCESS;
 	}
 }

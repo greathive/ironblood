@@ -26,7 +26,7 @@ public class MechanicalJointAltBlock extends Block {
 	public static final DirectionProperty FACING = DirectionalBlock.FACING;
 
 	public MechanicalJointAltBlock() {
-		super(BlockBehaviour.Properties.of().sound(SoundType.METAL).strength(60f, 50f).noOcclusion().isRedstoneConductor((bs, br, bp) -> false));
+		super(BlockBehaviour.Properties.of().sound(SoundType.METAL).strength(60f, 50f).noCollission().noOcclusion().isRedstoneConductor((bs, br, bp) -> false));
 		this.registerDefaultState(this.stateDefinition.any().setValue(FACING, Direction.NORTH));
 	}
 

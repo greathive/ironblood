@@ -206,7 +206,7 @@
       "name": "LinkWrench",
       "type": "item",
       "compiles": true,
-      "locked_code": false,
+      "locked_code": true,
       "registry_name": "link_wrench",
       "metadata": {
         "files": [
@@ -218,8 +218,8 @@
     {
       "name": "LinkWrenchRightclickedOnBlock",
       "type": "procedure",
-      "compiles": true,
-      "locked_code": false,
+      "compiles": false,
+      "locked_code": true,
       "registry_name": "link_wrench_rightclicked_on_block",
       "metadata": {
         "files": [
@@ -242,19 +242,6 @@
             "name": "world",
             "type": "world"
           }
-        ]
-      }
-    },
-    {
-      "name": "Shipnamerassembler",
-      "type": "gui",
-      "compiles": true,
-      "locked_code": false,
-      "registry_name": "shipnamerassembler",
-      "metadata": {
-        "files": [
-          "src/main/java/net/mcreator/ironblood/client/gui/ShipnamerassemblerScreen.java",
-          "src/main/java/net/mcreator/ironblood/world/inventory/ShipnamerassemblerMenu.java"
         ]
       }
     }
@@ -292,7 +279,6 @@
     "en_us": {
       "item_group.ironblood.ironblood": "Ironblood",
       "item.ironblood.link_wrench": "Link Wrench",
-      "gui.ironblood.shipnamerassembler.AssembledName": "Unnamed Assembly",
       "block.ironblood.mechanical_joint_alt": "Alternate Mechanical Joint",
       "block.ironblood.assembler": "Assembler",
       "item.ironblood.assembly_scanner": "Assembly Scanner",

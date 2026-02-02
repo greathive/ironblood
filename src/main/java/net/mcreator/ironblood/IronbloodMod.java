@@ -21,7 +21,6 @@ import net.minecraft.network.FriendlyByteBuf;
 
 import net.mcreator.ironblood.init.IronbloodModTabs;
 import net.mcreator.ironblood.init.IronbloodModSounds;
-import net.mcreator.ironblood.init.IronbloodModMenus;
 import net.mcreator.ironblood.init.IronbloodModItems;
 import net.mcreator.ironblood.init.IronbloodModBlocks;
 import net.mcreator.ironblood.init.IronbloodModBlockEntities;
@@ -51,8 +50,6 @@ public class IronbloodMod {
 		IronbloodModItems.REGISTRY.register(bus);
 
 		IronbloodModTabs.REGISTRY.register(bus);
-
-		IronbloodModMenus.REGISTRY.register(bus);
 
 		// Start of user code block mod init
 		// End of user code block mod init

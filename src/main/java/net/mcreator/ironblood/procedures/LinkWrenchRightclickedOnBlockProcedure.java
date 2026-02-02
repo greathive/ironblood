@@ -57,9 +57,6 @@ public class LinkWrenchRightclickedOnBlockProcedure {
 			return;
 		}
 		
-		// Get the ship managing this block position
-		ServerShip ship = VSGameUtilsKt.getShipManagingPos(serverLevel, blockPos);
-		
 		// Get the link wrench data for this player
 		LinkWrenchData data = LinkWrenchManager.getData(player);
 		
@@ -73,9 +70,14 @@ public class LinkWrenchRightclickedOnBlockProcedure {
 		// Determine block type
 		String blockType = isMechanicalJoint ? "mechanical_joint" : "mechanical_joint_alt";
 		
+		// Get the ship managing this block position
+		final LoadedServerShip ship = VSGameUtilsKt.getLoadedShipManagingPos(serverLevel, blockPos);
+		
 		// If this is the first link
 		if (!data.hasFirstLink()) {
-			data.setFirstLink(ship, blockPos, facing, blockType);
+			// Store as ServerShip for compatibility
+			ServerShip serverShip = ship;
+			data.setFirstLink(serverShip, blockPos, facing, blockType);
 			player.displayClientMessage(Component.literal("§aFirst block selected! Now click on the opposite joint type on a different ship."), true);
 			return;
 		}
@@ -90,8 +92,11 @@ public class LinkWrenchRightclickedOnBlockProcedure {
 			return;
 		}
 		
-		// Check if the blocks are on different ships
+		// Get the first ship (need ServerShip for joint creation but LoadedServerShip for tracking)
 		ServerShip firstShip = data.getFirstShip();
+		BlockPos firstBlockPos = data.getFirstBlockPos();
+		Direction firstFacing = data.getFirstBlockFacing();
+		final LoadedServerShip firstLoadedShip = VSGameUtilsKt.getLoadedShipManagingPos(serverLevel, firstBlockPos);
 		
 		// Both blocks must be on ships OR one must be on a ship and the other in world
 		if (firstShip != null && ship != null && firstShip.getId() == ship.getId()) {
@@ -99,10 +104,6 @@ public class LinkWrenchRightclickedOnBlockProcedure {
 			data.reset();
 			return;
 		}
-		
-		// Get positions and rotations for the joint
-		BlockPos firstBlockPos = data.getFirstBlockPos();
-		Direction firstFacing = data.getFirstBlockFacing();
 		
 		// Calculate joint positions in ship/world space
 		Vec3 firstJointPos = calculateJointPosition(serverLevel, firstBlockPos, firstShip);
@@ -125,25 +126,18 @@ public class LinkWrenchRightclickedOnBlockProcedure {
 		);
 		
 		if (joint != null) {
-			// Store references for the callback
-			final ServerShip finalFirstShip = firstShip;
-			final ServerShip finalSecondShip = ship;
-			final BlockPos finalFirstPos = firstBlockPos;
-			final BlockPos finalSecondPos = blockPos;
+			// Capture positions for the callback
+			final BlockPos capturedFirstPos = firstBlockPos;
+			final BlockPos capturedSecondPos = blockPos;
 			
 			JointUtil.addJoint((Level) world, joint, (jointId) -> {
 				// Register the joint in both ships' tracking attachments
-				// Only track if the ship is a LoadedServerShip
-				if (finalFirstShip instanceof LoadedServerShip) {
-					LoadedServerShip loadedShip1 = (LoadedServerShip) finalFirstShip;
-					JointTrackingAttachment tracking1 = JointTrackingAttachment.getOrCreate(loadedShip1);
-					tracking1.registerJoint(finalFirstPos, jointId);
+				if (firstLoadedShip != null) {
+					JointTrackingAttachment.getOrCreate(firstLoadedShip).registerJoint(capturedFirstPos, jointId);
 				}
 				
-				if (finalSecondShip instanceof LoadedServerShip) {
-					LoadedServerShip loadedShip2 = (LoadedServerShip) finalSecondShip;
-					JointTrackingAttachment tracking2 = JointTrackingAttachment.getOrCreate(loadedShip2);
-					tracking2.registerJoint(finalSecondPos, jointId);
+				if (ship != null) {
+					JointTrackingAttachment.getOrCreate(ship).registerJoint(capturedSecondPos, jointId);
 				}
 				
 				player.displayClientMessage(Component.literal("§aShips linked successfully! Joint ID: " + jointId), true);

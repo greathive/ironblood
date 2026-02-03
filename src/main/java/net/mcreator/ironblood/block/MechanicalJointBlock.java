@@ -1,4 +1,3 @@
-
 package net.mcreator.ironblood.block;
 
 import org.valkyrienskies.core.impl.shadow.bs;
@@ -15,14 +14,23 @@ import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.block.Rotation;
 import net.minecraft.world.level.block.Mirror;
+import net.minecraft.world.level.block.EntityBlock;
 import net.minecraft.world.level.block.DirectionalBlock;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.entity.BlockEntity;
+import net.minecraft.world.level.block.entity.BlockEntityType;
+import net.minecraft.world.level.Level;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.core.Direction;
 import net.minecraft.core.BlockPos;
 
-public class MechanicalJointBlock extends Block {
+import net.mcreator.ironblood.block.entity.MechanicalJointBlockEntity;
+import net.mcreator.ironblood.init.IronbloodModBlockEntities;
+
+import javax.annotation.Nullable;
+
+public class MechanicalJointBlock extends Block implements EntityBlock {
 	public static final DirectionProperty FACING = DirectionalBlock.FACING;
 
 	public MechanicalJointBlock() {
@@ -48,12 +56,12 @@ public class MechanicalJointBlock extends Block {
 	@Override
 	public VoxelShape getShape(BlockState state, BlockGetter world, BlockPos pos, CollisionContext context) {
 		return switch (state.getValue(FACING)) {
-			default -> Shapes.or(box(0, 0, 0, 5, 12, 12), box(11, 0, 0, 16, 12, 12));
-			case NORTH -> Shapes.or(box(11, 0, 4, 16, 12, 16), box(0, 0, 4, 5, 12, 16));
-			case EAST -> Shapes.or(box(0, 0, 11, 12, 12, 16), box(0, 0, 0, 12, 12, 5));
-			case WEST -> Shapes.or(box(4, 0, 0, 16, 12, 5), box(4, 0, 11, 16, 12, 16));
-			case UP -> Shapes.or(box(11, 0, 0, 16, 12, 12), box(0, 0, 0, 5, 12, 12));
-			case DOWN -> Shapes.or(box(11, 4, 4, 16, 16, 16), box(0, 4, 4, 5, 16, 16));
+			default -> Shapes.or(box(0, 4, 0, 5, 12, 12), box(11, 4, 0, 16, 12, 12));
+			case NORTH -> Shapes.or(box(11, 4, 4, 16, 12, 16), box(0, 4, 4, 5, 12, 16));
+			case EAST -> Shapes.or(box(0, 4, 11, 12, 12, 16), box(0, 4, 0, 12, 12, 5));
+			case WEST -> Shapes.or(box(4, 4, 0, 16, 12, 5), box(4, 4, 11, 16, 12, 16));
+			case UP -> Shapes.or(box(11, 0, 4, 16, 12, 12), box(0, 0, 4, 5, 12, 12));
+			case DOWN -> Shapes.or(box(11, 4, 4, 16, 16, 12), box(0, 4, 4, 5, 16, 12));
 		};
 	}
 
@@ -74,5 +82,22 @@ public class MechanicalJointBlock extends Block {
 
 	public BlockState mirror(BlockState state, Mirror mirrorIn) {
 		return state.rotate(mirrorIn.getRotation(state.getValue(FACING)));
+	}
+
+	@Override
+	@Nullable
+	public BlockEntity newBlockEntity(BlockPos pos, BlockState state) {
+		return new MechanicalJointBlockEntity(pos, state);
+	}
+
+	@Override
+	public void onRemove(BlockState state, Level world, BlockPos pos, BlockState newState, boolean isMoving) {
+		if (!state.is(newState.getBlock())) {
+			var be = world.getBlockEntity(pos);
+			if (be instanceof MechanicalJointBlockEntity jointBE) {
+				jointBE.removeJoint();
+			}
+		}
+		super.onRemove(state, world, pos, newState, isMoving);
 	}
 }

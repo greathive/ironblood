@@ -14,11 +14,9 @@ public class OnShipLoad {
 		ValkyrienSkies.api().registerAttachment(ForceInducedShips.class);
 		ValkyrienSkies.api().registerAttachment(GravityInducedShips.class);
 		ValkyrienSkies.api().registerAttachment(ShipLandingAttachment.class);
-		ValkyrienSkies.api().registerAttachment(JointTrackingAttachment.class);
 		VSEvents.ShipLoadEvent.Companion.on((shipLoadEvent) -> {
 			ForceInducedShips.getOrCreate(shipLoadEvent.getShip());
 			GravityInducedShips.getOrCreate(shipLoadEvent.getShip());
-			JointTrackingAttachment.getOrCreate(shipLoadEvent.getShip());
 		});
 	}
 }

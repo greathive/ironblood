@@ -3,10 +3,12 @@
   "item.ironblood.link_wrench": "Link Wrench",
   "block.ironblood.mechanical_joint_alt": "Alternate Mechanical Joint",
   "block.ironblood.assembler": "Assembler",
+  "item.ironblood.heavy_duty_chain.description_0": "Can be used to drag physics objects, and tie them to the world.",
   "item.ironblood.assembly_scanner": "Assembly Scanner",
+  "item.ironblood.heavy_duty_chain": "Heavy Duty Chain",
+  "block.ironblood.mechanical_joint": "Mechanical Joint",
   "item.ironblood.assembly_scanner.description_0": "Right-Click on a block to store its location.",
   "item.ironblood.assembly_scanner.description_1": "Shift + Right-Click to erase stored blocks.",
-  "block.ironblood.mechanical_joint": "Mechanical Joint",
   "subtitles.scanner-deactivate": "Assembly Scanner discards selection",
   "subtitles.scanner-activate": "Assembly Scanner selection"
 }

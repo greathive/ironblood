@@ -11,12 +11,16 @@ import net.minecraftforge.registries.DeferredRegister;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.Block;
 
+import net.mcreator.ironblood.block.entity.MechanicalJointBlockEntity;
+import net.mcreator.ironblood.block.entity.MechanicalJointAltBlockEntity;
 import net.mcreator.ironblood.block.entity.AssemblerBlockEntity;
 import net.mcreator.ironblood.IronbloodMod;
 
 public class IronbloodModBlockEntities {
 	public static final DeferredRegister<BlockEntityType<?>> REGISTRY = DeferredRegister.create(ForgeRegistries.BLOCK_ENTITY_TYPES, IronbloodMod.MODID);
+	public static final RegistryObject<BlockEntityType<?>> MECHANICAL_JOINT = register("mechanical_joint", IronbloodModBlocks.MECHANICAL_JOINT, MechanicalJointBlockEntity::new);
 	public static final RegistryObject<BlockEntityType<?>> ASSEMBLER = register("assembler", IronbloodModBlocks.ASSEMBLER, AssemblerBlockEntity::new);
+	public static final RegistryObject<BlockEntityType<?>> MECHANICAL_JOINT_ALT = register("mechanical_joint_alt", IronbloodModBlocks.MECHANICAL_JOINT_ALT, MechanicalJointAltBlockEntity::new);
 
 	// Start of user code block custom block entities
 	// End of user code block custom block entities

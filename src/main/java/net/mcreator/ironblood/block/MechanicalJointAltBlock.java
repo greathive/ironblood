@@ -1,4 +1,3 @@
-
 package net.mcreator.ironblood.block;
 
 import org.valkyrienskies.core.impl.shadow.bs;
@@ -15,18 +14,27 @@ import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.block.Rotation;
 import net.minecraft.world.level.block.Mirror;
+import net.minecraft.world.level.block.EntityBlock;
 import net.minecraft.world.level.block.DirectionalBlock;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.entity.BlockEntity;
+import net.minecraft.world.level.block.entity.BlockEntityType;
+import net.minecraft.world.level.Level;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.core.Direction;
 import net.minecraft.core.BlockPos;
 
-public class MechanicalJointAltBlock extends Block {
+import net.mcreator.ironblood.block.entity.MechanicalJointAltBlockEntity;
+import net.mcreator.ironblood.init.IronbloodModBlockEntities;
+
+import javax.annotation.Nullable;
+
+public class MechanicalJointAltBlock extends Block implements EntityBlock {
 	public static final DirectionProperty FACING = DirectionalBlock.FACING;
 
 	public MechanicalJointAltBlock() {
-		super(BlockBehaviour.Properties.of().sound(SoundType.METAL).strength(60f, 50f).noCollission().noOcclusion().isRedstoneConductor((bs, br, bp) -> false));
+		super(BlockBehaviour.Properties.of().sound(SoundType.METAL).strength(60f, 50f).noOcclusion().isRedstoneConductor((bs, br, bp) -> false));
 		this.registerDefaultState(this.stateDefinition.any().setValue(FACING, Direction.NORTH));
 	}
 
@@ -48,13 +56,14 @@ public class MechanicalJointAltBlock extends Block {
 	@Override
 	public VoxelShape getShape(BlockState state, BlockGetter world, BlockPos pos, CollisionContext context) {
 		return switch (state.getValue(FACING)) {
-			default -> box(5, 0, 0, 11, 16, 12);
-			case NORTH -> box(5, 0, 4, 11, 16, 16);
-			case EAST -> box(0, 0, 5, 12, 16, 11);
-			case WEST -> box(4, 0, 5, 16, 16, 11);
-			case UP -> box(5, 0, 0, 11, 12, 16);
-			case DOWN -> box(5, 4, 0, 11, 16, 16);
+			default -> box(5, 4, 0, 11, 12, 12);
+			case NORTH -> box(5, 4, 4, 11, 12, 16);
+			case EAST -> box(0, 4, 5, 12, 12, 11);
+			case WEST -> box(4, 4, 5, 16, 12, 11);
+			case UP -> box(5, 0, 4, 11, 12, 12);
+			case DOWN -> box(5, 4, 4, 11, 16, 12);
 		};
+
 	}
 
 	@Override
@@ -74,5 +83,22 @@ public class MechanicalJointAltBlock extends Block {
 
 	public BlockState mirror(BlockState state, Mirror mirrorIn) {
 		return state.rotate(mirrorIn.getRotation(state.getValue(FACING)));
+	}
+
+	@Override
+	@Nullable
+	public BlockEntity newBlockEntity(BlockPos pos, BlockState state) {
+		return new MechanicalJointAltBlockEntity(pos, state);
+	}
+
+	@Override
+	public void onRemove(BlockState state, Level world, BlockPos pos, BlockState newState, boolean isMoving) {
+		if (!state.is(newState.getBlock())) {
+			var be = world.getBlockEntity(pos);
+			if (be instanceof MechanicalJointAltBlockEntity altBE) {
+				altBE.removeJoint();
+			}
+		}
+		super.onRemove(state, world, pos, newState, isMoving);
 	}
 }

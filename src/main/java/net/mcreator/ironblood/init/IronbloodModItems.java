@@ -20,6 +20,7 @@ import net.minecraft.client.renderer.item.ItemProperties;
 
 import net.mcreator.ironblood.procedures.AssemblyScannerPropertyValueProviderProcedure;
 import net.mcreator.ironblood.item.LinkWrenchItem;
+import net.mcreator.ironblood.item.HeavyDutyChainItem;
 import net.mcreator.ironblood.item.AssemblyScannerItem;
 import net.mcreator.ironblood.IronbloodMod;
 
@@ -31,6 +32,7 @@ public class IronbloodModItems {
 	public static final RegistryObject<Item> ASSEMBLER = block(IronbloodModBlocks.ASSEMBLER);
 	public static final RegistryObject<Item> MECHANICAL_JOINT_ALT = block(IronbloodModBlocks.MECHANICAL_JOINT_ALT);
 	public static final RegistryObject<Item> LINK_WRENCH = REGISTRY.register("link_wrench", () -> new LinkWrenchItem());
+	public static final RegistryObject<Item> HEAVY_DUTY_CHAIN = REGISTRY.register("heavy_duty_chain", () -> new HeavyDutyChainItem());
 
 	// Start of user code block custom items
 	// End of user code block custom items

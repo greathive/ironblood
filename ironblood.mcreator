@@ -251,7 +251,7 @@
       "name": "HeavyDutyChain",
       "type": "item",
       "compiles": true,
-      "locked_code": false,
+      "locked_code": true,
       "registry_name": "heavy_duty_chain",
       "metadata": {
         "files": [

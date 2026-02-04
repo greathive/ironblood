@@ -250,13 +250,30 @@
     {
       "name": "HeavyDutyChain",
       "type": "item",
-      "compiles": false,
+      "compiles": true,
       "locked_code": true,
       "registry_name": "heavy_duty_chain",
       "metadata": {
         "files": [
           "src/main/resources/assets/ironblood/models/item/heavy_duty_chain.json",
           "src/main/java/net/mcreator/ironblood/item/HeavyDutyChainItem.java"
+        ]
+      }
+    },
+    {
+      "name": "HeavyDutyChainLink",
+      "type": "block",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "heavy_duty_chain_link",
+      "metadata": {
+        "files": [
+          "src/main/resources/data/ironblood/loot_tables/blocks/heavy_duty_chain_link.json",
+          "src/main/java/net/mcreator/ironblood/block/HeavyDutyChainLinkBlock.java",
+          "src/main/resources/assets/ironblood/models/item/heavy_duty_chain_link.json",
+          "src/main/resources/assets/ironblood/models/block/heavy_duty_chain_link.json",
+          "src/main/resources/assets/ironblood/blockstates/heavy_duty_chain_link.json",
+          "src/main/java/net/mcreator/ironblood/block/entity/HeavyDutyChainLinkBlockEntity.java"
         ]
       }
     }
@@ -288,7 +305,8 @@
       "Assembler",
       "MechanicalJointAlt",
       "LinkWrench",
-      "HeavyDutyChain"
+      "HeavyDutyChain",
+      "HeavyDutyChainLink"
     ]
   },
   "language_map": {
@@ -298,6 +316,7 @@
       "block.ironblood.mechanical_joint_alt": "Alternate Mechanical Joint",
       "block.ironblood.assembler": "Assembler",
       "item.ironblood.heavy_duty_chain.description_0": "Can be used to drag physics objects, and tie them to the world.",
+      "block.ironblood.heavy_duty_chain_link": "Heavy Duty Chain Link",
       "item.ironblood.assembly_scanner": "Assembly Scanner",
       "item.ironblood.heavy_duty_chain": "Heavy Duty Chain",
       "block.ironblood.mechanical_joint": "Mechanical Joint",

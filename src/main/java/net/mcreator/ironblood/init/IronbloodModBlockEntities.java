@@ -13,6 +13,7 @@ import net.minecraft.world.level.block.Block;
 
 import net.mcreator.ironblood.block.entity.MechanicalJointBlockEntity;
 import net.mcreator.ironblood.block.entity.MechanicalJointAltBlockEntity;
+import net.mcreator.ironblood.block.entity.HeavyDutyChainLinkBlockEntity;
 import net.mcreator.ironblood.block.entity.AssemblerBlockEntity;
 import net.mcreator.ironblood.IronbloodMod;
 
@@ -21,6 +22,7 @@ public class IronbloodModBlockEntities {
 	public static final RegistryObject<BlockEntityType<?>> MECHANICAL_JOINT = register("mechanical_joint", IronbloodModBlocks.MECHANICAL_JOINT, MechanicalJointBlockEntity::new);
 	public static final RegistryObject<BlockEntityType<?>> ASSEMBLER = register("assembler", IronbloodModBlocks.ASSEMBLER, AssemblerBlockEntity::new);
 	public static final RegistryObject<BlockEntityType<?>> MECHANICAL_JOINT_ALT = register("mechanical_joint_alt", IronbloodModBlocks.MECHANICAL_JOINT_ALT, MechanicalJointAltBlockEntity::new);
+	public static final RegistryObject<BlockEntityType<?>> HEAVY_DUTY_CHAIN_LINK = register("heavy_duty_chain_link", IronbloodModBlocks.HEAVY_DUTY_CHAIN_LINK, HeavyDutyChainLinkBlockEntity::new);
 
 	// Start of user code block custom block entities
 	// End of user code block custom block entities

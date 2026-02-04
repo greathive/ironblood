@@ -26,8 +26,9 @@ public class HeavyDutyChainItem extends Item {
 	public void appendHoverText(ItemStack itemstack, Level level, List<Component> list, TooltipFlag flag) {
 		super.appendHoverText(itemstack, level, list, flag);
 		list.add(Component.translatable("item.ironblood.heavy_duty_chain.description_0"));
-		list.add(Component.literal("§7Right-click on a ship to grapple"));
-		list.add(Component.literal("§7Right-click in air to release"));
+		list.add(Component.literal("§7Right-click two points to create chain"));
+		list.add(Component.literal("§7Click endpoint to shorten, shift-click to extend"));
+		list.add(Component.literal("§7Right-click in air to cancel selection"));
 	}
 
 	@Override
@@ -45,7 +46,8 @@ public class HeavyDutyChainItem extends Item {
 			context.getClickedPos().getX(), 
 			context.getClickedPos().getY(), 
 			context.getClickedPos().getZ(), 
-			context.getPlayer()
+			context.getPlayer(),
+			context.getItemInHand()
 		);
 		return InteractionResult.SUCCESS;
 	}

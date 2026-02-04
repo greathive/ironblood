@@ -24,5 +24,6 @@ public class IronbloodModTabs {
 				tabData.accept(IronbloodModBlocks.MECHANICAL_JOINT_ALT.get().asItem());
 				tabData.accept(IronbloodModItems.LINK_WRENCH.get());
 				tabData.accept(IronbloodModItems.HEAVY_DUTY_CHAIN.get());
+				tabData.accept(IronbloodModBlocks.HEAVY_DUTY_CHAIN_LINK.get().asItem());
 			}).build());
 }

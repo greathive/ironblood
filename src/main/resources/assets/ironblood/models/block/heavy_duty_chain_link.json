@@ -1,0 +1,9 @@
+{
+  "parent": "ironblood:custom/chainlink",
+  "textures": {
+    "all": "ironblood:block/chainlink",
+    "particle": "ironblood:block/chainlink",
+    "1": "ironblood:block/chainlink"
+  },
+  "render_type": "solid"
+}

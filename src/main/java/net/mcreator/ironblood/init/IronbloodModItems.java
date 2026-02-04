@@ -33,6 +33,7 @@ public class IronbloodModItems {
 	public static final RegistryObject<Item> MECHANICAL_JOINT_ALT = block(IronbloodModBlocks.MECHANICAL_JOINT_ALT);
 	public static final RegistryObject<Item> LINK_WRENCH = REGISTRY.register("link_wrench", () -> new LinkWrenchItem());
 	public static final RegistryObject<Item> HEAVY_DUTY_CHAIN = REGISTRY.register("heavy_duty_chain", () -> new HeavyDutyChainItem());
+	public static final RegistryObject<Item> HEAVY_DUTY_CHAIN_LINK = block(IronbloodModBlocks.HEAVY_DUTY_CHAIN_LINK);
 
 	// Start of user code block custom items
 	// End of user code block custom items

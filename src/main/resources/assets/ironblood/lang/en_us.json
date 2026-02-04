@@ -4,6 +4,7 @@
   "block.ironblood.mechanical_joint_alt": "Alternate Mechanical Joint",
   "block.ironblood.assembler": "Assembler",
   "item.ironblood.heavy_duty_chain.description_0": "Can be used to drag physics objects, and tie them to the world.",
+  "block.ironblood.heavy_duty_chain_link": "Heavy Duty Chain Link",
   "item.ironblood.assembly_scanner": "Assembly Scanner",
   "item.ironblood.heavy_duty_chain": "Heavy Duty Chain",
   "block.ironblood.mechanical_joint": "Mechanical Joint",

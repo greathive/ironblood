@@ -7,9 +7,6 @@ import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.network.chat.Component;
 
-import net.mcreator.ironblood.ships.ChainDragManager;
-import net.mcreator.ironblood.init.IronbloodModItems;
-
 public class HeavyDutyChainRightclickedProcedure {
 	public static void execute(LevelAccessor world, Entity entity, ItemStack itemstack) {
 		if (entity == null || !(entity instanceof Player player)) {
@@ -26,10 +23,10 @@ public class HeavyDutyChainRightclickedProcedure {
 			return;
 		}
 		
-		// Stop dragging if currently active
-		if (ChainDragManager.isDragging(player)) {
-			ChainDragManager.stopDragging(player);
-			player.displayClientMessage(Component.literal("§eReleased grapple!"), true);
+		// Cancel any pending chain selection
+		if (itemstack.getOrCreateTag().contains("chainFirstPoint")) {
+			itemstack.getOrCreateTag().remove("chainFirstPoint");
+			player.displayClientMessage(Component.literal("§eChain selection cancelled!"), true);
 		}
 	}
 }

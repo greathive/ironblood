@@ -1,13 +1,11 @@
 package net.mcreator.ironblood.client.renderer;
 
 import com.mojang.blaze3d.vertex.PoseStack;
-import com.mojang.blaze3d.vertex.VertexConsumer;
 import com.mojang.math.Axis;
 
 import net.minecraft.client.renderer.blockentity.BlockEntityRenderer;
 import net.minecraft.client.renderer.blockentity.BlockEntityRendererProvider;
 import net.minecraft.client.renderer.MultiBufferSource;
-import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.texture.OverlayTexture;
 import net.minecraft.client.Minecraft;
 import net.minecraft.world.phys.Vec3;
@@ -16,8 +14,6 @@ import net.minecraft.world.level.block.ChainBlock;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.core.Direction;
-
-import org.joml.Matrix4f;
 
 import net.mcreator.ironblood.block.entity.HeavyDutyChainLinkBlockEntity;
 
@@ -62,9 +58,7 @@ public class HeavyDutyChainLinkRenderer implements BlockEntityRenderer<HeavyDuty
             return;
         }
 
-        // IMPORTANT: Get world positions EVERY FRAME for ships (they move!)
-        // startWorldPos = this block's world position (the one rendering)
-        // endWorldPos = partner block's world position (the target)
+        // Get world positions for both endpoints
         Vec3 startWorldPos = getWorldPosition(blockEntity.getLevel(), thisPos);
         Vec3 endWorldPos = getWorldPosition(blockEntity.getLevel(), partnerPos);
 
@@ -74,21 +68,22 @@ public class HeavyDutyChainLinkRenderer implements BlockEntityRenderer<HeavyDuty
             return; // Chain is too long or invalid
         }
 
-        // Calculate the vector from this block's center to the partner's center (in world space)
-        // This direction is ALWAYS correct because both positions are in world-space
-        Vec3 directionToPartner = endWorldPos.subtract(startWorldPos);
+        // Calculate the direction vector in WORLD space
+        Vec3 worldDirection = endWorldPos.subtract(startWorldPos);
 
-        // The poseStack is at this block's CORNER (not center)
-        // So we need to start at (0.5, 0.5, 0.5) to be at the center
-        // And end at (0.5, 0.5, 0.5) + directionToPartner
-        Vec3 start = new Vec3(0.5, 0.5, 0.5);
-        Vec3 end = start.add(directionToPartner);
+        // Now we need to transform this world direction into the LOCAL coordinate system
+        // of the rendering block (which might be on a ship)
+        Vec3 localDirection = worldToLocalDirection(blockEntity.getLevel(), thisPos, worldDirection);
 
-        // Debug: Ensure the direction is correct
-        // The chain should always render from our center toward the partner
-        if (directionToPartner.lengthSqr() < 0.01) {
-            return; // Too close, skip rendering
+        if (localDirection.lengthSqr() < 0.01) {
+            return; // Invalid direction
         }
+
+        // The poseStack is positioned at this block's corner in its local space
+        // Start at block center in local coords
+        Vec3 start = new Vec3(0.5, 0.5, 0.5);
+        // End at start + local direction
+        Vec3 end = start.add(localDirection);
 
         // Render chain segments
         renderChainSegments(poseStack, bufferSource, start, end, combinedLight);
@@ -98,7 +93,6 @@ public class HeavyDutyChainLinkRenderer implements BlockEntityRenderer<HeavyDuty
      * Gets the world position of a block CENTER, accounting for ships on the CLIENT side
      */
     private Vec3 getWorldPosition(net.minecraft.world.level.Level level, BlockPos blockPos) {
-        // Check if this position is on a ship (getShipManagingPos returns polymorphic type on client)
         var ship = VSGameUtilsKt.getShipManagingPos(level, blockPos);
 
         if (ship == null) {
@@ -111,19 +105,44 @@ public class HeavyDutyChainLinkRenderer implements BlockEntityRenderer<HeavyDuty
                 Vector3d shipLocal = VectorConversionsMCKt.toJOMLD(blockPos).add(0.5, 0.5, 0.5);
 
                 // Transform to world coordinates using the ship's render transform
-                // CRITICAL: Use getRenderTransform() for smooth client-side rendering
                 Vector3d worldPos = clientShip.getRenderTransform().getShipToWorld().transformPosition(shipLocal);
 
                 return new Vec3(worldPos.x, worldPos.y, worldPos.z);
             } else {
-                // Fallback - shouldn't happen on client
+                // Fallback
                 return Vec3.atCenterOf(blockPos);
             }
         }
     }
 
     /**
-     * Renders a debug line and chain segments between two points
+     * Transforms a world-space direction vector into the local coordinate system of a block.
+     * If the block is on a ship, this applies the inverse ship rotation.
+     */
+    private Vec3 worldToLocalDirection(net.minecraft.world.level.Level level, BlockPos blockPos, Vec3 worldDirection) {
+        var ship = VSGameUtilsKt.getShipManagingPos(level, blockPos);
+
+        if (ship == null) {
+            // Block is in world - no transformation needed
+            return worldDirection;
+        } else {
+            // Block is on a ship - transform direction from world to ship-local
+            if (ship instanceof ClientShip clientShip) {
+                Vector3d worldDir = new Vector3d(worldDirection.x, worldDirection.y, worldDirection.z);
+
+                // Use the inverse rotation to transform from world to ship-local
+                Vector3d localDir = clientShip.getRenderTransform().getWorldToShip().transformDirection(worldDir);
+
+                return new Vec3(localDir.x, localDir.y, localDir.z);
+            } else {
+                // Fallback
+                return worldDirection;
+            }
+        }
+    }
+
+    /**
+     * Renders chain segments between two points (in local coordinates)
      */
     private void renderChainSegments(PoseStack poseStack, MultiBufferSource bufferSource,
                                      Vec3 start, Vec3 end, int combinedLight) {
@@ -141,21 +160,7 @@ public class HeavyDutyChainLinkRenderer implements BlockEntityRenderer<HeavyDuty
             return;
         }
 
-        // Render debug line (red)
-        VertexConsumer vertexConsumer = bufferSource.getBuffer(RenderType.lines());
-        Matrix4f matrix = poseStack.last().pose();
-
-        vertexConsumer.vertex(matrix, (float) start.x, (float) start.y, (float) start.z)
-                .color(255, 0, 0, 255)
-                .normal(0, 1, 0)
-                .endVertex();
-
-        vertexConsumer.vertex(matrix, (float) end.x, (float) end.y, (float) end.z)
-                .color(255, 0, 0, 255)
-                .normal(0, 1, 0)
-                .endVertex();
-
-        // Now render chains along the line
+        // Render chains along the line
         double segmentLength = 1.0;
         int segmentCount = Math.max(1, Math.min(256, (int) Math.ceil(distance / segmentLength)));
 
@@ -199,7 +204,7 @@ public class HeavyDutyChainLinkRenderer implements BlockEntityRenderer<HeavyDuty
             // Translate to segment position
             poseStack.translate(segmentPos.x, segmentPos.y, segmentPos.z);
 
-            // Always apply rotation (even if 0)
+            // Apply rotation to align chain with direction
             poseStack.mulPose(Axis.YP.rotation((float) yaw));
             poseStack.mulPose(Axis.XP.rotation((float) pitch));
 

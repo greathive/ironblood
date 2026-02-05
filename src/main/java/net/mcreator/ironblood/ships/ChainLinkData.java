@@ -79,6 +79,10 @@ public class ChainLinkData {
         currentMaxDistance = currentMaxDistance + amount;
     }
     
+    public void setCurrentMaxDistance(double distance) {
+        currentMaxDistance = Math.max(1.0, distance);
+    }
+    
     /**
      * Checks if a block position matches either end of this chain link
      */

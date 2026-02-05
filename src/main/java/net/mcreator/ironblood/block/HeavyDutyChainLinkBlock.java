@@ -1,10 +1,8 @@
-
 package net.mcreator.ironblood.block;
 
 import org.valkyrienskies.core.impl.shadow.bs;
 import org.valkyrienskies.core.impl.shadow.br;
 import org.valkyrienskies.core.impl.shadow.bp;
-import org.valkyrienskies.core.impl.shadow.be;
 
 import net.minecraft.world.phys.shapes.VoxelShape;
 import net.minecraft.world.phys.shapes.Shapes;
@@ -104,10 +102,50 @@ public class HeavyDutyChainLinkBlock extends Block implements EntityBlock {
 	}
 
 	@Override
+	public void neighborChanged(BlockState state, Level world, BlockPos pos, Block neighborBlock, BlockPos neighborPos, boolean isMoving) {
+		super.neighborChanged(state, world, pos, neighborBlock, neighborPos, isMoving);
+		
+		if (world.isClientSide()) {
+			return;
+		}
+		
+		BlockEntity be = world.getBlockEntity(pos);
+		if (!(be instanceof HeavyDutyChainLinkBlockEntity chainBE)) {
+			return;
+		}
+		
+		// Get the facing direction
+		Direction facing = state.getValue(FACING);
+		
+		// Calculate left and right based on facing
+		// UP and DOWN don't have clockwise/counterclockwise, so handle them specially
+		Direction leftSide;
+		Direction rightSide;
+		
+		if (facing == Direction.UP || facing == Direction.DOWN) {
+			// For vertical blocks, use NORTH/SOUTH as left/right
+			leftSide = Direction.NORTH;
+			rightSide = Direction.SOUTH;
+		} else {
+			// For horizontal blocks, use clockwise/counterclockwise
+			leftSide = facing.getClockWise();
+			rightSide = facing.getCounterClockWise();
+		}
+		
+		// Check redstone power from left and right
+		boolean leftPowered = world.hasSignal(pos.relative(leftSide), leftSide);
+		boolean rightPowered = world.hasSignal(pos.relative(rightSide), rightSide);
+		
+		// Handle redstone changes
+		chainBE.handleRedstoneChange(leftPowered, rightPowered);
+	}
+
+	@Override
 	public void onRemove(BlockState state, Level world, BlockPos pos, BlockState newState, boolean isMoving) {
 		if (state.getBlock() != newState.getBlock()) {
 			BlockEntity blockEntity = world.getBlockEntity(pos);
 			if (blockEntity instanceof HeavyDutyChainLinkBlockEntity be) {
+				be.removeChain(); // Remove chain joint before dropping contents
 				Containers.dropContents(world, pos, be);
 				world.updateNeighbourForOutputSignal(pos, this);
 			}

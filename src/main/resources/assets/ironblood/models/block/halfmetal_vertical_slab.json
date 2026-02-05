@@ -1,0 +1,10 @@
+{
+  "parent": "ironblood:custom/halfmetalvertslab",
+  "textures": {
+    "all": "ironblood:block/halfmetalblocktop",
+    "particle": "ironblood:block/halfmetalblocktop",
+    "1": "ironblood:block/halfmetalblock",
+    "2": "ironblood:block/halfmetalblocktop"
+  },
+  "render_type": "solid"
+}

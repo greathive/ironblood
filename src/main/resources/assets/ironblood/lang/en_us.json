@@ -9,7 +9,10 @@
   "item.ironblood.heavy_duty_chain": "Heavy Duty Chain",
   "block.ironblood.mechanical_joint": "Mechanical Joint",
   "item.ironblood.assembly_scanner.description_0": "Right-Click on a block to store its location.",
+  "block.ironblood.halfmetal_slab": "Halfmetal Slab",
   "item.ironblood.assembly_scanner.description_1": "Shift + Right-Click to erase stored blocks.",
   "subtitles.scanner-deactivate": "Assembly Scanner discards selection",
+  "block.ironblood.halfmetal_block": "Halfmetal Block",
+  "block.ironblood.halfmetal_vertical_slab": "Halfmetal Vertical Slab",
   "subtitles.scanner-activate": "Assembly Scanner selection"
 }

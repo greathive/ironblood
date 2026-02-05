@@ -1,0 +1,13 @@
+{
+  "parent": "block/cube",
+  "textures": {
+    "down": "ironblood:block/halfmetalblocktop",
+    "up": "ironblood:block/halfmetalblocktop",
+    "north": "ironblood:block/halfmetalblock",
+    "east": "ironblood:block/halfmetalblock",
+    "south": "ironblood:block/halfmetalblock",
+    "west": "ironblood:block/halfmetalblock",
+    "particle": "ironblood:block/halfmetalblocktop"
+  },
+  "render_type": "solid"
+}

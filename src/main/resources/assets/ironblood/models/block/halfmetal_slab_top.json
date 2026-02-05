@@ -1,0 +1,10 @@
+{
+  "parent": "block/slab_top",
+  "textures": {
+    "particle": "ironblood:block/halfmetalblocktop",
+    "bottom": "ironblood:block/halfmetalblocktop",
+    "top": "ironblood:block/halfmetalblocktop",
+    "side": "ironblood:block/halfmetalblock"
+  },
+  "render_type": "solid"
+}

@@ -1,0 +1,11 @@
+{
+  "mappings": {
+    "default": {
+      "map": {
+        "1": "halfmetalblock",
+        "2": "halfmetalblocktop"
+      },
+      "name": "default"
+    }
+  }
+}

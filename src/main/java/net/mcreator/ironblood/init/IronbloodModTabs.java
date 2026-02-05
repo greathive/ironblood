@@ -25,5 +25,8 @@ public class IronbloodModTabs {
 				tabData.accept(IronbloodModItems.LINK_WRENCH.get());
 				tabData.accept(IronbloodModItems.HEAVY_DUTY_CHAIN.get());
 				tabData.accept(IronbloodModBlocks.HEAVY_DUTY_CHAIN_LINK.get().asItem());
+				tabData.accept(IronbloodModBlocks.HALFMETAL_BLOCK.get().asItem());
+				tabData.accept(IronbloodModBlocks.HALFMETAL_SLAB.get().asItem());
+				tabData.accept(IronbloodModBlocks.HALFMETAL_VERTICAL_SLAB.get().asItem());
 			}).build());
 }

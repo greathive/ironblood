@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "ironblood:block/halfmetal_slab"
+    },
+    "type=top": {
+      "model": "ironblood:block/halfmetal_slab_top"
+    },
+    "type=double": {
+      "model": "ironblood:block/halfmetal_slab_full"
+    }
+  }
+}

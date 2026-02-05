@@ -264,7 +264,7 @@
       "name": "HeavyDutyChainLink",
       "type": "block",
       "compiles": true,
-      "locked_code": false,
+      "locked_code": true,
       "registry_name": "heavy_duty_chain_link",
       "metadata": {
         "files": [
@@ -274,6 +274,56 @@
           "src/main/resources/assets/ironblood/models/block/heavy_duty_chain_link.json",
           "src/main/resources/assets/ironblood/blockstates/heavy_duty_chain_link.json",
           "src/main/java/net/mcreator/ironblood/block/entity/HeavyDutyChainLinkBlockEntity.java"
+        ]
+      }
+    },
+    {
+      "name": "HalfmetalBlock",
+      "type": "block",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "halfmetal_block",
+      "metadata": {
+        "files": [
+          "src/main/java/net/mcreator/ironblood/block/HalfmetalBlockBlock.java",
+          "src/main/resources/data/ironblood/loot_tables/blocks/halfmetal_block.json",
+          "src/main/resources/assets/ironblood/models/item/halfmetal_block.json",
+          "src/main/resources/assets/ironblood/models/block/halfmetal_block.json",
+          "src/main/resources/assets/ironblood/blockstates/halfmetal_block.json"
+        ]
+      }
+    },
+    {
+      "name": "HalfmetalSlab",
+      "type": "block",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "halfmetal_slab",
+      "metadata": {
+        "files": [
+          "src/main/resources/assets/ironblood/models/block/halfmetal_slab_full.json",
+          "src/main/resources/assets/ironblood/models/item/halfmetal_slab.json",
+          "src/main/resources/assets/ironblood/models/block/halfmetal_slab_top.json",
+          "src/main/resources/data/ironblood/loot_tables/blocks/halfmetal_slab.json",
+          "src/main/java/net/mcreator/ironblood/block/HalfmetalSlabBlock.java",
+          "src/main/resources/assets/ironblood/blockstates/halfmetal_slab.json",
+          "src/main/resources/assets/ironblood/models/block/halfmetal_slab.json"
+        ]
+      }
+    },
+    {
+      "name": "HalfmetalVerticalSlab",
+      "type": "block",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "halfmetal_vertical_slab",
+      "metadata": {
+        "files": [
+          "src/main/resources/assets/ironblood/models/item/halfmetal_vertical_slab.json",
+          "src/main/resources/assets/ironblood/blockstates/halfmetal_vertical_slab.json",
+          "src/main/java/net/mcreator/ironblood/block/HalfmetalVerticalSlabBlock.java",
+          "src/main/resources/data/ironblood/loot_tables/blocks/halfmetal_vertical_slab.json",
+          "src/main/resources/assets/ironblood/models/block/halfmetal_vertical_slab.json"
         ]
       }
     }
@@ -297,7 +347,11 @@
       "subtitle": "Assembly Scanner discards selection"
     }
   ],
-  "tag_elements": {},
+  "tag_elements": {
+    "BLOCKS:minecraft:slabs": [
+      "~CUSTOM:HalfmetalSlab"
+    ]
+  },
   "tab_element_order": {
     "CUSTOM:Ironblood": [
       "AssemblyScanner",
@@ -306,7 +360,10 @@
       "MechanicalJointAlt",
       "LinkWrench",
       "HeavyDutyChain",
-      "HeavyDutyChainLink"
+      "HeavyDutyChainLink",
+      "HalfmetalBlock",
+      "HalfmetalSlab",
+      "HalfmetalVerticalSlab"
     ]
   },
   "language_map": {
@@ -321,8 +378,11 @@
       "item.ironblood.heavy_duty_chain": "Heavy Duty Chain",
       "block.ironblood.mechanical_joint": "Mechanical Joint",
       "item.ironblood.assembly_scanner.description_0": "Right-Click on a block to store its location.",
+      "block.ironblood.halfmetal_slab": "Halfmetal Slab",
       "item.ironblood.assembly_scanner.description_1": "Shift + Right-Click to erase stored blocks.",
       "subtitles.scanner-deactivate": "Assembly Scanner discards selection",
+      "block.ironblood.halfmetal_block": "Halfmetal Block",
+      "block.ironblood.halfmetal_vertical_slab": "Halfmetal Vertical Slab",
       "subtitles.scanner-activate": "Assembly Scanner selection"
     }
   },

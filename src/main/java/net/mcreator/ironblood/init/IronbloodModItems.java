@@ -34,6 +34,9 @@ public class IronbloodModItems {
 	public static final RegistryObject<Item> LINK_WRENCH = REGISTRY.register("link_wrench", () -> new LinkWrenchItem());
 	public static final RegistryObject<Item> HEAVY_DUTY_CHAIN = REGISTRY.register("heavy_duty_chain", () -> new HeavyDutyChainItem());
 	public static final RegistryObject<Item> HEAVY_DUTY_CHAIN_LINK = block(IronbloodModBlocks.HEAVY_DUTY_CHAIN_LINK);
+	public static final RegistryObject<Item> HALFMETAL_BLOCK = block(IronbloodModBlocks.HALFMETAL_BLOCK);
+	public static final RegistryObject<Item> HALFMETAL_SLAB = block(IronbloodModBlocks.HALFMETAL_SLAB);
+	public static final RegistryObject<Item> HALFMETAL_VERTICAL_SLAB = block(IronbloodModBlocks.HALFMETAL_VERTICAL_SLAB);
 
 	// Start of user code block custom items
 	// End of user code block custom items

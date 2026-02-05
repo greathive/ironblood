@@ -22,6 +22,13 @@ public class ChainLinkManager {
     }
     
     /**
+     * Registers an existing chain link with a specific UUID (used for loading from NBT)
+     */
+    public static void registerLink(UUID linkId, ChainLinkData linkData) {
+        activeLinks.put(linkId, linkData);
+    }
+    
+    /**
      * Gets a chain link by its UUID
      */
     @Nullable

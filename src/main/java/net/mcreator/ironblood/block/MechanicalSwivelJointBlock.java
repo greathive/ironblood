@@ -57,12 +57,12 @@ public class MechanicalSwivelJointBlock extends Block implements EntityBlock {
 	@Override
 	public VoxelShape getShape(BlockState state, BlockGetter world, BlockPos pos, CollisionContext context) {
 		return switch (state.getValue(FACING)) {
-			default -> box(8, 4, 4, 16, 12, 12);
-			case NORTH -> box(0, 4, 4, 8, 12, 12);
-			case EAST -> box(4, 4, 0, 12, 12, 8);
-			case WEST -> box(4, 4, 8, 12, 12, 16);
-			case UP -> box(0, 4, 4, 8, 12, 12);
-			case DOWN -> box(0, 4, 4, 8, 12, 12);
+			default -> box(4, 4, 0, 12, 12, 8);
+			case NORTH -> box(4, 4, 8, 12, 12, 16);
+			case EAST -> box(0, 4, 4, 8, 12, 12);
+			case WEST -> box(8, 4, 4, 16, 12, 12);
+			case UP -> box(4, 0, 4, 12, 8, 12);
+			case DOWN -> box(4, 8, 4, 12, 16, 12);
 		};
 	}
 

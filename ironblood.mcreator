@@ -331,7 +331,7 @@
       "name": "MechanicalSwivelJoint",
       "type": "block",
       "compiles": true,
-      "locked_code": true,
+      "locked_code": false,
       "registry_name": "mechanical_swivel_joint",
       "metadata": {
         "files": [

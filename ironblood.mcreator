@@ -326,6 +326,23 @@
           "src/main/resources/assets/ironblood/models/block/halfmetal_vertical_slab.json"
         ]
       }
+    },
+    {
+      "name": "MechanicalSwivelJoint",
+      "type": "block",
+      "compiles": true,
+      "locked_code": true,
+      "registry_name": "mechanical_swivel_joint",
+      "metadata": {
+        "files": [
+          "src/main/java/net/mcreator/ironblood/block/entity/MechanicalSwivelJointBlockEntity.java",
+          "src/main/resources/data/ironblood/loot_tables/blocks/mechanical_swivel_joint.json",
+          "src/main/java/net/mcreator/ironblood/block/MechanicalSwivelJointBlock.java",
+          "src/main/resources/assets/ironblood/models/block/mechanical_swivel_joint.json",
+          "src/main/resources/assets/ironblood/models/item/mechanical_swivel_joint.json",
+          "src/main/resources/assets/ironblood/blockstates/mechanical_swivel_joint.json"
+        ]
+      }
     }
   ],
   "variable_elements": [],
@@ -363,13 +380,15 @@
       "HeavyDutyChainLink",
       "HalfmetalBlock",
       "HalfmetalSlab",
-      "HalfmetalVerticalSlab"
+      "HalfmetalVerticalSlab",
+      "MechanicalSwivelJoint"
     ]
   },
   "language_map": {
     "en_us": {
       "item_group.ironblood.ironblood": "Ironblood",
       "item.ironblood.link_wrench": "Link Wrench",
+      "block.ironblood.mechanical_swivel_joint": "Mechanical Swivel Joint",
       "block.ironblood.mechanical_joint_alt": "Alternate Mechanical Joint",
       "block.ironblood.assembler": "Assembler",
       "item.ironblood.heavy_duty_chain.description_0": "Can be used to drag physics objects, and tie them to the world.",

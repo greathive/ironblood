@@ -37,6 +37,7 @@ public class IronbloodModItems {
 	public static final RegistryObject<Item> HALFMETAL_BLOCK = block(IronbloodModBlocks.HALFMETAL_BLOCK);
 	public static final RegistryObject<Item> HALFMETAL_SLAB = block(IronbloodModBlocks.HALFMETAL_SLAB);
 	public static final RegistryObject<Item> HALFMETAL_VERTICAL_SLAB = block(IronbloodModBlocks.HALFMETAL_VERTICAL_SLAB);
+	public static final RegistryObject<Item> MECHANICAL_SWIVEL_JOINT = block(IronbloodModBlocks.MECHANICAL_SWIVEL_JOINT);
 
 	// Start of user code block custom items
 	// End of user code block custom items

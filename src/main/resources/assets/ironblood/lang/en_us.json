@@ -1,6 +1,7 @@
 {
   "item_group.ironblood.ironblood": "Ironblood",
   "item.ironblood.link_wrench": "Link Wrench",
+  "block.ironblood.mechanical_swivel_joint": "Mechanical Swivel Joint",
   "block.ironblood.mechanical_joint_alt": "Alternate Mechanical Joint",
   "block.ironblood.assembler": "Assembler",
   "item.ironblood.heavy_duty_chain.description_0": "Can be used to drag physics objects, and tie them to the world.",

@@ -28,5 +28,6 @@ public class IronbloodModTabs {
 				tabData.accept(IronbloodModBlocks.HALFMETAL_BLOCK.get().asItem());
 				tabData.accept(IronbloodModBlocks.HALFMETAL_SLAB.get().asItem());
 				tabData.accept(IronbloodModBlocks.HALFMETAL_VERTICAL_SLAB.get().asItem());
+				tabData.accept(IronbloodModBlocks.MECHANICAL_SWIVEL_JOINT.get().asItem());
 			}).build());
 }

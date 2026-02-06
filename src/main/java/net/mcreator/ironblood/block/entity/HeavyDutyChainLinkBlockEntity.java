@@ -447,33 +447,62 @@ public class HeavyDutyChainLinkBlockEntity extends RandomizableContainerBlockEnt
         }
 
         ChainLinkData linkData = ChainLinkManager.getLink(chainLinkId);
-        if (linkData == null) {
-            return;
+        
+        // Even if linkData is null, we still need to clear the partner
+        BlockPos partnerPos = null;
+        if (linkData != null) {
+            partnerPos = isFirstEndpoint ? linkData.getSecondBlockPos() : linkData.getFirstBlockPos();
+            
+            // Remove joint from physics
+            if (linkData.hasJoint() && level instanceof ServerLevel serverLevel) {
+                JointUtil.removeJointById(serverLevel, linkData.getJointId());
+            }
+            
+            // Remove from global manager
+            ChainLinkManager.removeLink(chainLinkId);
+        } else {
+            // Fallback: use stored partner position
+            partnerPos = partnerBlockPos;
         }
 
-        // Remove joint from physics
-        if (linkData.hasJoint() && level instanceof ServerLevel serverLevel) {
-            JointUtil.removeJointById(serverLevel, linkData.getJointId());
+        // Clear the partner block entity if it exists
+        if (partnerPos != null) {
+            var partnerBE = level.getBlockEntity(partnerPos);
+            if (partnerBE instanceof HeavyDutyChainLinkBlockEntity partnerChain) {
+                partnerChain.clearChainDataDirect();
+                
+                // CRITICAL: Force sync partner to client
+                if (level instanceof ServerLevel serverLevel) {
+                    serverLevel.sendBlockUpdated(partnerPos, 
+                        serverLevel.getBlockState(partnerPos), 
+                        serverLevel.getBlockState(partnerPos), 3);
+                }
+            }
         }
-
-        // Clear the partner block entity
-        BlockPos partnerPos = isFirstEndpoint ? linkData.getSecondBlockPos() : linkData.getFirstBlockPos();
-        var partnerBE = level.getBlockEntity(partnerPos);
-        if (partnerBE instanceof HeavyDutyChainLinkBlockEntity partnerChain) {
-            partnerChain.clearChainData();
-        }
-
-        // Remove from global manager
-        ChainLinkManager.removeLink(chainLinkId);
 
         // Clear ourselves
-        clearChainData();
+        clearChainDataDirect();
+        
+        // CRITICAL: Force sync ourselves to client
+        if (level instanceof ServerLevel serverLevel) {
+            serverLevel.sendBlockUpdated(worldPosition, 
+                level.getBlockState(worldPosition), 
+                level.getBlockState(worldPosition), 3);
+        }
     }
 
     /**
      * Clears chain data without removing joint (called by partner)
      */
     public void clearChainData() {
+        // Just clear the data directly, partner will handle sync
+        clearChainDataDirect();
+    }
+    
+    /**
+     * Actually clears the data fields
+     */
+    private void clearChainDataDirect() {
         chainLinkId = null;
         isFirstEndpoint = false;
         partnerBlockPos = null;

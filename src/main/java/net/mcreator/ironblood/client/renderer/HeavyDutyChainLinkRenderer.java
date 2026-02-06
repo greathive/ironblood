@@ -36,7 +36,8 @@ public class HeavyDutyChainLinkRenderer implements BlockEntityRenderer<HeavyDuty
     public void render(HeavyDutyChainLinkBlockEntity blockEntity, float partialTick, PoseStack poseStack,
                        MultiBufferSource bufferSource, int combinedLight, int combinedOverlay) {
 
-        if (blockEntity.getChainLinkId() == null) {
+        // CRITICAL: Check if we have a valid chain link AND partner position
+        if (blockEntity.getChainLinkId() == null || blockEntity.getPartnerBlockPos() == null) {
             return;
         }
 

@@ -412,9 +412,10 @@
   "workspaceSettings": {
     "modid": "ironblood",
     "modName": "IRONBLOOD",
-    "version": "1.0.0",
-    "author": "User, MCreator",
-    "websiteURL": "https://mcreator.net",
+    "version": "0.0.1",
+    "description": "A Valkyrien-Skies addon adding mecha content and capabilities.",
+    "author": "Greathive",
+    "websiteURL": "https://github.com/greathive/ironblood",
     "license": "Not specified",
     "serverSideOnly": false,
     "requiredMods": [],
@@ -424,7 +425,7 @@
       "valkyrienskies"
     ],
     "currentGenerator": "forge-1.20.1",
-    "credits": "Created using mod maker MCreator - https://mcreator.net/about",
+    "credits": "greathive",
     "modElementsPackage": "net.mcreator.ironblood"
   },
   "mcreatorVersion": 202400452410

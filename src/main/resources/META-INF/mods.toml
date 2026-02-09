@@ -4,11 +4,12 @@ license="Not specified"
 
 [[mods]]
 modId="ironblood"
-version="1.0.0"
+version="0.0.1"
 displayName="IRONBLOOD"
-displayURL="https://mcreator.net"
-credits="Created using mod maker MCreator - https://mcreator.net/about"
-authors="User, MCreator"
+displayURL="https://github.com/greathive/ironblood"
+credits="greathive"
+authors="Greathive"
+description="A Valkyrien-Skies addon adding mecha content and capabilities."
 
 # Start of user code block mod configuration
 # End of user code block mod configuration

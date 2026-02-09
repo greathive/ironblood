@@ -343,6 +343,40 @@
           "src/main/resources/assets/ironblood/blockstates/mechanical_swivel_joint.json"
         ]
       }
+    },
+    {
+      "name": "JointConnector",
+      "type": "block",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "joint_connector",
+      "metadata": {
+        "files": [
+          "src/main/resources/data/ironblood/loot_tables/blocks/joint_connector.json",
+          "src/main/java/net/mcreator/ironblood/block/JointConnectorBlock.java",
+          "src/main/resources/assets/ironblood/blockstates/joint_connector.json",
+          "src/main/resources/assets/ironblood/models/item/joint_connector.json",
+          "src/main/java/net/mcreator/ironblood/block/entity/JointConnectorBlockEntity.java",
+          "src/main/resources/assets/ironblood/models/block/joint_connector.json"
+        ]
+      }
+    },
+    {
+      "name": "PilotSeat",
+      "type": "block",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "pilot_seat",
+      "metadata": {
+        "files": [
+          "src/main/java/net/mcreator/ironblood/block/PilotSeatBlock.java",
+          "src/main/resources/assets/ironblood/blockstates/pilot_seat.json",
+          "src/main/resources/assets/ironblood/models/item/pilot_seat.json",
+          "src/main/java/net/mcreator/ironblood/block/entity/PilotSeatBlockEntity.java",
+          "src/main/resources/data/ironblood/loot_tables/blocks/pilot_seat.json",
+          "src/main/resources/assets/ironblood/models/block/pilot_seat.json"
+        ]
+      }
     }
   ],
   "variable_elements": [],
@@ -381,7 +415,9 @@
       "HalfmetalBlock",
       "HalfmetalSlab",
       "HalfmetalVerticalSlab",
-      "MechanicalSwivelJoint"
+      "MechanicalSwivelJoint",
+      "JointConnector",
+      "PilotSeat"
     ]
   },
   "language_map": {
@@ -395,10 +431,12 @@
       "block.ironblood.heavy_duty_chain_link": "Heavy Duty Chain Link",
       "item.ironblood.assembly_scanner": "Assembly Scanner",
       "item.ironblood.heavy_duty_chain": "Heavy Duty Chain",
+      "block.ironblood.joint_connector": "Joint Connector",
       "block.ironblood.mechanical_joint": "Mechanical Joint",
       "item.ironblood.assembly_scanner.description_0": "Right-Click on a block to store its location.",
       "block.ironblood.halfmetal_slab": "Halfmetal Slab",
       "item.ironblood.assembly_scanner.description_1": "Shift + Right-Click to erase stored blocks.",
+      "block.ironblood.pilot_seat": "Pilot Seat",
       "subtitles.scanner-deactivate": "Assembly Scanner discards selection",
       "block.ironblood.halfmetal_block": "Halfmetal Block",
       "block.ironblood.halfmetal_vertical_slab": "Halfmetal Vertical Slab",

@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=north": {
+      "model": "ironblood:block/pilot_seat"
+    },
+    "facing=east": {
+      "model": "ironblood:block/pilot_seat",
+      "y": 90
+    },
+    "facing=south": {
+      "model": "ironblood:block/pilot_seat",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "ironblood:block/pilot_seat",
+      "y": 270
+    }
+  }
+}

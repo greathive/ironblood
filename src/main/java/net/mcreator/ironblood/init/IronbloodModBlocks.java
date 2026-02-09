@@ -10,9 +10,11 @@ import net.minecraftforge.registries.DeferredRegister;
 
 import net.minecraft.world.level.block.Block;
 
+import net.mcreator.ironblood.block.PilotSeatBlock;
 import net.mcreator.ironblood.block.MechanicalSwivelJointBlock;
 import net.mcreator.ironblood.block.MechanicalJointBlock;
 import net.mcreator.ironblood.block.MechanicalJointAltBlock;
+import net.mcreator.ironblood.block.JointConnectorBlock;
 import net.mcreator.ironblood.block.HeavyDutyChainLinkBlock;
 import net.mcreator.ironblood.block.HalfmetalVerticalSlabBlock;
 import net.mcreator.ironblood.block.HalfmetalSlabBlock;
@@ -30,6 +32,8 @@ public class IronbloodModBlocks {
 	public static final RegistryObject<Block> HALFMETAL_SLAB = REGISTRY.register("halfmetal_slab", () -> new HalfmetalSlabBlock());
 	public static final RegistryObject<Block> HALFMETAL_VERTICAL_SLAB = REGISTRY.register("halfmetal_vertical_slab", () -> new HalfmetalVerticalSlabBlock());
 	public static final RegistryObject<Block> MECHANICAL_SWIVEL_JOINT = REGISTRY.register("mechanical_swivel_joint", () -> new MechanicalSwivelJointBlock());
+	public static final RegistryObject<Block> JOINT_CONNECTOR = REGISTRY.register("joint_connector", () -> new JointConnectorBlock());
+	public static final RegistryObject<Block> PILOT_SEAT = REGISTRY.register("pilot_seat", () -> new PilotSeatBlock());
 	// Start of user code block custom blocks
 	// End of user code block custom blocks
 }

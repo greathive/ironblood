@@ -29,5 +29,7 @@ public class IronbloodModTabs {
 				tabData.accept(IronbloodModBlocks.HALFMETAL_SLAB.get().asItem());
 				tabData.accept(IronbloodModBlocks.HALFMETAL_VERTICAL_SLAB.get().asItem());
 				tabData.accept(IronbloodModBlocks.MECHANICAL_SWIVEL_JOINT.get().asItem());
+				tabData.accept(IronbloodModBlocks.JOINT_CONNECTOR.get().asItem());
+				tabData.accept(IronbloodModBlocks.PILOT_SEAT.get().asItem());
 			}).build());
 }

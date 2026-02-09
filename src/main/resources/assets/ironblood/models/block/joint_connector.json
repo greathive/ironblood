@@ -1,0 +1,13 @@
+{
+  "parent": "block/cube",
+  "textures": {
+    "down": "ironblood:block/joint_connector1",
+    "up": "ironblood:block/joint_connector1",
+    "north": "ironblood:block/joint_connector1",
+    "east": "ironblood:block/joint_connector1",
+    "south": "ironblood:block/joint_connector1",
+    "west": "ironblood:block/joint_connector1",
+    "particle": "ironblood:block/joint_connector1"
+  },
+  "render_type": "solid"
+}

@@ -1,0 +1,9 @@
+{
+  "parent": "ironblood:custom/pilot_seat",
+  "textures": {
+    "all": "ironblood:block/pilot_seatfull",
+    "particle": "ironblood:block/pilot_seatfull",
+    "2": "ironblood:block/pilot_seatfull"
+  },
+  "render_type": "cutout_mipped"
+}

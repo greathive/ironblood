@@ -11,9 +11,11 @@ import net.minecraftforge.registries.DeferredRegister;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.Block;
 
+import net.mcreator.ironblood.block.entity.PilotSeatBlockEntity;
 import net.mcreator.ironblood.block.entity.MechanicalSwivelJointBlockEntity;
 import net.mcreator.ironblood.block.entity.MechanicalJointBlockEntity;
 import net.mcreator.ironblood.block.entity.MechanicalJointAltBlockEntity;
+import net.mcreator.ironblood.block.entity.JointConnectorBlockEntity;
 import net.mcreator.ironblood.block.entity.HeavyDutyChainLinkBlockEntity;
 import net.mcreator.ironblood.block.entity.AssemblerBlockEntity;
 import net.mcreator.ironblood.IronbloodMod;
@@ -25,6 +27,8 @@ public class IronbloodModBlockEntities {
 	public static final RegistryObject<BlockEntityType<?>> MECHANICAL_JOINT_ALT = register("mechanical_joint_alt", IronbloodModBlocks.MECHANICAL_JOINT_ALT, MechanicalJointAltBlockEntity::new);
 	public static final RegistryObject<BlockEntityType<?>> HEAVY_DUTY_CHAIN_LINK = register("heavy_duty_chain_link", IronbloodModBlocks.HEAVY_DUTY_CHAIN_LINK, HeavyDutyChainLinkBlockEntity::new);
 	public static final RegistryObject<BlockEntityType<?>> MECHANICAL_SWIVEL_JOINT = register("mechanical_swivel_joint", IronbloodModBlocks.MECHANICAL_SWIVEL_JOINT, MechanicalSwivelJointBlockEntity::new);
+	public static final RegistryObject<BlockEntityType<?>> JOINT_CONNECTOR = register("joint_connector", IronbloodModBlocks.JOINT_CONNECTOR, JointConnectorBlockEntity::new);
+	public static final RegistryObject<BlockEntityType<?>> PILOT_SEAT = register("pilot_seat", IronbloodModBlocks.PILOT_SEAT, PilotSeatBlockEntity::new);
 
 	// Start of user code block custom block entities
 	// End of user code block custom block entities

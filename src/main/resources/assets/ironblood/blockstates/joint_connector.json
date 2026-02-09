@@ -1,0 +1,7 @@
+{
+  "variants": {
+    "": {
+      "model": "ironblood:block/joint_connector"
+    }
+  }
+}

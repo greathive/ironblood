@@ -200,6 +200,8 @@ public class MechanicalSwivelJointBlockEntity extends BlockEntity {
 
     /**
      * Recreates the VS joint from saved data when the chunk is loaded.
+     * Only one of the two swivel blocks should recreate the joint to avoid duplicates.
+     * We use position comparison to ensure deterministic behavior.
      */
     private void recreateJoint() {
         if (positionA == null || positionB == null || rotationA == null || rotationB == null || level == null) {
@@ -210,6 +212,35 @@ public class MechanicalSwivelJointBlockEntity extends BlockEntity {
             return;
         }
         
+        // CRITICAL: Only ONE block should recreate - use position comparison to decide
+        // This ensures deterministic behavior regardless of load order
+        if (linkedBlockPos != null) {
+            BlockPos myPos = this.getBlockPos();
+            
+            // If our position is "greater", let the partner handle recreation
+            if (myPos.getX() > linkedBlockPos.getX() ||
+                (myPos.getX() == linkedBlockPos.getX() && myPos.getY() > linkedBlockPos.getY()) ||
+                (myPos.getX() == linkedBlockPos.getX() && myPos.getY() == linkedBlockPos.getY() && myPos.getZ() > linkedBlockPos.getZ())) {
+                
+                // Check if partner has already recreated the joint
+                var partnerBE = serverLevel.getBlockEntity(linkedBlockPos);
+                if (partnerBE instanceof MechanicalSwivelJointBlockEntity partner) {
+                    int partnerJointId = partner.getJointId();
+                    if (partnerJointId != -1) {
+                        // Partner already recreated - just copy the ID using setter
+                        setJointId(partnerJointId);
+                        // Ensure partner knows our position
+                        if (partner.getLinkedBlockPos() == null) {
+                            partner.setLinkedBlockPos(myPos);
+                        }
+                    }
+                    // Otherwise partner hasn't loaded yet - it will recreate when it loads
+                }
+                return; // Either way, we don't recreate
+            }
+        }
+        
+        // We are the one who should recreate the joint
         // Get the ships by ID if they exist
         ServerShip shipA = null;
         ServerShip shipB = null;
@@ -251,6 +282,18 @@ public class MechanicalSwivelJointBlockEntity extends BlockEntity {
         JointUtil.addJoint(level, joint, newId -> {
             this.jointId = newId;
             setChanged();
+            
+            // CRITICAL: Also update partner's jointId AND ensure they have our position
+            if (linkedBlockPos != null) {
+                var partnerBE = serverLevel.getBlockEntity(linkedBlockPos);
+                if (partnerBE instanceof MechanicalSwivelJointBlockEntity partner) {
+                    partner.setJointId(newId);
+                    // Ensure partner knows our position too
+                    if (partner.getLinkedBlockPos() == null) {
+                        partner.setLinkedBlockPos(this.getBlockPos());
+                    }
+                }
+            }
         });
     }
 
@@ -276,6 +319,14 @@ public class MechanicalSwivelJointBlockEntity extends BlockEntity {
     public void clearJointData() {
         jointId = -1;
         linkedBlockPos = null;
+        // Also clear persistence data
+        positionA = null;
+        positionB = null;
+        rotationA = null;
+        rotationB = null;
+        shipIdA = null;
+        shipIdB = null;
+        needsRecreation = false;
         setChanged();
     }
 
@@ -297,9 +348,16 @@ public class MechanicalSwivelJointBlockEntity extends BlockEntity {
             }
         }
 
-        // Clear ourselves
+        // Clear ourselves including all persistence data
         jointId = -1;
         linkedBlockPos = null;
+        positionA = null;
+        positionB = null;
+        rotationA = null;
+        rotationB = null;
+        shipIdA = null;
+        shipIdB = null;
+        needsRecreation = false;
         setChanged();
     }
 }

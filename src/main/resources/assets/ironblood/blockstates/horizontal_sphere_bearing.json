@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=north": {
+      "model": "ironblood:block/horizontal_sphere_bearing"
+    },
+    "facing=east": {
+      "model": "ironblood:block/horizontal_sphere_bearing",
+      "y": 90
+    },
+    "facing=south": {
+      "model": "ironblood:block/horizontal_sphere_bearing",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "ironblood:block/horizontal_sphere_bearing",
+      "y": 270
+    }
+  }
+}

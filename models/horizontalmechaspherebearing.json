@@ -1,0 +1,71 @@
+{
+	"format_version": "1.9.0",
+	"credit": "Made with Blockbench",
+	"texture_size": [64, 64],
+	"textures": {
+		"1": "sphereRotator",
+		"particle": "mechsphere"
+	},
+	"elements": [
+		{
+			"from": [0, 0, 0],
+			"to": [16, 7, 16],
+			"rotation": {"angle": 0, "axis": "x", "origin": [8, 8, 8]},
+			"faces": {
+				"north": {"uv": [10, 0, 11.75, 4], "rotation": 270, "texture": "#1"},
+				"east": {"uv": [8, 4, 9.75, 0], "rotation": 270, "texture": "#1"},
+				"south": {"uv": [10, 0, 11.75, 4], "rotation": 270, "texture": "#1"},
+				"west": {"uv": [9.75, 0, 8, 4], "rotation": 90, "texture": "#1"},
+				"up": {"uv": [4, 0, 8, 4], "rotation": 180, "texture": "#1"},
+				"down": {"uv": [4, 0, 8, 4], "texture": "#1"}
+			}
+		},
+		{
+			"from": [-9, 7, 0],
+			"to": [25, 7, 16],
+			"rotation": {"angle": 0, "axis": "x", "origin": [8, 8, 8]},
+			"faces": {
+				"north": {"uv": [0.5, 1, 0.5, 9.5], "rotation": 270, "texture": "#1"},
+				"east": {"uv": [0.5, 0, 0.5, 4], "rotation": 270, "texture": "#1"},
+				"south": {"uv": [0.5, 0, 0.5, 8.5], "rotation": 270, "texture": "#1"},
+				"west": {"uv": [0, 0, 0, 4], "rotation": 90, "texture": "#1"},
+				"up": {"uv": [0, 8, 8.5, 12], "rotation": 180, "texture": "#1"},
+				"down": {"uv": [0, 8, 8.5, 12], "texture": "#1"}
+			}
+		},
+		{
+			"from": [-9, 7, 0],
+			"to": [-9, 23, 16],
+			"rotation": {"angle": 0, "axis": "x", "origin": [8, 8, 8]},
+			"faces": {
+				"north": {"uv": [0, 0, 3.75, 0], "rotation": 270, "texture": "#1"},
+				"east": {"uv": [3.5, 12, 7.25, 16], "rotation": 270, "texture": "#1"},
+				"south": {"uv": [0, 0.5, 3.75, 0.5], "rotation": 270, "texture": "#1"},
+				"west": {"uv": [7.25, 12, 3.75, 16], "rotation": 90, "texture": "#1"},
+				"up": {"uv": [0, 0, 0, 4], "rotation": 180, "texture": "#1"},
+				"down": {"uv": [0.5, 0, 0.5, 4], "texture": "#1"}
+			}
+		},
+		{
+			"from": [25, 7, 0],
+			"to": [25, 23, 16],
+			"rotation": {"angle": 0, "axis": "x", "origin": [8, 8, 8]},
+			"faces": {
+				"north": {"uv": [0, 0, 3.75, 0], "rotation": 270, "texture": "#1"},
+				"east": {"uv": [7.25, 16, 3.75, 12], "rotation": 90, "texture": "#1"},
+				"south": {"uv": [0, 0.5, 3.75, 0.5], "rotation": 270, "texture": "#1"},
+				"west": {"uv": [3.5, 16, 7.25, 12], "rotation": 270, "texture": "#1"},
+				"up": {"uv": [0, 0, 0, 4], "rotation": 180, "texture": "#1"},
+				"down": {"uv": [0.5, 0, 0.5, 4], "texture": "#1"}
+			}
+		}
+	],
+	"groups": [
+		{
+			"name": "Sphere RotatorGround",
+			"origin": [8, 8, 8],
+			"color": 0,
+			"children": [0, 1, 2, 3]
+		}
+	]
+}

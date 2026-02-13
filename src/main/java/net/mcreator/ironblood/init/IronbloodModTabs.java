@@ -31,5 +31,9 @@ public class IronbloodModTabs {
 				tabData.accept(IronbloodModBlocks.MECHANICAL_SWIVEL_JOINT.get().asItem());
 				tabData.accept(IronbloodModBlocks.JOINT_CONNECTOR.get().asItem());
 				tabData.accept(IronbloodModBlocks.PILOT_SEAT.get().asItem());
+				tabData.accept(IronbloodModBlocks.SWIVEL_BEARING.get().asItem());
+				tabData.accept(IronbloodModBlocks.SWIVEL_BEARING_TABLE.get().asItem());
+				tabData.accept(IronbloodModBlocks.VERTICAL_SPHERE_BEARING.get().asItem());
+				tabData.accept(IronbloodModBlocks.HORIZONTAL_SPHERE_BEARING.get().asItem());
 			}).build());
 }

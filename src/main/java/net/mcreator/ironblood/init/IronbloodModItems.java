@@ -40,6 +40,10 @@ public class IronbloodModItems {
 	public static final RegistryObject<Item> MECHANICAL_SWIVEL_JOINT = block(IronbloodModBlocks.MECHANICAL_SWIVEL_JOINT);
 	public static final RegistryObject<Item> JOINT_CONNECTOR = block(IronbloodModBlocks.JOINT_CONNECTOR);
 	public static final RegistryObject<Item> PILOT_SEAT = block(IronbloodModBlocks.PILOT_SEAT);
+	public static final RegistryObject<Item> SWIVEL_BEARING = block(IronbloodModBlocks.SWIVEL_BEARING);
+	public static final RegistryObject<Item> SWIVEL_BEARING_TABLE = block(IronbloodModBlocks.SWIVEL_BEARING_TABLE);
+	public static final RegistryObject<Item> VERTICAL_SPHERE_BEARING = block(IronbloodModBlocks.VERTICAL_SPHERE_BEARING);
+	public static final RegistryObject<Item> HORIZONTAL_SPHERE_BEARING = block(IronbloodModBlocks.HORIZONTAL_SPHERE_BEARING);
 
 	// Start of user code block custom items
 	// End of user code block custom items

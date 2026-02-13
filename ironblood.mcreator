@@ -377,6 +377,74 @@
           "src/main/resources/assets/ironblood/models/block/pilot_seat.json"
         ]
       }
+    },
+    {
+      "name": "SwivelBearing",
+      "type": "block",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "swivel_bearing",
+      "metadata": {
+        "files": [
+          "src/main/java/net/mcreator/ironblood/block/SwivelBearingBlock.java",
+          "src/main/resources/data/ironblood/loot_tables/blocks/swivel_bearing.json",
+          "src/main/java/net/mcreator/ironblood/block/entity/SwivelBearingBlockEntity.java",
+          "src/main/resources/assets/ironblood/models/item/swivel_bearing.json",
+          "src/main/resources/assets/ironblood/models/block/swivel_bearing.json",
+          "src/main/resources/assets/ironblood/blockstates/swivel_bearing.json"
+        ]
+      }
+    },
+    {
+      "name": "SwivelBearingTable",
+      "type": "block",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "swivel_bearing_table",
+      "metadata": {
+        "files": [
+          "src/main/resources/assets/ironblood/models/block/swivel_bearing_table.json",
+          "src/main/java/net/mcreator/ironblood/block/SwivelBearingTableBlock.java",
+          "src/main/resources/assets/ironblood/models/item/swivel_bearing_table.json",
+          "src/main/java/net/mcreator/ironblood/block/entity/SwivelBearingTableBlockEntity.java",
+          "src/main/resources/data/ironblood/loot_tables/blocks/swivel_bearing_table.json",
+          "src/main/resources/assets/ironblood/blockstates/swivel_bearing_table.json"
+        ]
+      }
+    },
+    {
+      "name": "VerticalSphereBearing",
+      "type": "block",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "vertical_sphere_bearing",
+      "metadata": {
+        "files": [
+          "src/main/resources/data/ironblood/loot_tables/blocks/vertical_sphere_bearing.json",
+          "src/main/java/net/mcreator/ironblood/block/entity/VerticalSphereBearingBlockEntity.java",
+          "src/main/resources/assets/ironblood/models/item/vertical_sphere_bearing.json",
+          "src/main/java/net/mcreator/ironblood/block/VerticalSphereBearingBlock.java",
+          "src/main/resources/assets/ironblood/blockstates/vertical_sphere_bearing.json",
+          "src/main/resources/assets/ironblood/models/block/vertical_sphere_bearing.json"
+        ]
+      }
+    },
+    {
+      "name": "HorizontalSphereBearing",
+      "type": "block",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "horizontal_sphere_bearing",
+      "metadata": {
+        "files": [
+          "src/main/resources/assets/ironblood/models/item/horizontal_sphere_bearing.json",
+          "src/main/resources/assets/ironblood/blockstates/horizontal_sphere_bearing.json",
+          "src/main/resources/data/ironblood/loot_tables/blocks/horizontal_sphere_bearing.json",
+          "src/main/resources/assets/ironblood/models/block/horizontal_sphere_bearing.json",
+          "src/main/java/net/mcreator/ironblood/block/HorizontalSphereBearingBlock.java",
+          "src/main/java/net/mcreator/ironblood/block/entity/HorizontalSphereBearingBlockEntity.java"
+        ]
+      }
     }
   ],
   "variable_elements": [],
@@ -417,7 +485,11 @@
       "HalfmetalVerticalSlab",
       "MechanicalSwivelJoint",
       "JointConnector",
-      "PilotSeat"
+      "PilotSeat",
+      "SwivelBearing",
+      "SwivelBearingTable",
+      "VerticalSphereBearing",
+      "HorizontalSphereBearing"
     ]
   },
   "language_map": {
@@ -431,8 +503,12 @@
       "block.ironblood.heavy_duty_chain_link": "Heavy Duty Chain Link",
       "item.ironblood.assembly_scanner": "Assembly Scanner",
       "item.ironblood.heavy_duty_chain": "Heavy Duty Chain",
+      "block.ironblood.swivel_bearing": "Swivel Bearing",
       "block.ironblood.joint_connector": "Joint Connector",
+      "block.ironblood.swivel_bearing_table": "Swivel Bearing Table",
       "block.ironblood.mechanical_joint": "Mechanical Joint",
+      "block.ironblood.vertical_sphere_bearing": "Vertical Sphere Bearing",
+      "block.ironblood.horizontal_sphere_bearing": "Horizontal Sphere Bearing",
       "item.ironblood.assembly_scanner.description_0": "Right-Click on a block to store its location.",
       "block.ironblood.halfmetal_slab": "Halfmetal Slab",
       "item.ironblood.assembly_scanner.description_1": "Shift + Right-Click to erase stored blocks.",

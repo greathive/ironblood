@@ -1,0 +1,9 @@
+{
+  "parent": "ironblood:custom/mecha_bearing_table",
+  "textures": {
+    "all": "ironblood:block/sphererotator",
+    "particle": "ironblood:block/sphererotator",
+    "0": "ironblood:block/sphererotator"
+  },
+  "render_type": "cutout"
+}

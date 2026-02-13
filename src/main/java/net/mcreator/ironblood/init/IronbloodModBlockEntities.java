@@ -11,11 +11,15 @@ import net.minecraftforge.registries.DeferredRegister;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.Block;
 
+import net.mcreator.ironblood.block.entity.VerticalSphereBearingBlockEntity;
+import net.mcreator.ironblood.block.entity.SwivelBearingTableBlockEntity;
+import net.mcreator.ironblood.block.entity.SwivelBearingBlockEntity;
 import net.mcreator.ironblood.block.entity.PilotSeatBlockEntity;
 import net.mcreator.ironblood.block.entity.MechanicalSwivelJointBlockEntity;
 import net.mcreator.ironblood.block.entity.MechanicalJointBlockEntity;
 import net.mcreator.ironblood.block.entity.MechanicalJointAltBlockEntity;
 import net.mcreator.ironblood.block.entity.JointConnectorBlockEntity;
+import net.mcreator.ironblood.block.entity.HorizontalSphereBearingBlockEntity;
 import net.mcreator.ironblood.block.entity.HeavyDutyChainLinkBlockEntity;
 import net.mcreator.ironblood.block.entity.AssemblerBlockEntity;
 import net.mcreator.ironblood.IronbloodMod;
@@ -29,6 +33,10 @@ public class IronbloodModBlockEntities {
 	public static final RegistryObject<BlockEntityType<?>> MECHANICAL_SWIVEL_JOINT = register("mechanical_swivel_joint", IronbloodModBlocks.MECHANICAL_SWIVEL_JOINT, MechanicalSwivelJointBlockEntity::new);
 	public static final RegistryObject<BlockEntityType<?>> JOINT_CONNECTOR = register("joint_connector", IronbloodModBlocks.JOINT_CONNECTOR, JointConnectorBlockEntity::new);
 	public static final RegistryObject<BlockEntityType<?>> PILOT_SEAT = register("pilot_seat", IronbloodModBlocks.PILOT_SEAT, PilotSeatBlockEntity::new);
+	public static final RegistryObject<BlockEntityType<?>> SWIVEL_BEARING = register("swivel_bearing", IronbloodModBlocks.SWIVEL_BEARING, SwivelBearingBlockEntity::new);
+	public static final RegistryObject<BlockEntityType<?>> SWIVEL_BEARING_TABLE = register("swivel_bearing_table", IronbloodModBlocks.SWIVEL_BEARING_TABLE, SwivelBearingTableBlockEntity::new);
+	public static final RegistryObject<BlockEntityType<?>> VERTICAL_SPHERE_BEARING = register("vertical_sphere_bearing", IronbloodModBlocks.VERTICAL_SPHERE_BEARING, VerticalSphereBearingBlockEntity::new);
+	public static final RegistryObject<BlockEntityType<?>> HORIZONTAL_SPHERE_BEARING = register("horizontal_sphere_bearing", IronbloodModBlocks.HORIZONTAL_SPHERE_BEARING, HorizontalSphereBearingBlockEntity::new);
 
 	// Start of user code block custom block entities
 	// End of user code block custom block entities

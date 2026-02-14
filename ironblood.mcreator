@@ -352,12 +352,12 @@
       "registry_name": "joint_connector",
       "metadata": {
         "files": [
-          "src/main/resources/data/ironblood/loot_tables/blocks/joint_connector.json",
-          "src/main/java/net/mcreator/ironblood/block/JointConnectorBlock.java",
-          "src/main/resources/assets/ironblood/blockstates/joint_connector.json",
           "src/main/resources/assets/ironblood/models/item/joint_connector.json",
           "src/main/java/net/mcreator/ironblood/block/entity/JointConnectorBlockEntity.java",
-          "src/main/resources/assets/ironblood/models/block/joint_connector.json"
+          "src/main/java/net/mcreator/ironblood/block/JointConnectorBlock.java",
+          "src/main/resources/assets/ironblood/models/block/joint_connector.json",
+          "src/main/resources/data/ironblood/loot_tables/blocks/joint_connector.json",
+          "src/main/resources/assets/ironblood/blockstates/joint_connector.json"
         ]
       }
     },
@@ -382,7 +382,7 @@
       "name": "SwivelBearing",
       "type": "block",
       "compiles": true,
-      "locked_code": false,
+      "locked_code": true,
       "registry_name": "swivel_bearing",
       "metadata": {
         "files": [
@@ -399,7 +399,7 @@
       "name": "SwivelBearingTable",
       "type": "block",
       "compiles": true,
-      "locked_code": false,
+      "locked_code": true,
       "registry_name": "swivel_bearing_table",
       "metadata": {
         "files": [
@@ -416,7 +416,7 @@
       "name": "VerticalSphereBearing",
       "type": "block",
       "compiles": true,
-      "locked_code": false,
+      "locked_code": true,
       "registry_name": "vertical_sphere_bearing",
       "metadata": {
         "files": [
@@ -433,7 +433,7 @@
       "name": "HorizontalSphereBearing",
       "type": "block",
       "compiles": true,
-      "locked_code": false,
+      "locked_code": true,
       "registry_name": "horizontal_sphere_bearing",
       "metadata": {
         "files": [

@@ -57,10 +57,10 @@ public class VerticalSphereBearingBlock extends Block implements EntityBlock {
 	@Override
 	public VoxelShape getShape(BlockState state, BlockGetter world, BlockPos pos, CollisionContext context) {
 		return switch (state.getValue(FACING)) {
-			default -> box(0, 0, 0, 16, 7, 16);
-			case NORTH -> box(0, 0, 0, 16, 7, 16);
-			case EAST -> box(0, 0, 0, 16, 7, 16);
-			case WEST -> box(0, 0, 0, 16, 7, 16);
+			default -> box(0, 0, 0, 16, 16, 7);
+			case NORTH -> box(0, 0, 9, 16, 16, 16);
+			case EAST -> box(0, 0, 0, 7, 16, 16);
+			case WEST -> box(9, 0, 0, 16, 16, 16);
 		};
 	}
 

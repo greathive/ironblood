@@ -18,6 +18,8 @@ import net.minecraft.core.BlockPos;
 import net.mcreator.ironblood.ships.LinkWrenchManager;
 import net.mcreator.ironblood.ships.LinkWrenchData;
 import net.mcreator.ironblood.ships.JointUtil;
+import net.mcreator.ironblood.block.entity.SwivelBearingBlockEntity;
+import net.mcreator.ironblood.block.entity.SwivelBearingTableBlockEntity;
 import net.mcreator.ironblood.block.entity.MechanicalJointBlockEntity;
 import net.mcreator.ironblood.block.entity.MechanicalJointAltBlockEntity;
 import net.mcreator.ironblood.block.entity.MechanicalSwivelJointBlockEntity;
@@ -40,15 +42,21 @@ public class LinkWrenchRightclickedOnBlockProcedure {
 		boolean isMechanicalJoint       = blockState.getBlock() == IronbloodModBlocks.MECHANICAL_JOINT.get();
 		boolean isMechanicalJointAlt    = blockState.getBlock() == IronbloodModBlocks.MECHANICAL_JOINT_ALT.get();
 		boolean isMechanicalSwivelJoint = blockState.getBlock() == IronbloodModBlocks.MECHANICAL_SWIVEL_JOINT.get();
+		boolean isSwivelBearing         = blockState.getBlock() == IronbloodModBlocks.SWIVEL_BEARING.get();
+		boolean isSwivelBearingTable    = blockState.getBlock() == IronbloodModBlocks.SWIVEL_BEARING_TABLE.get();
 
-		if (!isMechanicalJoint && !isMechanicalJointAlt && !isMechanicalSwivelJoint) {
+		if (!isMechanicalJoint && !isMechanicalJointAlt && !isMechanicalSwivelJoint && !isSwivelBearing && !isSwivelBearingTable) {
 			return;
 		}
 
-		Direction facing = getBlockFacing(blockState);
-		if (facing == null) {
-			player.displayClientMessage(Component.literal("§cError: Could not determine block facing!"), true);
-			return;
+		// Only get facing for blocks that have the FACING property
+		Direction facing = null;
+		if (!isSwivelBearing && !isSwivelBearingTable) {
+			facing = getBlockFacing(blockState);
+			if (facing == null) {
+				player.displayClientMessage(Component.literal("§cError: Could not determine block facing!"), true);
+				return;
+			}
 		}
 
 		LinkWrenchData data = LinkWrenchManager.getData(player);
@@ -64,8 +72,12 @@ public class LinkWrenchRightclickedOnBlockProcedure {
 			blockType = "mechanical_joint";
 		} else if (isMechanicalJointAlt) {
 			blockType = "mechanical_joint_alt";
-		} else {
+		} else if (isMechanicalSwivelJoint) {
 			blockType = "mechanical_swivel_joint";
+		} else if (isSwivelBearing) {
+			blockType = "swivel_bearing";
+		} else {
+			blockType = "swivel_bearing_table";
 		}
 
 		// ----------------------------------------------------------------
@@ -93,13 +105,33 @@ public class LinkWrenchRightclickedOnBlockProcedure {
 					player.displayClientMessage(Component.literal("§cThis block is already linked!"), true);
 					return;
 				}
-			} else { // swivel joint
+			} else if (isMechanicalSwivelJoint) {
 				var be = serverLevel.getBlockEntity(blockPos);
 				if (!(be instanceof MechanicalSwivelJointBlockEntity swivelBE)) {
 					player.displayClientMessage(Component.literal("§cNo block entity found!"), true);
 					return;
 				}
 				if (swivelBE.hasJoint()) {
+					player.displayClientMessage(Component.literal("§cThis block is already linked!"), true);
+					return;
+				}
+			} else if (isSwivelBearing) {
+				var be = serverLevel.getBlockEntity(blockPos);
+				if (!(be instanceof SwivelBearingBlockEntity bearingBE)) {
+					player.displayClientMessage(Component.literal("§cNo block entity found!"), true);
+					return;
+				}
+				if (bearingBE.hasJoint()) {
+					player.displayClientMessage(Component.literal("§cThis block is already linked!"), true);
+					return;
+				}
+			} else { // swivel bearing table
+				var be = serverLevel.getBlockEntity(blockPos);
+				if (!(be instanceof SwivelBearingTableBlockEntity tableBE)) {
+					player.displayClientMessage(Component.literal("§cNo block entity found!"), true);
+					return;
+				}
+				if (tableBE.hasJoint()) {
 					player.displayClientMessage(Component.literal("§cThis block is already linked!"), true);
 					return;
 				}
@@ -110,6 +142,8 @@ public class LinkWrenchRightclickedOnBlockProcedure {
 
 			if (isMechanicalSwivelJoint) {
 				player.displayClientMessage(Component.literal("§aFirst swivel joint selected! Now click another swivel joint on a different ship."), true);
+			} else if (isSwivelBearing || isSwivelBearingTable) {
+				player.displayClientMessage(Component.literal("§aFirst block selected! Now click the opposite swivel bearing type on a different ship."), true);
 			} else {
 				player.displayClientMessage(Component.literal("§aFirst block selected! Now click the opposite joint type on a different ship."), true);
 			}
@@ -125,6 +159,7 @@ public class LinkWrenchRightclickedOnBlockProcedure {
 		// Validate pairing rules:
 		// - mechanical_joint <-> mechanical_joint_alt
 		// - mechanical_swivel_joint <-> mechanical_swivel_joint
+		// - swivel_bearing <-> swivel_bearing_table
 		boolean validPair = false;
 		if (firstBlockType.equals("mechanical_joint") && blockType.equals("mechanical_joint_alt")) {
 			validPair = true;
@@ -132,11 +167,17 @@ public class LinkWrenchRightclickedOnBlockProcedure {
 			validPair = true;
 		} else if (firstBlockType.equals("mechanical_swivel_joint") && blockType.equals("mechanical_swivel_joint")) {
 			validPair = true;
+		} else if (firstBlockType.equals("swivel_bearing") && blockType.equals("swivel_bearing_table")) {
+			validPair = true;
+		} else if (firstBlockType.equals("swivel_bearing_table") && blockType.equals("swivel_bearing")) {
+			validPair = true;
 		}
 
 		if (!validPair) {
 			if (firstBlockType.equals("mechanical_swivel_joint")) {
 				player.displayClientMessage(Component.literal("§cSwivel joints can only link with other swivel joints!"), true);
+			} else if (firstBlockType.equals("swivel_bearing") || firstBlockType.equals("swivel_bearing_table")) {
+				player.displayClientMessage(Component.literal("§cYou must link a Swivel Bearing with a Swivel Bearing Table!"), true);
 			} else {
 				player.displayClientMessage(Component.literal("§cYou must link a Mechanical Joint with an Alternate Mechanical Joint!"), true);
 			}
@@ -149,8 +190,110 @@ public class LinkWrenchRightclickedOnBlockProcedure {
 		// Must be on different ships (null = world, always "different")
 		ServerShip firstShip  = data.getFirstShip();
 		ServerShip secondShip = VSGameUtilsKt.getShipManagingPos(serverLevel, blockPos);
+
+		// Check if both are on the same ship
 		if (firstShip != null && secondShip != null && firstShip.getId() == secondShip.getId()) {
 			player.displayClientMessage(Component.literal("§cBoth blocks are on the same ship!"), true);
+			data.reset();
+			return;
+		}
+
+		// Check if both are in the world (both null)
+		if (firstShip == null && secondShip == null) {
+			player.displayClientMessage(Component.literal("§cBoth blocks are in the world! At least one must be on a ship."), true);
+			data.reset();
+			return;
+		}
+
+		// Handle swivel bearing pairing (bearing <-> table)
+		if (firstBlockType.equals("swivel_bearing") || firstBlockType.equals("swivel_bearing_table")) {
+			SwivelBearingBlockEntity bearingBE;
+			SwivelBearingTableBlockEntity tableBE;
+			BlockPos bearingPos;
+			BlockPos tablePos;
+
+			if (isSwivelBearing) {
+				// Second click is the bearing — first click was table
+				var raw1 = serverLevel.getBlockEntity(firstBlockPos);
+				var raw2 = serverLevel.getBlockEntity(blockPos);
+				if (!(raw1 instanceof SwivelBearingTableBlockEntity t)) {
+					player.displayClientMessage(Component.literal("§cFirst block entity no longer exists!"), true);
+					data.reset();
+					return;
+				}
+				if (!(raw2 instanceof SwivelBearingBlockEntity b)) {
+					player.displayClientMessage(Component.literal("§cSecond block entity not found!"), true);
+					data.reset();
+					return;
+				}
+				tableBE = t;
+				bearingBE = b;
+				tablePos = firstBlockPos;
+				bearingPos = blockPos;
+			} else {
+				// Second click is the table — first click was bearing
+				var raw1 = serverLevel.getBlockEntity(firstBlockPos);
+				var raw2 = serverLevel.getBlockEntity(blockPos);
+				if (!(raw1 instanceof SwivelBearingBlockEntity b)) {
+					player.displayClientMessage(Component.literal("§cFirst block entity no longer exists!"), true);
+					data.reset();
+					return;
+				}
+				if (!(raw2 instanceof SwivelBearingTableBlockEntity t)) {
+					player.displayClientMessage(Component.literal("§cSecond block entity not found!"), true);
+					data.reset();
+					return;
+				}
+				bearingBE = b;
+				tableBE = t;
+				bearingPos = firstBlockPos;
+				tablePos = blockPos;
+			}
+
+			if (bearingBE.hasJoint()) {
+				player.displayClientMessage(Component.literal("§cThe Swivel Bearing is already linked!"), true);
+				data.reset();
+				return;
+			}
+			if (tableBE.hasJoint()) {
+				player.displayClientMessage(Component.literal("§cThe Swivel Bearing Table is already linked!"), true);
+				data.reset();
+				return;
+			}
+
+			// Build the joint with horizontal rotation (Y-axis spin)
+			Vec3 pos1 = new Vec3(firstBlockPos.getX() + 0.5, firstBlockPos.getY() + 0.5, firstBlockPos.getZ() + 0.5);
+			Vec3 pos2 = new Vec3(blockPos.getX() + 0.5, blockPos.getY() + 0.5, blockPos.getZ() + 0.5);
+
+			// Z-axis rotation for horizontal spinning (correct!)
+			Vec3 rot1 = new Vec3(0, 0, Math.toRadians(90));
+			Vec3 rot2 = new Vec3(0, 0, Math.toRadians(90));
+
+			// CRITICAL: Limits must be between -2*PI and 2*PI (not 0 to 360)
+			// Use full rotation range: -PI to PI
+			VSJoint joint = JointUtil.makeRevoluteJoint(
+					firstShip, secondShip,
+					rot1, rot2,
+					pos1, pos2,
+					-Math.PI, Math.PI // -180° to +180° (full rotation, within valid range)
+			);
+
+			if (joint != null) {
+				JointUtil.addJoint(serverLevel, joint, (jointId) -> {
+					// Bearing BE owns the jointId; table just stores the link back
+					bearingBE.setJointId(jointId);
+					bearingBE.setLinkedBlockPos(tablePos);
+					tableBE.setLinkedBlockPos(bearingPos);
+
+					// Save joint creation data for persistence
+					bearingBE.setJointCreationData(pos1, pos2, rot1, rot2, firstShip, secondShip, "revolute", -Math.PI, Math.PI);
+
+					player.displayClientMessage(Component.literal("§aSwivel bearing linked! Joint ID: " + jointId), true);
+				});
+			} else {
+				player.displayClientMessage(Component.literal("§cFailed to create joint!"), true);
+			}
+
 			data.reset();
 			return;
 		}
@@ -302,72 +445,40 @@ public class LinkWrenchRightclickedOnBlockProcedure {
 		data.reset();
 	}
 
-	// ----------------------------------------------------------------
-	// Helpers
-	// ----------------------------------------------------------------
-
-	/**
-	 * Rotation for regular joints - produces up/down hinge motion
-	 */
-	private static Vec3 getRotationFromFacing(Direction facing) {
-		switch (facing) {
-			case NORTH:
-			case SOUTH:
-				return new Vec3(Math.toRadians(90), 0, 0);
-			case EAST:
-			case WEST:
-				return new Vec3(0, 0, Math.toRadians(90));
-			case UP:
-			case DOWN:
-			default:
-				return new Vec3(Math.toRadians(90), 0, 0);
-		}
-	}
-
-	/**
-	 * Rotation for swivel joints - rotation axis depends on block orientation
-	 * When placed on walls (NORTH/SOUTH/EAST/WEST): rotates up/down (pitch)
-	 * When placed on floor/ceiling (UP/DOWN): rotates side-to-side (yaw)
-	 */
-	private static Vec3 getSwivelRotationFromFacing(Direction facing) {
-		switch (facing) {
-			case NORTH:
-			case SOUTH:
-				// On wall - swap to allow vertical rotation
-				return new Vec3(0, 0, Math.toRadians(90));
-			case EAST:
-			case WEST:
-				// On wall - swap to allow vertical rotation
-				return new Vec3(Math.toRadians(90), 0, 0);
-			case UP:
-			case DOWN:
-				// On floor/ceiling - rotate around vertical axis for horizontal swivel
-				return new Vec3(0, Math.toRadians(90), 0);
-			default:
-				return new Vec3(0, Math.toRadians(90), 0);
-		}
-	}
-
-	/**
-	 * Returns the opposite rotation (180 degrees flipped) for swivel joints to face each other
-	 */
-	private static Vec3 getOppositeSwivelRotation(Vec3 rotation) {
-		// Add 180 degrees (PI radians) to flip the orientation
-		return new Vec3(
-				rotation.x + Math.PI,
-				rotation.y + Math.PI,
-				rotation.z + Math.PI
-		);
-	}
-
 	@Nullable
-	private static Direction getBlockFacing(BlockState state) {
-		if (state.hasProperty(BlockStateProperties.FACING)) {
-			return state.getValue(BlockStateProperties.FACING);
+	private static Direction getBlockFacing(BlockState blockState) {
+		if (blockState.hasProperty(BlockStateProperties.FACING)) {
+			return blockState.getValue(BlockStateProperties.FACING);
+		} else if (blockState.hasProperty(BlockStateProperties.HORIZONTAL_FACING)) {
+			return blockState.getValue(BlockStateProperties.HORIZONTAL_FACING);
 		}
-		if (state.hasProperty(BlockStateProperties.HORIZONTAL_FACING)) {
-			return state.getValue(BlockStateProperties.HORIZONTAL_FACING);
-		}
-		return Direction.NORTH;
+		return null;
+	}
+
+	private static Vec3 getRotationFromFacing(Direction facing) {
+		return switch (facing) {
+			case UP    -> new Vec3(0, 0, 0);
+			case DOWN  -> new Vec3(Math.PI, 0, 0);
+			case NORTH -> new Vec3(Math.PI / 2, 0, 0);
+			case SOUTH -> new Vec3(Math.PI / 2, Math.PI, 0);
+			case WEST  -> new Vec3(Math.PI / 2, Math.PI / 2, 0);
+			case EAST  -> new Vec3(Math.PI / 2, -Math.PI / 2, 0);
+		};
+	}
+
+	private static Vec3 getSwivelRotationFromFacing(Direction facing) {
+		return switch (facing) {
+			case UP    -> new Vec3(0, 0, 0);
+			case DOWN  -> new Vec3(Math.PI, 0, 0);
+			case NORTH -> new Vec3(Math.PI / 2, 0, 0);
+			case SOUTH -> new Vec3(-Math.PI / 2, 0, 0);
+			case WEST  -> new Vec3(0, 0, -Math.PI / 2);
+			case EAST  -> new Vec3(0, 0, Math.PI / 2);
+		};
+	}
+
+	private static Vec3 getOppositeSwivelRotation(Vec3 rotation) {
+		// Flip the rotation by 180 degrees around the axis
+		return new Vec3(rotation.x, rotation.y + Math.PI, rotation.z);
 	}
 }

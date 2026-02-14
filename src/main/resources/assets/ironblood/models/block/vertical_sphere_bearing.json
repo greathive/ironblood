@@ -3,7 +3,7 @@
   "textures": {
     "all": "ironblood:block/sphererotator",
     "particle": "ironblood:block/sphererotator",
-    "1": "ironblood:block/sphererotator"
+    "0": "ironblood:block/sphererotator"
   },
   "render_type": "cutout"
 }

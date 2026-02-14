@@ -2,7 +2,7 @@
   "mappings": {
     "default": {
       "map": {
-        "1": "sphererotator"
+        "0": "sphererotator"
       },
       "name": "default"
     }

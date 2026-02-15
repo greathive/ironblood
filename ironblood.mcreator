@@ -458,6 +458,150 @@
           "src/main/java/net/mcreator/ironblood/client/gui/JointManagerScreen.java"
         ]
       }
+    },
+    {
+      "name": "Ahab1",
+      "type": "block",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "ahab_1",
+      "metadata": {
+        "files": [
+          "src/main/resources/assets/ironblood/models/block/ahab_1.json",
+          "src/main/resources/assets/ironblood/models/item/ahab_1.json",
+          "src/main/java/net/mcreator/ironblood/block/Ahab1Block.java",
+          "src/main/resources/data/ironblood/loot_tables/blocks/ahab_1.json",
+          "src/main/resources/assets/ironblood/blockstates/ahab_1.json"
+        ]
+      }
+    },
+    {
+      "name": "Ahab2",
+      "type": "block",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "ahab_2",
+      "metadata": {
+        "files": [
+          "src/main/java/net/mcreator/ironblood/block/Ahab2Block.java",
+          "src/main/resources/data/ironblood/loot_tables/blocks/ahab_2.json",
+          "src/main/resources/assets/ironblood/blockstates/ahab_2.json",
+          "src/main/resources/assets/ironblood/models/item/ahab_2.json",
+          "src/main/resources/assets/ironblood/models/block/ahab_2.json"
+        ]
+      }
+    },
+    {
+      "name": "Ahab3",
+      "type": "block",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "ahab_3",
+      "metadata": {
+        "files": [
+          "src/main/resources/assets/ironblood/blockstates/ahab_3.json",
+          "src/main/resources/data/ironblood/loot_tables/blocks/ahab_3.json",
+          "src/main/resources/assets/ironblood/models/block/ahab_3.json",
+          "src/main/java/net/mcreator/ironblood/block/Ahab3Block.java",
+          "src/main/resources/assets/ironblood/models/item/ahab_3.json"
+        ]
+      }
+    },
+    {
+      "name": "Ahab4",
+      "type": "block",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "ahab_4",
+      "metadata": {
+        "files": [
+          "src/main/resources/assets/ironblood/models/item/ahab_4.json",
+          "src/main/resources/assets/ironblood/models/block/ahab_4.json",
+          "src/main/java/net/mcreator/ironblood/block/Ahab4Block.java",
+          "src/main/resources/data/ironblood/loot_tables/blocks/ahab_4.json",
+          "src/main/resources/assets/ironblood/blockstates/ahab_4.json"
+        ]
+      }
+    },
+    {
+      "name": "Ahab5",
+      "type": "block",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "ahab_5",
+      "metadata": {
+        "files": [
+          "src/main/resources/data/ironblood/loot_tables/blocks/ahab_5.json",
+          "src/main/resources/assets/ironblood/blockstates/ahab_5.json",
+          "src/main/resources/assets/ironblood/models/block/ahab_5.json",
+          "src/main/java/net/mcreator/ironblood/block/Ahab5Block.java",
+          "src/main/resources/assets/ironblood/models/item/ahab_5.json"
+        ]
+      }
+    },
+    {
+      "name": "AhabCore",
+      "type": "block",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "ahab_core",
+      "metadata": {
+        "files": [
+          "src/main/resources/assets/ironblood/models/block/ahab_core.json",
+          "src/main/resources/assets/ironblood/models/item/ahab_core.json",
+          "src/main/java/net/mcreator/ironblood/block/AhabCoreBlock.java",
+          "src/main/resources/data/ironblood/loot_tables/blocks/ahab_core.json",
+          "src/main/resources/assets/ironblood/blockstates/ahab_core.json"
+        ]
+      }
+    },
+    {
+      "name": "AhabVent1",
+      "type": "block",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "ahab_vent_1",
+      "metadata": {
+        "files": [
+          "src/main/resources/data/ironblood/loot_tables/blocks/ahab_vent_1.json",
+          "src/main/resources/assets/ironblood/models/block/ahab_vent_1.json",
+          "src/main/java/net/mcreator/ironblood/block/AhabVent1Block.java",
+          "src/main/resources/assets/ironblood/models/item/ahab_vent_1.json",
+          "src/main/resources/assets/ironblood/blockstates/ahab_vent_1.json"
+        ]
+      }
+    },
+    {
+      "name": "AhabVent2",
+      "type": "block",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "ahab_vent_2",
+      "metadata": {
+        "files": [
+          "src/main/resources/assets/ironblood/models/block/ahab_vent_2.json",
+          "src/main/resources/data/ironblood/loot_tables/blocks/ahab_vent_2.json",
+          "src/main/resources/assets/ironblood/blockstates/ahab_vent_2.json",
+          "src/main/java/net/mcreator/ironblood/block/AhabVent2Block.java",
+          "src/main/resources/assets/ironblood/models/item/ahab_vent_2.json"
+        ]
+      }
+    },
+    {
+      "name": "AhabVent3",
+      "type": "block",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "ahab_vent_3",
+      "metadata": {
+        "files": [
+          "src/main/resources/assets/ironblood/blockstates/ahab_vent_3.json",
+          "src/main/resources/data/ironblood/loot_tables/blocks/ahab_vent_3.json",
+          "src/main/java/net/mcreator/ironblood/block/AhabVent3Block.java",
+          "src/main/resources/assets/ironblood/models/block/ahab_vent_3.json",
+          "src/main/resources/assets/ironblood/models/item/ahab_vent_3.json"
+        ]
+      }
     }
   ],
   "variable_elements": [],
@@ -513,23 +657,32 @@
       "block.ironblood.assembler": "Assembler",
       "item.ironblood.heavy_duty_chain.description_0": "Can be used to drag physics objects, and tie them to the world.",
       "block.ironblood.heavy_duty_chain_link": "Heavy Duty Chain Link",
-      "block.ironblood.swivel_bearing": "Swivel Bearing",
       "item.ironblood.assembly_scanner": "Assembly Scanner",
+      "block.ironblood.swivel_bearing": "Swivel Bearing",
       "block.ironblood.mechanical_joint": "Mechanical Joint",
       "gui.ironblood.joint_manager.addjoint": "",
       "item.ironblood.assembly_scanner.description_0": "Right-Click on a block to store its location.",
       "block.ironblood.halfmetal_slab": "Halfmetal Slab",
       "item.ironblood.assembly_scanner.description_1": "Shift + Right-Click to erase stored blocks.",
-      "block.ironblood.halfmetal_vertical_slab": "Halfmetal Vertical Slab",
       "subtitles.scanner-deactivate": "Assembly Scanner discards selection",
+      "block.ironblood.halfmetal_vertical_slab": "Halfmetal Vertical Slab",
       "subtitles.scanner-activate": "Assembly Scanner selection",
+      "block.ironblood.ahab_core": "Ahab Reactor",
       "item_group.ironblood.ironblood": "Ironblood",
       "item.ironblood.heavy_duty_chain": "Heavy Duty Chain",
+      "block.ironblood.ahab_vent_1": "Ahab Reactor",
+      "block.ironblood.ahab_vent_3": "Ahab Reactor",
       "block.ironblood.joint_connector": "Joint Connector",
+      "block.ironblood.ahab_vent_2": "Ahab Reactor",
       "block.ironblood.swivel_bearing_table": "Swivel Bearing Table",
+      "block.ironblood.ahab_4": "Ahab Reactor",
+      "block.ironblood.ahab_5": "Ahab Reactor",
       "block.ironblood.vertical_sphere_bearing": "Vertical Sphere Bearing",
+      "block.ironblood.ahab_2": "Ahab Reactor",
+      "block.ironblood.ahab_3": "Ahab Reactor",
       "block.ironblood.horizontal_sphere_bearing": "Horizontal Sphere Bearing",
       "block.ironblood.pilot_seat": "Pilot Seat",
+      "block.ironblood.ahab_1": "Ahab Reactor",
       "block.ironblood.halfmetal_block": "Halfmetal Block"
     }
   },

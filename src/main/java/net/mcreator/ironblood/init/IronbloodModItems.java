@@ -44,6 +44,15 @@ public class IronbloodModItems {
 	public static final RegistryObject<Item> SWIVEL_BEARING_TABLE = block(IronbloodModBlocks.SWIVEL_BEARING_TABLE);
 	public static final RegistryObject<Item> VERTICAL_SPHERE_BEARING = block(IronbloodModBlocks.VERTICAL_SPHERE_BEARING);
 	public static final RegistryObject<Item> HORIZONTAL_SPHERE_BEARING = block(IronbloodModBlocks.HORIZONTAL_SPHERE_BEARING);
+	public static final RegistryObject<Item> AHAB_1 = block(IronbloodModBlocks.AHAB_1);
+	public static final RegistryObject<Item> AHAB_2 = block(IronbloodModBlocks.AHAB_2);
+	public static final RegistryObject<Item> AHAB_3 = block(IronbloodModBlocks.AHAB_3);
+	public static final RegistryObject<Item> AHAB_4 = block(IronbloodModBlocks.AHAB_4);
+	public static final RegistryObject<Item> AHAB_5 = block(IronbloodModBlocks.AHAB_5);
+	public static final RegistryObject<Item> AHAB_CORE = block(IronbloodModBlocks.AHAB_CORE);
+	public static final RegistryObject<Item> AHAB_VENT_1 = block(IronbloodModBlocks.AHAB_VENT_1);
+	public static final RegistryObject<Item> AHAB_VENT_2 = block(IronbloodModBlocks.AHAB_VENT_2);
+	public static final RegistryObject<Item> AHAB_VENT_3 = block(IronbloodModBlocks.AHAB_VENT_3);
 
 	// Start of user code block custom items
 	// End of user code block custom items

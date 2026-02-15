@@ -1,0 +1,13 @@
+{
+  "parent": "block/cube",
+  "textures": {
+    "down": "ironblood:block/core",
+    "up": "ironblood:block/core",
+    "north": "ironblood:block/core",
+    "east": "ironblood:block/core",
+    "south": "ironblood:block/core",
+    "west": "ironblood:block/core",
+    "particle": "ironblood:block/core"
+  },
+  "render_type": "solid"
+}

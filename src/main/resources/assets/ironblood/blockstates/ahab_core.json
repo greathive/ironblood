@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=north": {
+      "model": "ironblood:block/ahab_core"
+    },
+    "facing=east": {
+      "model": "ironblood:block/ahab_core",
+      "y": 90
+    },
+    "facing=south": {
+      "model": "ironblood:block/ahab_core",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "ironblood:block/ahab_core",
+      "y": 270
+    }
+  }
+}

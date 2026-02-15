@@ -6,14 +6,19 @@ package net.mcreator.ironblood.init;
 
 import net.minecraftforge.registries.RegistryObject;
 import net.minecraftforge.registries.DeferredRegister;
+import net.minecraftforge.fml.common.Mod;
+import net.minecraftforge.eventbus.api.SubscribeEvent;
+import net.minecraftforge.event.BuildCreativeModeTabContentsEvent;
 
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.CreativeModeTabs;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.network.chat.Component;
 import net.minecraft.core.registries.Registries;
 
 import net.mcreator.ironblood.IronbloodMod;
 
+@Mod.EventBusSubscriber(bus = Mod.EventBusSubscriber.Bus.MOD)
 public class IronbloodModTabs {
 	public static final DeferredRegister<CreativeModeTab> REGISTRY = DeferredRegister.create(Registries.CREATIVE_MODE_TAB, IronbloodMod.MODID);
 	public static final RegistryObject<CreativeModeTab> IRONBLOOD = REGISTRY.register("ironblood",
@@ -36,4 +41,21 @@ public class IronbloodModTabs {
 				tabData.accept(IronbloodModBlocks.VERTICAL_SPHERE_BEARING.get().asItem());
 				tabData.accept(IronbloodModBlocks.HORIZONTAL_SPHERE_BEARING.get().asItem());
 			}).build());
+
+	@SubscribeEvent
+	public static void buildTabContentsVanilla(BuildCreativeModeTabContentsEvent tabData) {
+		if (tabData.getTabKey() == CreativeModeTabs.OP_BLOCKS) {
+			if (tabData.hasPermissions()) {
+				tabData.accept(IronbloodModBlocks.AHAB_1.get().asItem());
+				tabData.accept(IronbloodModBlocks.AHAB_2.get().asItem());
+				tabData.accept(IronbloodModBlocks.AHAB_3.get().asItem());
+				tabData.accept(IronbloodModBlocks.AHAB_4.get().asItem());
+				tabData.accept(IronbloodModBlocks.AHAB_5.get().asItem());
+				tabData.accept(IronbloodModBlocks.AHAB_CORE.get().asItem());
+				tabData.accept(IronbloodModBlocks.AHAB_VENT_1.get().asItem());
+				tabData.accept(IronbloodModBlocks.AHAB_VENT_2.get().asItem());
+				tabData.accept(IronbloodModBlocks.AHAB_VENT_3.get().asItem());
+			}
+		}
+	}
 }

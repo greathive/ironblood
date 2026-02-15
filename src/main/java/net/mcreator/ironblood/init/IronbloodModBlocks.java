@@ -24,6 +24,15 @@ import net.mcreator.ironblood.block.HalfmetalVerticalSlabBlock;
 import net.mcreator.ironblood.block.HalfmetalSlabBlock;
 import net.mcreator.ironblood.block.HalfmetalBlockBlock;
 import net.mcreator.ironblood.block.AssemblerBlock;
+import net.mcreator.ironblood.block.AhabVent3Block;
+import net.mcreator.ironblood.block.AhabVent2Block;
+import net.mcreator.ironblood.block.AhabVent1Block;
+import net.mcreator.ironblood.block.AhabCoreBlock;
+import net.mcreator.ironblood.block.Ahab5Block;
+import net.mcreator.ironblood.block.Ahab4Block;
+import net.mcreator.ironblood.block.Ahab3Block;
+import net.mcreator.ironblood.block.Ahab2Block;
+import net.mcreator.ironblood.block.Ahab1Block;
 import net.mcreator.ironblood.IronbloodMod;
 
 public class IronbloodModBlocks {
@@ -42,6 +51,15 @@ public class IronbloodModBlocks {
 	public static final RegistryObject<Block> SWIVEL_BEARING_TABLE = REGISTRY.register("swivel_bearing_table", () -> new SwivelBearingTableBlock());
 	public static final RegistryObject<Block> VERTICAL_SPHERE_BEARING = REGISTRY.register("vertical_sphere_bearing", () -> new VerticalSphereBearingBlock());
 	public static final RegistryObject<Block> HORIZONTAL_SPHERE_BEARING = REGISTRY.register("horizontal_sphere_bearing", () -> new HorizontalSphereBearingBlock());
+	public static final RegistryObject<Block> AHAB_1 = REGISTRY.register("ahab_1", () -> new Ahab1Block());
+	public static final RegistryObject<Block> AHAB_2 = REGISTRY.register("ahab_2", () -> new Ahab2Block());
+	public static final RegistryObject<Block> AHAB_3 = REGISTRY.register("ahab_3", () -> new Ahab3Block());
+	public static final RegistryObject<Block> AHAB_4 = REGISTRY.register("ahab_4", () -> new Ahab4Block());
+	public static final RegistryObject<Block> AHAB_5 = REGISTRY.register("ahab_5", () -> new Ahab5Block());
+	public static final RegistryObject<Block> AHAB_CORE = REGISTRY.register("ahab_core", () -> new AhabCoreBlock());
+	public static final RegistryObject<Block> AHAB_VENT_1 = REGISTRY.register("ahab_vent_1", () -> new AhabVent1Block());
+	public static final RegistryObject<Block> AHAB_VENT_2 = REGISTRY.register("ahab_vent_2", () -> new AhabVent2Block());
+	public static final RegistryObject<Block> AHAB_VENT_3 = REGISTRY.register("ahab_vent_3", () -> new AhabVent3Block());
 	// Start of user code block custom blocks
 	// End of user code block custom blocks
 }

@@ -1,4 +1,3 @@
-
 package net.mcreator.ironblood.block;
 
 import org.valkyrienskies.core.impl.shadow.id;
@@ -6,6 +5,7 @@ import org.valkyrienskies.core.impl.shadow.bs;
 import org.valkyrienskies.core.impl.shadow.br;
 import org.valkyrienskies.core.impl.shadow.bp;
 import org.valkyrienskies.core.impl.shadow.be;
+import org.valkyrienskies.mod.common.VSGameUtilsKt;
 
 import net.minecraftforge.network.NetworkHooks;
 
@@ -13,6 +13,8 @@ import net.minecraft.world.phys.shapes.VoxelShape;
 import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.BlockHitResult;
+import net.minecraft.world.phys.Vec3;
+import net.minecraft.world.phys.AABB;
 import net.minecraft.world.level.block.state.properties.DirectionProperty;
 import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.BlockState;
@@ -30,6 +32,9 @@ import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.inventory.AbstractContainerMenu;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.entity.player.Inventory;
+import net.minecraft.world.entity.decoration.ArmorStand;
+import net.minecraft.world.entity.EntityType;
+import net.minecraft.world.entity.Entity;
 import net.minecraft.world.MenuProvider;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.InteractionHand;
@@ -44,6 +49,8 @@ import net.mcreator.ironblood.world.inventory.JointManagerMenu;
 import net.mcreator.ironblood.block.entity.PilotSeatBlockEntity;
 
 import io.netty.buffer.Unpooled;
+
+import java.util.List;
 
 public class PilotSeatBlock extends Block implements EntityBlock {
 	public static final DirectionProperty FACING = HorizontalDirectionalBlock.FACING;
@@ -70,12 +77,8 @@ public class PilotSeatBlock extends Block implements EntityBlock {
 
 	@Override
 	public VoxelShape getShape(BlockState state, BlockGetter world, BlockPos pos, CollisionContext context) {
-		return switch (state.getValue(FACING)) {
-			default -> Shapes.or(box(0, 0, -3, 16, 8, 13), box(0, 0, 13, 16, 8, 16), box(0.01, 6.51, -0.24, 15.99, 23.49, 7.74), box(-0.12, -0.12, -0.12, 16.12, 8.12, 16.12), box(-0.11, -0.36, 0.64, 16.11, 23.86, 8.86));
-			case NORTH -> Shapes.or(box(0, 0, 3, 16, 8, 19), box(0, 0, 0, 16, 8, 3), box(0.01, 6.51, 8.26, 15.99, 23.49, 16.24), box(-0.12, -0.12, -0.12, 16.12, 8.12, 16.12), box(-0.11, -0.36, 7.14, 16.11, 23.86, 15.36));
-			case EAST -> Shapes.or(box(-3, 0, 0, 13, 8, 16), box(13, 0, 0, 16, 8, 16), box(-0.24, 6.51, 0.01, 7.74, 23.49, 15.99), box(-0.12, -0.12, -0.12, 16.12, 8.12, 16.12), box(0.64, -0.36, -0.11, 8.86, 23.86, 16.11));
-			case WEST -> Shapes.or(box(3, 0, 0, 19, 8, 16), box(0, 0, 0, 3, 8, 16), box(8.26, 6.51, 0.01, 16.24, 23.49, 15.99), box(-0.12, -0.12, -0.12, 16.12, 8.12, 16.12), box(7.14, -0.36, -0.11, 15.36, 23.86, 16.11));
-		};
+		// Simple half slab shape - 8 pixels high (half block)
+		return box(0, 0, 0, 16, 8, 16);
 	}
 
 	@Override
@@ -100,20 +103,93 @@ public class PilotSeatBlock extends Block implements EntityBlock {
 	@Override
 	public InteractionResult use(BlockState blockstate, Level world, BlockPos pos, Player entity, InteractionHand hand, BlockHitResult hit) {
 		super.use(blockstate, world, pos, entity, hand, hit);
-		if (entity instanceof ServerPlayer player) {
-			NetworkHooks.openScreen(player, new MenuProvider() {
-				@Override
-				public Component getDisplayName() {
-					return Component.literal("Pilot Seat");
-				}
+		
+		// Shift + right-click opens the Joint Manager menu
+		if (entity.isShiftKeyDown()) {
+			if (entity instanceof ServerPlayer player) {
+				NetworkHooks.openScreen(player, new MenuProvider() {
+					@Override
+					public Component getDisplayName() {
+						return Component.literal("Joint Manager");
+					}
 
-				@Override
-				public AbstractContainerMenu createMenu(int id, Inventory inventory, Player player) {
-					return new JointManagerMenu(id, inventory, new FriendlyByteBuf(Unpooled.buffer()).writeBlockPos(pos));
-				}
-			}, pos);
+					@Override
+					public AbstractContainerMenu createMenu(int id, Inventory inventory, Player player) {
+						return new JointManagerMenu(id, inventory, new FriendlyByteBuf(Unpooled.buffer()).writeBlockPos(pos));
+					}
+				}, pos);
+			}
+			return InteractionResult.SUCCESS;
 		}
+		
+		// Regular right-click makes the player sit
+		if (!world.isClientSide && entity instanceof ServerPlayer) {
+			// Calculate sit position based on block facing
+			Direction facing = blockstate.getValue(FACING);
+			Vec3 sitPos = getSitPosition(pos, facing);
+			
+			// Create an invisible armor stand to sit on
+			ArmorStand seat = new ArmorStand(EntityType.ARMOR_STAND, world);
+			seat.setPos(sitPos.x, sitPos.y, sitPos.z);
+			seat.setInvisible(true);
+			seat.setInvulnerable(true);
+			seat.setNoGravity(true);
+			
+			// Spawn the armor stand and make the player ride it
+			world.addFreshEntity(seat);
+			entity.startRiding(seat);
+		}
+		
 		return InteractionResult.SUCCESS;
+	}
+	
+	/**
+	 * Calculate the sitting position based on the block position and facing direction
+	 */
+	private Vec3 getSitPosition(BlockPos pos, Direction facing) {
+		double x = pos.getX() + 0.5;
+		double y = pos.getY() + 0.25 - 1.5; // Sit height adjusted for half slab, lowered by 1.5 blocks
+		double z = pos.getZ() + 0.5;
+		
+		return new Vec3(x, y, z);
+	}
+
+	@Override
+	public void onRemove(BlockState state, Level world, BlockPos pos, BlockState newState, boolean isMoving) {
+		if (state.getBlock() != newState.getBlock()) {
+			BlockEntity blockEntity = world.getBlockEntity(pos);
+			if (blockEntity instanceof PilotSeatBlockEntity) {
+				Containers.dropContents(world, pos, (PilotSeatBlockEntity) blockEntity);
+				world.updateNeighbourForOutputSignal(pos, this);
+			}
+			
+			// Remove any sitting entities (armor stands) at this position
+			AABB searchBox = new AABB(pos).inflate(1.0);
+			List<ArmorStand> stands = world.getEntitiesOfClass(ArmorStand.class, searchBox);
+			for (ArmorStand stand : stands) {
+				if (stand.isInvisible() && stand.isInvulnerable()) {
+					// Eject any passengers before removing
+					stand.ejectPassengers();
+					stand.discard();
+				}
+			}
+			
+			super.onRemove(state, world, pos, newState, isMoving);
+		}
+	}
+
+	@Override
+	public boolean hasAnalogOutputSignal(BlockState state) {
+		return true;
+	}
+
+	@Override
+	public int getAnalogOutputSignal(BlockState blockState, Level world, BlockPos pos) {
+		BlockEntity tileentity = world.getBlockEntity(pos);
+		if (tileentity instanceof PilotSeatBlockEntity be)
+			return AbstractContainerMenu.getRedstoneSignalFromContainer(be);
+		else
+			return 0;
 	}
 
 	@Override
@@ -132,31 +208,5 @@ public class PilotSeatBlock extends Block implements EntityBlock {
 		super.triggerEvent(state, world, pos, eventID, eventParam);
 		BlockEntity blockEntity = world.getBlockEntity(pos);
 		return blockEntity == null ? false : blockEntity.triggerEvent(eventID, eventParam);
-	}
-
-	@Override
-	public void onRemove(BlockState state, Level world, BlockPos pos, BlockState newState, boolean isMoving) {
-		if (state.getBlock() != newState.getBlock()) {
-			BlockEntity blockEntity = world.getBlockEntity(pos);
-			if (blockEntity instanceof PilotSeatBlockEntity be) {
-				Containers.dropContents(world, pos, be);
-				world.updateNeighbourForOutputSignal(pos, this);
-			}
-			super.onRemove(state, world, pos, newState, isMoving);
-		}
-	}
-
-	@Override
-	public boolean hasAnalogOutputSignal(BlockState state) {
-		return true;
-	}
-
-	@Override
-	public int getAnalogOutputSignal(BlockState blockState, Level world, BlockPos pos) {
-		BlockEntity tileentity = world.getBlockEntity(pos);
-		if (tileentity instanceof PilotSeatBlockEntity be)
-			return AbstractContainerMenu.getRedstoneSignalFromContainer(be);
-		else
-			return 0;
 	}
 }

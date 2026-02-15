@@ -35,6 +35,9 @@ import io.netty.buffer.Unpooled;
 public class PilotSeatBlockEntity extends RandomizableContainerBlockEntity implements WorldlyContainer {
 	private NonNullList<ItemStack> stacks = NonNullList.<ItemStack>withSize(0, ItemStack.EMPTY);
 	private final LazyOptional<? extends IItemHandler>[] handlers = SidedInvWrapper.create(this, Direction.values());
+	
+	// Store the joints NBT string
+	private String joints = "";
 
 	public PilotSeatBlockEntity(BlockPos position, BlockState state) {
 		super(IronbloodModBlockEntities.PILOT_SEAT.get(), position, state);
@@ -46,6 +49,11 @@ public class PilotSeatBlockEntity extends RandomizableContainerBlockEntity imple
 		if (!this.tryLoadLootTable(compound))
 			this.stacks = NonNullList.withSize(this.getContainerSize(), ItemStack.EMPTY);
 		ContainerHelper.loadAllItems(compound, this.stacks);
+		
+		// Load joints data
+		if (compound.contains("joints")) {
+			this.joints = compound.getString("joints");
+		}
 	}
 
 	@Override
@@ -54,6 +62,9 @@ public class PilotSeatBlockEntity extends RandomizableContainerBlockEntity imple
 		if (!this.trySaveLootTable(compound)) {
 			ContainerHelper.saveAllItems(compound, this.stacks);
 		}
+		
+		// Save joints data
+		compound.putString("joints", this.joints);
 	}
 
 	@Override
@@ -141,5 +152,42 @@ public class PilotSeatBlockEntity extends RandomizableContainerBlockEntity imple
 		super.setRemoved();
 		for (LazyOptional<? extends IItemHandler> handler : handlers)
 			handler.invalidate();
+	}
+	
+	// Joint management methods
+	public String getJoints() {
+		return this.joints;
+	}
+
+	public void setJoints(String joints) {
+		this.joints = joints;
+		setChanged();
+		if (level != null && !level.isClientSide) {
+			level.sendBlockUpdated(worldPosition, getBlockState(), getBlockState(), 3);
+		}
+	}
+
+	public void addJoint(String jointName) {
+		String newJoint = "(" + jointName + ")";
+		if (!this.joints.contains(newJoint)) {
+			this.joints += newJoint;
+			setChanged();
+			if (level != null && !level.isClientSide) {
+				level.sendBlockUpdated(worldPosition, getBlockState(), getBlockState(), 3);
+			}
+			System.out.println("Joint NBT after add: " + this.joints);
+		}
+	}
+
+	public void removeJoint(String jointName) {
+		String jointToRemove = "(" + jointName + ")";
+		if (this.joints.contains(jointToRemove)) {
+			this.joints = this.joints.replace(jointToRemove, "");
+			setChanged();
+			if (level != null && !level.isClientSide) {
+				level.sendBlockUpdated(worldPosition, getBlockState(), getBlockState(), 3);
+			}
+			System.out.println("Joint NBT after remove: " + this.joints);
+		}
 	}
 }

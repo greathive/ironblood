@@ -18,6 +18,8 @@ import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.Minecraft;
 
 import net.mcreator.ironblood.world.inventory.JointManagerMenu;
+import net.mcreator.ironblood.network.JointManagerButtonMessage;
+import net.mcreator.ironblood.IronbloodMod;
 
 import java.util.HashMap;
 
@@ -56,6 +58,11 @@ public class JointManagerScreen extends AbstractContainerScreen<JointManagerMenu
 		RenderSystem.setShaderColor(1, 1, 1, 1);
 		RenderSystem.enableBlend();
 		RenderSystem.defaultBlendFunc();
+
+		// Render the text box background texture (moved 4 pixels left and up 3 pixels total)
+		guiGraphics.blit(new ResourceLocation("ironblood:textures/screens/outlinejointtext.png"),
+				this.leftPos - 4, this.topPos - 3, 0, 0, 122, 22, 122, 22);
+
 		RenderSystem.disableBlend();
 	}
 
@@ -90,15 +97,44 @@ public class JointManagerScreen extends AbstractContainerScreen<JointManagerMenu
 	@Override
 	public void init() {
 		super.init();
-		addjoint = new EditBox(this.font, this.leftPos + 0, this.topPos + 0, 118, 18, Component.translatable("gui.ironblood.joint_manager.addjoint"));
+		addjoint = new EditBox(this.font, this.leftPos + 2, this.topPos + 3, 118, 18, Component.translatable("gui.ironblood.joint_manager.addjoint"));
 		addjoint.setMaxLength(32767);
+		addjoint.setBordered(false); // Remove default border since we're using custom texture
 		guistate.put("text:addjoint", addjoint);
 		this.addWidget(this.addjoint);
-		imagebutton_checkbox1 = new ImageButton(this.leftPos + 129, this.topPos + -1, 20, 20, 0, 0, 20, new ResourceLocation("ironblood:textures/screens/atlas/imagebutton_checkbox1.png"), 20, 40, e -> {
+
+		// Checkbox button (Add joint)
+		imagebutton_checkbox1 = new ImageButton(this.leftPos + 129, this.topPos + -1, 20, 20, 0, 0, 20,
+				new ResourceLocation("ironblood:textures/screens/atlas/imagebutton_checkbox1.png"), 20, 40, e -> {
+			String jointText = addjoint.getValue().trim();
+			if (!jointText.isEmpty()) {
+				// Send packet to server to add joint
+				IronbloodMod.PACKET_HANDLER.sendToServer(
+						new JointManagerButtonMessage(
+								new net.minecraft.core.BlockPos(x, y, z),
+								jointText,
+								true // true = add
+						)
+				);
+			}
 		});
 		guistate.put("button:imagebutton_checkbox1", imagebutton_checkbox1);
 		this.addRenderableWidget(imagebutton_checkbox1);
-		imagebutton_xbox1 = new ImageButton(this.leftPos + 156, this.topPos + -1, 20, 20, 0, 0, 20, new ResourceLocation("ironblood:textures/screens/atlas/imagebutton_xbox1.png"), 20, 40, e -> {
+
+		// Xbox button (Remove joint)
+		imagebutton_xbox1 = new ImageButton(this.leftPos + 156, this.topPos + -1, 20, 20, 0, 0, 20,
+				new ResourceLocation("ironblood:textures/screens/atlas/imagebutton_xbox1.png"), 20, 40, e -> {
+			String jointText = addjoint.getValue().trim();
+			if (!jointText.isEmpty()) {
+				// Send packet to server to remove joint
+				IronbloodMod.PACKET_HANDLER.sendToServer(
+						new JointManagerButtonMessage(
+								new net.minecraft.core.BlockPos(x, y, z),
+								jointText,
+								false // false = remove
+						)
+				);
+			}
 		});
 		guistate.put("button:imagebutton_xbox1", imagebutton_xbox1);
 		this.addRenderableWidget(imagebutton_xbox1);

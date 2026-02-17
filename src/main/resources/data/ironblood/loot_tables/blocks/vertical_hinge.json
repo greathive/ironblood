@@ -1,6 +1,6 @@
 {
   "type": "minecraft:block",
-  "random_sequence": "ironblood:blocks/vertical_sphere_bearing",
+  "random_sequence": "ironblood:blocks/vertical_hinge",
   "pools": [
     {
       "rolls": 1.0,
@@ -12,7 +12,7 @@
       "entries": [
         {
           "type": "minecraft:item",
-          "name": "ironblood:vertical_sphere_bearing"
+          "name": "ironblood:vertical_hinge"
         }
       ]
     }

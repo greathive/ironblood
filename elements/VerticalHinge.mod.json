@@ -9,9 +9,9 @@
     "textureRight": "",
     "textureBack": "",
     "renderType": 2,
-    "customModelName": "verticalmechaspherebearing:default",
+    "customModelName": "verticalrotatornotmain:default",
     "rotationMode": 1,
-    "enablePitch": false,
+    "enablePitch": true,
     "emissiveRendering": false,
     "displayFluidOverlay": false,
     "itemTexture": "",
@@ -24,17 +24,17 @@
     "disableOffset": false,
     "boundingBoxes": [
       {
-        "mx": 0.0,
+        "mx": 3.0,
         "my": 0.0,
-        "mz": 9.0,
-        "Mx": 16.0,
-        "My": 16.0,
-        "Mz": 16.0,
+        "mz": 3.0,
+        "Mx": 13.0,
+        "My": 3.0,
+        "Mz": 13.0,
         "subtract": false
       }
     ],
     "customProperties": [],
-    "name": "Vertical Sphere Bearing",
+    "name": "Vertical Hinge",
     "specialInformation": {
       "fixedValue": []
     },
@@ -47,13 +47,13 @@
         "value": "CUSTOM:Ironblood"
       }
     ],
-    "destroyTool": "Not specified",
+    "destroyTool": "pickaxe",
     "customDrop": {
       "value": ""
     },
     "dropAmount": 1,
     "useLootTableForDrops": false,
-    "requiresCorrectTool": false,
+    "requiresCorrectTool": true,
     "enchantPowerBonus": 0.0,
     "plantsGrowOn": false,
     "canRedstoneConnect": false,
@@ -107,8 +107,8 @@
     "isBonemealable": false,
     "hasInventory": true,
     "openGUIOnRightClick": false,
-    "inventorySize": 9,
-    "inventoryStackSize": 64,
+    "inventorySize": 0,
+    "inventoryStackSize": 1,
     "inventoryDropWhenDestroyed": true,
     "inventoryComparatorPower": true,
     "inventoryOutSlotIDs": [],

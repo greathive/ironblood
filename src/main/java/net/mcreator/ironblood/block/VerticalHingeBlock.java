@@ -9,7 +9,9 @@ import org.valkyrienskies.core.impl.shadow.be;
 import net.minecraft.world.phys.shapes.VoxelShape;
 import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.CollisionContext;
+import net.minecraft.world.level.block.state.properties.EnumProperty;
 import net.minecraft.world.level.block.state.properties.DirectionProperty;
+import net.minecraft.world.level.block.state.properties.AttachFace;
 import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.BlockBehaviour;
@@ -18,6 +20,7 @@ import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.block.Rotation;
 import net.minecraft.world.level.block.Mirror;
 import net.minecraft.world.level.block.HorizontalDirectionalBlock;
+import net.minecraft.world.level.block.FaceAttachedHorizontalDirectionalBlock;
 import net.minecraft.world.level.block.EntityBlock;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.Level;
@@ -29,14 +32,15 @@ import net.minecraft.world.Containers;
 import net.minecraft.core.Direction;
 import net.minecraft.core.BlockPos;
 
-import net.mcreator.ironblood.block.entity.VerticalSphereBearingBlockEntity;
+import net.mcreator.ironblood.block.entity.VerticalHingeBlockEntity;
 
-public class VerticalSphereBearingBlock extends Block implements EntityBlock {
+public class VerticalHingeBlock extends Block implements EntityBlock {
 	public static final DirectionProperty FACING = HorizontalDirectionalBlock.FACING;
+	public static final EnumProperty<AttachFace> FACE = FaceAttachedHorizontalDirectionalBlock.FACE;
 
-	public VerticalSphereBearingBlock() {
-		super(BlockBehaviour.Properties.of().sound(SoundType.METAL).strength(50f).noOcclusion().isRedstoneConductor((bs, br, bp) -> false));
-		this.registerDefaultState(this.stateDefinition.any().setValue(FACING, Direction.NORTH));
+	public VerticalHingeBlock() {
+		super(BlockBehaviour.Properties.of().sound(SoundType.METAL).strength(50f).requiresCorrectToolForDrops().noOcclusion().isRedstoneConductor((bs, br, bp) -> false));
+		this.registerDefaultState(this.stateDefinition.any().setValue(FACING, Direction.NORTH).setValue(FACE, AttachFace.WALL));
 	}
 
 	@Override
@@ -57,22 +61,38 @@ public class VerticalSphereBearingBlock extends Block implements EntityBlock {
 	@Override
 	public VoxelShape getShape(BlockState state, BlockGetter world, BlockPos pos, CollisionContext context) {
 		return switch (state.getValue(FACING)) {
-			default -> box(0, 0, 0, 16, 16, 7);
-			case NORTH -> box(0, 0, 9, 16, 16, 16);
-			case EAST -> box(0, 0, 0, 7, 16, 16);
-			case WEST -> box(9, 0, 0, 16, 16, 16);
+			default -> switch (state.getValue(FACE)) {
+				case FLOOR -> box(3, 0, 3, 13, 3, 13);
+				case WALL -> box(3, 3, 0, 13, 13, 3);
+				case CEILING -> box(3, 13, 3, 13, 16, 13);
+			};
+			case NORTH -> switch (state.getValue(FACE)) {
+				case FLOOR -> box(3, 0, 3, 13, 3, 13);
+				case WALL -> box(3, 3, 13, 13, 13, 16);
+				case CEILING -> box(3, 13, 3, 13, 16, 13);
+			};
+			case EAST -> switch (state.getValue(FACE)) {
+				case FLOOR -> box(3, 0, 3, 13, 3, 13);
+				case WALL -> box(0, 3, 3, 3, 13, 13);
+				case CEILING -> box(3, 13, 3, 13, 16, 13);
+			};
+			case WEST -> switch (state.getValue(FACE)) {
+				case FLOOR -> box(3, 0, 3, 13, 3, 13);
+				case WALL -> box(13, 3, 3, 16, 13, 13);
+				case CEILING -> box(3, 13, 3, 13, 16, 13);
+			};
 		};
 	}
 
 	@Override
 	protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> builder) {
 		super.createBlockStateDefinition(builder);
-		builder.add(FACING);
+		builder.add(FACING, FACE);
 	}
 
 	@Override
 	public BlockState getStateForPlacement(BlockPlaceContext context) {
-		return super.getStateForPlacement(context).setValue(FACING, context.getHorizontalDirection().getOpposite());
+		return super.getStateForPlacement(context).setValue(FACE, faceForDirection(context.getNearestLookingDirection())).setValue(FACING, context.getHorizontalDirection().getOpposite());
 	}
 
 	public BlockState rotate(BlockState state, Rotation rot) {
@@ -83,6 +103,13 @@ public class VerticalSphereBearingBlock extends Block implements EntityBlock {
 		return state.rotate(mirrorIn.getRotation(state.getValue(FACING)));
 	}
 
+	private AttachFace faceForDirection(Direction direction) {
+		if (direction.getAxis() == Direction.Axis.Y)
+			return direction == Direction.UP ? AttachFace.CEILING : AttachFace.FLOOR;
+		else
+			return AttachFace.WALL;
+	}
+
 	@Override
 	public MenuProvider getMenuProvider(BlockState state, Level worldIn, BlockPos pos) {
 		BlockEntity tileEntity = worldIn.getBlockEntity(pos);
@@ -91,7 +118,7 @@ public class VerticalSphereBearingBlock extends Block implements EntityBlock {
 
 	@Override
 	public BlockEntity newBlockEntity(BlockPos pos, BlockState state) {
-		return new VerticalSphereBearingBlockEntity(pos, state);
+		return new VerticalHingeBlockEntity(pos, state);
 	}
 
 	@Override
@@ -105,7 +132,7 @@ public class VerticalSphereBearingBlock extends Block implements EntityBlock {
 	public void onRemove(BlockState state, Level world, BlockPos pos, BlockState newState, boolean isMoving) {
 		if (state.getBlock() != newState.getBlock()) {
 			BlockEntity blockEntity = world.getBlockEntity(pos);
-			if (blockEntity instanceof VerticalSphereBearingBlockEntity be) {
+			if (blockEntity instanceof VerticalHingeBlockEntity be) {
 				Containers.dropContents(world, pos, be);
 				world.updateNeighbourForOutputSignal(pos, this);
 			}
@@ -121,7 +148,7 @@ public class VerticalSphereBearingBlock extends Block implements EntityBlock {
 	@Override
 	public int getAnalogOutputSignal(BlockState blockState, Level world, BlockPos pos) {
 		BlockEntity tileentity = world.getBlockEntity(pos);
-		if (tileentity instanceof VerticalSphereBearingBlockEntity be)
+		if (tileentity instanceof VerticalHingeBlockEntity be)
 			return AbstractContainerMenu.getRedstoneSignalFromContainer(be);
 		else
 			return 0;

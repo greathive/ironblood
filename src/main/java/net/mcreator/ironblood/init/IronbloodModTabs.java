@@ -38,8 +38,8 @@ public class IronbloodModTabs {
 				tabData.accept(IronbloodModBlocks.PILOT_SEAT.get().asItem());
 				tabData.accept(IronbloodModBlocks.SWIVEL_BEARING.get().asItem());
 				tabData.accept(IronbloodModBlocks.SWIVEL_BEARING_TABLE.get().asItem());
-				tabData.accept(IronbloodModBlocks.VERTICAL_SPHERE_BEARING.get().asItem());
-				tabData.accept(IronbloodModBlocks.HORIZONTAL_SPHERE_BEARING.get().asItem());
+				tabData.accept(IronbloodModBlocks.VERTICAL_ROTATOR.get().asItem());
+				tabData.accept(IronbloodModBlocks.VERTICAL_HINGE.get().asItem());
 			}).build());
 
 	@SubscribeEvent

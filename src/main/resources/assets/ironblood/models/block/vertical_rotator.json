@@ -1,9 +1,9 @@
 {
-  "parent": "ironblood:custom/horizontalmechaspherebearing",
+  "parent": "ironblood:custom/verticalrotator",
   "textures": {
     "all": "ironblood:block/sphererotator",
     "particle": "ironblood:block/sphererotator",
-    "2": "ironblood:block/sphererotator"
+    "0": "ironblood:block/sphererotator"
   },
   "render_type": "cutout"
 }

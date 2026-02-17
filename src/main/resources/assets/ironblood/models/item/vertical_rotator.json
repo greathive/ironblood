@@ -1,5 +1,5 @@
 {
-  "parent": "ironblood:block/vertical_sphere_bearing",
+  "parent": "ironblood:block/vertical_rotator",
   "display": {
     "thirdperson": {
       "rotation": [

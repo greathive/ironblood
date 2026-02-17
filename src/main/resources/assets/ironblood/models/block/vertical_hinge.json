@@ -1,5 +1,5 @@
 {
-  "parent": "ironblood:custom/verticalmechaspherebearing",
+  "parent": "ironblood:custom/verticalrotatornotmain",
   "textures": {
     "all": "ironblood:block/sphererotator",
     "particle": "ironblood:block/sphererotator",

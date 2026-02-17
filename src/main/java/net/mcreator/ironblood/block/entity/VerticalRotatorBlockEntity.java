@@ -29,12 +29,12 @@ import javax.annotation.Nullable;
 
 import java.util.stream.IntStream;
 
-public class VerticalSphereBearingBlockEntity extends RandomizableContainerBlockEntity implements WorldlyContainer {
-	private NonNullList<ItemStack> stacks = NonNullList.<ItemStack>withSize(9, ItemStack.EMPTY);
+public class VerticalRotatorBlockEntity extends RandomizableContainerBlockEntity implements WorldlyContainer {
+	private NonNullList<ItemStack> stacks = NonNullList.<ItemStack>withSize(0, ItemStack.EMPTY);
 	private final LazyOptional<? extends IItemHandler>[] handlers = SidedInvWrapper.create(this, Direction.values());
 
-	public VerticalSphereBearingBlockEntity(BlockPos position, BlockState state) {
-		super(IronbloodModBlockEntities.VERTICAL_SPHERE_BEARING.get(), position, state);
+	public VerticalRotatorBlockEntity(BlockPos position, BlockState state) {
+		super(IronbloodModBlockEntities.VERTICAL_ROTATOR.get(), position, state);
 	}
 
 	@Override
@@ -78,12 +78,12 @@ public class VerticalSphereBearingBlockEntity extends RandomizableContainerBlock
 
 	@Override
 	public Component getDefaultName() {
-		return Component.literal("vertical_sphere_bearing");
+		return Component.literal("vertical_rotator");
 	}
 
 	@Override
 	public int getMaxStackSize() {
-		return 64;
+		return 1;
 	}
 
 	@Override
@@ -93,7 +93,7 @@ public class VerticalSphereBearingBlockEntity extends RandomizableContainerBlock
 
 	@Override
 	public Component getDisplayName() {
-		return Component.literal("Vertical Sphere Bearing");
+		return Component.literal("Vertical Rotator");
 	}
 
 	@Override

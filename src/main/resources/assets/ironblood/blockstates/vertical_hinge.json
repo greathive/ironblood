@@ -1,0 +1,57 @@
+{
+  "variants": {
+    "face=floor,facing=north": {
+      "model": "ironblood:block/vertical_hinge"
+    },
+    "face=floor,facing=east": {
+      "model": "ironblood:block/vertical_hinge",
+      "y": 90
+    },
+    "face=floor,facing=south": {
+      "model": "ironblood:block/vertical_hinge",
+      "y": 180
+    },
+    "face=floor,facing=west": {
+      "model": "ironblood:block/vertical_hinge",
+      "y": 270
+    },
+    "face=wall,facing=north": {
+      "model": "ironblood:block/vertical_hinge",
+      "x": 90
+    },
+    "face=wall,facing=east": {
+      "model": "ironblood:block/vertical_hinge",
+      "x": 90,
+      "y": 90
+    },
+    "face=wall,facing=south": {
+      "model": "ironblood:block/vertical_hinge",
+      "x": 90,
+      "y": 180
+    },
+    "face=wall,facing=west": {
+      "model": "ironblood:block/vertical_hinge",
+      "x": 90,
+      "y": 270
+    },
+    "face=ceiling,facing=north": {
+      "model": "ironblood:block/vertical_hinge",
+      "x": 180,
+      "y": 180
+    },
+    "face=ceiling,facing=east": {
+      "model": "ironblood:block/vertical_hinge",
+      "x": 180,
+      "y": 270
+    },
+    "face=ceiling,facing=south": {
+      "model": "ironblood:block/vertical_hinge",
+      "x": 180
+    },
+    "face=ceiling,facing=west": {
+      "model": "ironblood:block/vertical_hinge",
+      "x": 180,
+      "y": 90
+    }
+  }
+}

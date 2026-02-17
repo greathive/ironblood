@@ -29,12 +29,12 @@ import javax.annotation.Nullable;
 
 import java.util.stream.IntStream;
 
-public class HorizontalSphereBearingBlockEntity extends RandomizableContainerBlockEntity implements WorldlyContainer {
-	private NonNullList<ItemStack> stacks = NonNullList.<ItemStack>withSize(9, ItemStack.EMPTY);
+public class VerticalHingeBlockEntity extends RandomizableContainerBlockEntity implements WorldlyContainer {
+	private NonNullList<ItemStack> stacks = NonNullList.<ItemStack>withSize(0, ItemStack.EMPTY);
 	private final LazyOptional<? extends IItemHandler>[] handlers = SidedInvWrapper.create(this, Direction.values());
 
-	public HorizontalSphereBearingBlockEntity(BlockPos position, BlockState state) {
-		super(IronbloodModBlockEntities.HORIZONTAL_SPHERE_BEARING.get(), position, state);
+	public VerticalHingeBlockEntity(BlockPos position, BlockState state) {
+		super(IronbloodModBlockEntities.VERTICAL_HINGE.get(), position, state);
 	}
 
 	@Override
@@ -78,12 +78,12 @@ public class HorizontalSphereBearingBlockEntity extends RandomizableContainerBlo
 
 	@Override
 	public Component getDefaultName() {
-		return Component.literal("horizontal_sphere_bearing");
+		return Component.literal("vertical_hinge");
 	}
 
 	@Override
 	public int getMaxStackSize() {
-		return 64;
+		return 1;
 	}
 
 	@Override
@@ -93,7 +93,7 @@ public class HorizontalSphereBearingBlockEntity extends RandomizableContainerBlo
 
 	@Override
 	public Component getDisplayName() {
-		return Component.literal("Horizontal Sphere Bearing");
+		return Component.literal("Vertical Hinge");
 	}
 
 	@Override

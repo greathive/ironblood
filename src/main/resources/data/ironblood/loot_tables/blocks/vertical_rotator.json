@@ -1,6 +1,6 @@
 {
   "type": "minecraft:block",
-  "random_sequence": "ironblood:blocks/horizontal_sphere_bearing",
+  "random_sequence": "ironblood:blocks/vertical_rotator",
   "pools": [
     {
       "rolls": 1.0,
@@ -12,7 +12,7 @@
       "entries": [
         {
           "type": "minecraft:item",
-          "name": "ironblood:horizontal_sphere_bearing"
+          "name": "ironblood:vertical_rotator"
         }
       ]
     }

@@ -413,40 +413,6 @@
       }
     },
     {
-      "name": "VerticalSphereBearing",
-      "type": "block",
-      "compiles": true,
-      "locked_code": true,
-      "registry_name": "vertical_sphere_bearing",
-      "metadata": {
-        "files": [
-          "src/main/java/net/mcreator/ironblood/block/VerticalSphereBearingBlock.java",
-          "src/main/resources/data/ironblood/loot_tables/blocks/vertical_sphere_bearing.json",
-          "src/main/resources/assets/ironblood/models/block/vertical_sphere_bearing.json",
-          "src/main/resources/assets/ironblood/models/item/vertical_sphere_bearing.json",
-          "src/main/resources/assets/ironblood/blockstates/vertical_sphere_bearing.json",
-          "src/main/java/net/mcreator/ironblood/block/entity/VerticalSphereBearingBlockEntity.java"
-        ]
-      }
-    },
-    {
-      "name": "HorizontalSphereBearing",
-      "type": "block",
-      "compiles": true,
-      "locked_code": true,
-      "registry_name": "horizontal_sphere_bearing",
-      "metadata": {
-        "files": [
-          "src/main/resources/assets/ironblood/models/item/horizontal_sphere_bearing.json",
-          "src/main/resources/assets/ironblood/blockstates/horizontal_sphere_bearing.json",
-          "src/main/java/net/mcreator/ironblood/block/entity/HorizontalSphereBearingBlockEntity.java",
-          "src/main/java/net/mcreator/ironblood/block/HorizontalSphereBearingBlock.java",
-          "src/main/resources/data/ironblood/loot_tables/blocks/horizontal_sphere_bearing.json",
-          "src/main/resources/assets/ironblood/models/block/horizontal_sphere_bearing.json"
-        ]
-      }
-    },
-    {
       "name": "JointManager",
       "type": "gui",
       "compiles": true,
@@ -473,7 +439,8 @@
           "src/main/resources/data/ironblood/loot_tables/blocks/ahab_1.json",
           "src/main/resources/assets/ironblood/blockstates/ahab_1.json"
         ]
-      }
+      },
+      "path": "~/ahab"
     },
     {
       "name": "Ahab2",
@@ -489,7 +456,8 @@
           "src/main/resources/assets/ironblood/models/item/ahab_2.json",
           "src/main/resources/assets/ironblood/models/block/ahab_2.json"
         ]
-      }
+      },
+      "path": "~/ahab"
     },
     {
       "name": "Ahab3",
@@ -505,7 +473,8 @@
           "src/main/java/net/mcreator/ironblood/block/Ahab3Block.java",
           "src/main/resources/assets/ironblood/models/item/ahab_3.json"
         ]
-      }
+      },
+      "path": "~/ahab"
     },
     {
       "name": "Ahab4",
@@ -521,7 +490,8 @@
           "src/main/resources/data/ironblood/loot_tables/blocks/ahab_4.json",
           "src/main/resources/assets/ironblood/blockstates/ahab_4.json"
         ]
-      }
+      },
+      "path": "~/ahab"
     },
     {
       "name": "Ahab5",
@@ -537,7 +507,8 @@
           "src/main/java/net/mcreator/ironblood/block/Ahab5Block.java",
           "src/main/resources/assets/ironblood/models/item/ahab_5.json"
         ]
-      }
+      },
+      "path": "~/ahab"
     },
     {
       "name": "AhabCore",
@@ -553,7 +524,8 @@
           "src/main/resources/data/ironblood/loot_tables/blocks/ahab_core.json",
           "src/main/resources/assets/ironblood/blockstates/ahab_core.json"
         ]
-      }
+      },
+      "path": "~/ahab"
     },
     {
       "name": "AhabVent1",
@@ -569,7 +541,8 @@
           "src/main/resources/assets/ironblood/models/item/ahab_vent_1.json",
           "src/main/resources/assets/ironblood/blockstates/ahab_vent_1.json"
         ]
-      }
+      },
+      "path": "~/ahab"
     },
     {
       "name": "AhabVent2",
@@ -585,7 +558,8 @@
           "src/main/java/net/mcreator/ironblood/block/AhabVent2Block.java",
           "src/main/resources/assets/ironblood/models/item/ahab_vent_2.json"
         ]
-      }
+      },
+      "path": "~/ahab"
     },
     {
       "name": "AhabVent3",
@@ -600,6 +574,41 @@
           "src/main/java/net/mcreator/ironblood/block/AhabVent3Block.java",
           "src/main/resources/assets/ironblood/models/block/ahab_vent_3.json",
           "src/main/resources/assets/ironblood/models/item/ahab_vent_3.json"
+        ]
+      },
+      "path": "~/ahab"
+    },
+    {
+      "name": "VerticalRotator",
+      "type": "block",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "vertical_rotator",
+      "metadata": {
+        "files": [
+          "src/main/java/net/mcreator/ironblood/block/VerticalRotatorBlock.java",
+          "src/main/resources/data/ironblood/loot_tables/blocks/vertical_rotator.json",
+          "src/main/java/net/mcreator/ironblood/block/entity/VerticalRotatorBlockEntity.java",
+          "src/main/resources/assets/ironblood/models/block/vertical_rotator.json",
+          "src/main/resources/assets/ironblood/models/item/vertical_rotator.json",
+          "src/main/resources/assets/ironblood/blockstates/vertical_rotator.json"
+        ]
+      }
+    },
+    {
+      "name": "VerticalHinge",
+      "type": "block",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "vertical_hinge",
+      "metadata": {
+        "files": [
+          "src/main/java/net/mcreator/ironblood/block/entity/VerticalHingeBlockEntity.java",
+          "src/main/java/net/mcreator/ironblood/block/VerticalHingeBlock.java",
+          "src/main/resources/assets/ironblood/models/block/vertical_hinge.json",
+          "src/main/resources/data/ironblood/loot_tables/blocks/vertical_hinge.json",
+          "src/main/resources/assets/ironblood/blockstates/vertical_hinge.json",
+          "src/main/resources/assets/ironblood/models/item/vertical_hinge.json"
         ]
       }
     }
@@ -626,6 +635,10 @@
   "tag_elements": {
     "BLOCKS:minecraft:slabs": [
       "~CUSTOM:HalfmetalSlab"
+    ],
+    "BLOCKS:minecraft:mineable/pickaxe": [
+      "~CUSTOM:VerticalHinge",
+      "~CUSTOM:VerticalRotator"
     ]
   },
   "tab_element_order": {
@@ -645,8 +658,8 @@
       "PilotSeat",
       "SwivelBearing",
       "SwivelBearingTable",
-      "VerticalSphereBearing",
-      "HorizontalSphereBearing"
+      "VerticalRotator",
+      "VerticalHinge"
     ]
   },
   "language_map": {
@@ -654,11 +667,12 @@
       "item.ironblood.link_wrench": "Link Wrench",
       "block.ironblood.mechanical_swivel_joint": "Mechanical Swivel Joint",
       "block.ironblood.mechanical_joint_alt": "Alternate Mechanical Joint",
+      "block.ironblood.vertical_hinge": "Vertical Hinge",
       "block.ironblood.assembler": "Assembler",
       "item.ironblood.heavy_duty_chain.description_0": "Can be used to drag physics objects, and tie them to the world.",
       "block.ironblood.heavy_duty_chain_link": "Heavy Duty Chain Link",
-      "item.ironblood.assembly_scanner": "Assembly Scanner",
       "block.ironblood.swivel_bearing": "Swivel Bearing",
+      "item.ironblood.assembly_scanner": "Assembly Scanner",
       "block.ironblood.mechanical_joint": "Mechanical Joint",
       "gui.ironblood.joint_manager.addjoint": "",
       "item.ironblood.assembly_scanner.description_0": "Right-Click on a block to store its location.",
@@ -674,13 +688,12 @@
       "block.ironblood.ahab_vent_3": "Ahab Reactor",
       "block.ironblood.joint_connector": "Joint Connector",
       "block.ironblood.ahab_vent_2": "Ahab Reactor",
+      "block.ironblood.vertical_rotator": "Vertical Rotator",
       "block.ironblood.swivel_bearing_table": "Swivel Bearing Table",
       "block.ironblood.ahab_4": "Ahab Reactor",
       "block.ironblood.ahab_5": "Ahab Reactor",
-      "block.ironblood.vertical_sphere_bearing": "Vertical Sphere Bearing",
       "block.ironblood.ahab_2": "Ahab Reactor",
       "block.ironblood.ahab_3": "Ahab Reactor",
-      "block.ironblood.horizontal_sphere_bearing": "Horizontal Sphere Bearing",
       "block.ironblood.pilot_seat": "Pilot Seat",
       "block.ironblood.ahab_1": "Ahab Reactor",
       "block.ironblood.halfmetal_block": "Halfmetal Block"
@@ -688,7 +701,12 @@
   },
   "foldersRoot": {
     "name": "~",
-    "children": []
+    "children": [
+      {
+        "name": "ahab",
+        "children": []
+      }
+    ]
   },
   "workspaceSettings": {
     "modid": "ironblood",

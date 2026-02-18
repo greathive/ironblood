@@ -611,6 +611,90 @@
           "src/main/resources/assets/ironblood/models/item/vertical_hinge.json"
         ]
       }
+    },
+    {
+      "name": "DynamicPiston",
+      "type": "block",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "dynamic_piston",
+      "metadata": {
+        "files": [
+          "src/main/resources/assets/ironblood/models/item/dynamic_piston.json",
+          "src/main/resources/assets/ironblood/models/block/dynamic_piston.json",
+          "src/main/java/net/mcreator/ironblood/block/DynamicPistonBlock.java",
+          "src/main/resources/assets/ironblood/blockstates/dynamic_piston.json",
+          "src/main/resources/data/ironblood/loot_tables/blocks/dynamic_piston.json",
+          "src/main/java/net/mcreator/ironblood/block/entity/DynamicPistonBlockEntity.java"
+        ]
+      },
+      "path": "~/piston"
+    },
+    {
+      "name": "DynamicPistonEnd",
+      "type": "block",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "dynamic_piston_end",
+      "metadata": {
+        "files": [
+          "src/main/resources/data/ironblood/loot_tables/blocks/dynamic_piston_end.json",
+          "src/main/resources/assets/ironblood/blockstates/dynamic_piston_end.json",
+          "src/main/java/net/mcreator/ironblood/block/DynamicPistonEndBlock.java",
+          "src/main/java/net/mcreator/ironblood/block/entity/DynamicPistonEndBlockEntity.java",
+          "src/main/resources/assets/ironblood/models/item/dynamic_piston_end.json",
+          "src/main/resources/assets/ironblood/models/block/dynamic_piston_end.json"
+        ]
+      },
+      "path": "~/piston"
+    },
+    {
+      "name": "PistonCasingRender",
+      "type": "block",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "piston_casing_render",
+      "metadata": {
+        "files": [
+          "src/main/resources/data/ironblood/loot_tables/blocks/piston_casing_render.json",
+          "src/main/resources/assets/ironblood/blockstates/piston_casing_render.json",
+          "src/main/resources/assets/ironblood/models/block/piston_casing_render.json",
+          "src/main/java/net/mcreator/ironblood/block/PistonCasingRenderBlock.java",
+          "src/main/resources/assets/ironblood/models/item/piston_casing_render.json"
+        ]
+      },
+      "path": "~/piston"
+    },
+    {
+      "name": "PistonRodRender",
+      "type": "block",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "piston_rod_render",
+      "metadata": {
+        "files": [
+          "src/main/resources/assets/ironblood/models/block/piston_rod_render.json",
+          "src/main/java/net/mcreator/ironblood/block/PistonRodRenderBlock.java",
+          "src/main/resources/assets/ironblood/models/item/piston_rod_render.json",
+          "src/main/resources/assets/ironblood/blockstates/piston_rod_render.json",
+          "src/main/resources/data/ironblood/loot_tables/blocks/piston_rod_render.json"
+        ]
+      },
+      "path": "~/piston"
+    },
+    {
+      "name": "DynamicPistonCasing",
+      "type": "item",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "dynamic_piston_casing",
+      "metadata": {
+        "files": [
+          "src/main/java/net/mcreator/ironblood/item/DynamicPistonCasingItem.java",
+          "src/main/resources/assets/ironblood/models/item/dynamic_piston_casing.json"
+        ]
+      },
+      "path": "~/piston"
     }
   ],
   "variable_elements": [],
@@ -637,6 +721,8 @@
       "~CUSTOM:HalfmetalSlab"
     ],
     "BLOCKS:minecraft:mineable/pickaxe": [
+      "~CUSTOM:DynamicPistonEnd",
+      "~CUSTOM:DynamicPiston",
       "~CUSTOM:VerticalHinge",
       "~CUSTOM:VerticalRotator"
     ]
@@ -659,11 +745,15 @@
       "SwivelBearing",
       "SwivelBearingTable",
       "VerticalRotator",
-      "VerticalHinge"
+      "VerticalHinge",
+      "DynamicPiston",
+      "DynamicPistonEnd",
+      "DynamicPistonCasing"
     ]
   },
   "language_map": {
     "en_us": {
+      "item.ironblood.dynamic_piston_casing": "Dynamic Piston Casing",
       "item.ironblood.link_wrench": "Link Wrench",
       "block.ironblood.mechanical_swivel_joint": "Mechanical Swivel Joint",
       "block.ironblood.mechanical_joint_alt": "Alternate Mechanical Joint",
@@ -671,10 +761,14 @@
       "block.ironblood.assembler": "Assembler",
       "item.ironblood.heavy_duty_chain.description_0": "Can be used to drag physics objects, and tie them to the world.",
       "block.ironblood.heavy_duty_chain_link": "Heavy Duty Chain Link",
-      "item.ironblood.assembly_scanner": "Assembly Scanner",
+      "block.ironblood.piston_rod_render": "Piston Casing Render",
       "block.ironblood.swivel_bearing": "Swivel Bearing",
+      "item.ironblood.assembly_scanner": "Assembly Scanner",
       "block.ironblood.mechanical_joint": "Mechanical Joint",
+      "block.ironblood.dynamic_piston": "Dynamic Piston",
       "gui.ironblood.joint_manager.addjoint": "",
+      "block.ironblood.dynamic_piston_end": "Dynamic Piston End",
+      "block.ironblood.piston_casing_render": "Piston Casing Render",
       "item.ironblood.assembly_scanner.description_0": "Right-Click on a block to store its location.",
       "block.ironblood.halfmetal_slab": "Halfmetal Slab",
       "item.ironblood.assembly_scanner.description_1": "Shift + Right-Click to erase stored blocks.",
@@ -704,6 +798,10 @@
     "children": [
       {
         "name": "ahab",
+        "children": []
+      },
+      {
+        "name": "piston",
         "children": []
       }
     ]

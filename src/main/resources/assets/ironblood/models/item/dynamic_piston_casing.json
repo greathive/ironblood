@@ -1,0 +1,7 @@
+{
+  "parent": "ironblood:custom/dynamicpistonrender1",
+  "textures": {
+    "0": "ironblood:block/dynamicpiston",
+    "particle": "ironblood:item/dynamicpiston"
+  }
+}

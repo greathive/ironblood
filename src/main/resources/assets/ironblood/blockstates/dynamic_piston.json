@@ -1,0 +1,57 @@
+{
+  "variants": {
+    "face=floor,facing=north": {
+      "model": "ironblood:block/dynamic_piston"
+    },
+    "face=floor,facing=east": {
+      "model": "ironblood:block/dynamic_piston",
+      "y": 90
+    },
+    "face=floor,facing=south": {
+      "model": "ironblood:block/dynamic_piston",
+      "y": 180
+    },
+    "face=floor,facing=west": {
+      "model": "ironblood:block/dynamic_piston",
+      "y": 270
+    },
+    "face=wall,facing=north": {
+      "model": "ironblood:block/dynamic_piston",
+      "x": 90
+    },
+    "face=wall,facing=east": {
+      "model": "ironblood:block/dynamic_piston",
+      "x": 90,
+      "y": 90
+    },
+    "face=wall,facing=south": {
+      "model": "ironblood:block/dynamic_piston",
+      "x": 90,
+      "y": 180
+    },
+    "face=wall,facing=west": {
+      "model": "ironblood:block/dynamic_piston",
+      "x": 90,
+      "y": 270
+    },
+    "face=ceiling,facing=north": {
+      "model": "ironblood:block/dynamic_piston",
+      "x": 180,
+      "y": 180
+    },
+    "face=ceiling,facing=east": {
+      "model": "ironblood:block/dynamic_piston",
+      "x": 180,
+      "y": 270
+    },
+    "face=ceiling,facing=south": {
+      "model": "ironblood:block/dynamic_piston",
+      "x": 180
+    },
+    "face=ceiling,facing=west": {
+      "model": "ironblood:block/dynamic_piston",
+      "x": 180,
+      "y": 90
+    }
+  }
+}

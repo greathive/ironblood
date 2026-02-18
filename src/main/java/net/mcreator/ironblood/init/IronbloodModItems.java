@@ -21,6 +21,7 @@ import net.minecraft.client.renderer.item.ItemProperties;
 import net.mcreator.ironblood.procedures.AssemblyScannerPropertyValueProviderProcedure;
 import net.mcreator.ironblood.item.LinkWrenchItem;
 import net.mcreator.ironblood.item.HeavyDutyChainItem;
+import net.mcreator.ironblood.item.DynamicPistonCasingItem;
 import net.mcreator.ironblood.item.AssemblyScannerItem;
 import net.mcreator.ironblood.IronbloodMod;
 
@@ -53,6 +54,11 @@ public class IronbloodModItems {
 	public static final RegistryObject<Item> AHAB_VENT_3 = block(IronbloodModBlocks.AHAB_VENT_3);
 	public static final RegistryObject<Item> VERTICAL_ROTATOR = block(IronbloodModBlocks.VERTICAL_ROTATOR);
 	public static final RegistryObject<Item> VERTICAL_HINGE = block(IronbloodModBlocks.VERTICAL_HINGE);
+	public static final RegistryObject<Item> DYNAMIC_PISTON = block(IronbloodModBlocks.DYNAMIC_PISTON);
+	public static final RegistryObject<Item> DYNAMIC_PISTON_END = block(IronbloodModBlocks.DYNAMIC_PISTON_END);
+	public static final RegistryObject<Item> PISTON_CASING_RENDER = block(IronbloodModBlocks.PISTON_CASING_RENDER);
+	public static final RegistryObject<Item> PISTON_ROD_RENDER = block(IronbloodModBlocks.PISTON_ROD_RENDER);
+	public static final RegistryObject<Item> DYNAMIC_PISTON_CASING = REGISTRY.register("dynamic_piston_casing", () -> new DynamicPistonCasingItem());
 
 	// Start of user code block custom items
 	// End of user code block custom items

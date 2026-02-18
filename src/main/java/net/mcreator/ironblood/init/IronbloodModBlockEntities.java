@@ -21,6 +21,8 @@ import net.mcreator.ironblood.block.entity.MechanicalJointBlockEntity;
 import net.mcreator.ironblood.block.entity.MechanicalJointAltBlockEntity;
 import net.mcreator.ironblood.block.entity.JointConnectorBlockEntity;
 import net.mcreator.ironblood.block.entity.HeavyDutyChainLinkBlockEntity;
+import net.mcreator.ironblood.block.entity.DynamicPistonEndBlockEntity;
+import net.mcreator.ironblood.block.entity.DynamicPistonBlockEntity;
 import net.mcreator.ironblood.block.entity.AssemblerBlockEntity;
 import net.mcreator.ironblood.IronbloodMod;
 
@@ -37,6 +39,8 @@ public class IronbloodModBlockEntities {
 	public static final RegistryObject<BlockEntityType<?>> SWIVEL_BEARING_TABLE = register("swivel_bearing_table", IronbloodModBlocks.SWIVEL_BEARING_TABLE, SwivelBearingTableBlockEntity::new);
 	public static final RegistryObject<BlockEntityType<?>> VERTICAL_ROTATOR = register("vertical_rotator", IronbloodModBlocks.VERTICAL_ROTATOR, VerticalRotatorBlockEntity::new);
 	public static final RegistryObject<BlockEntityType<?>> VERTICAL_HINGE = register("vertical_hinge", IronbloodModBlocks.VERTICAL_HINGE, VerticalHingeBlockEntity::new);
+	public static final RegistryObject<BlockEntityType<?>> DYNAMIC_PISTON = register("dynamic_piston", IronbloodModBlocks.DYNAMIC_PISTON, DynamicPistonBlockEntity::new);
+	public static final RegistryObject<BlockEntityType<?>> DYNAMIC_PISTON_END = register("dynamic_piston_end", IronbloodModBlocks.DYNAMIC_PISTON_END, DynamicPistonEndBlockEntity::new);
 
 	// Start of user code block custom block entities
 	// End of user code block custom block entities

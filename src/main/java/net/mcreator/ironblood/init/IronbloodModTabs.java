@@ -40,6 +40,9 @@ public class IronbloodModTabs {
 				tabData.accept(IronbloodModBlocks.SWIVEL_BEARING_TABLE.get().asItem());
 				tabData.accept(IronbloodModBlocks.VERTICAL_ROTATOR.get().asItem());
 				tabData.accept(IronbloodModBlocks.VERTICAL_HINGE.get().asItem());
+				tabData.accept(IronbloodModBlocks.DYNAMIC_PISTON.get().asItem());
+				tabData.accept(IronbloodModBlocks.DYNAMIC_PISTON_END.get().asItem());
+				tabData.accept(IronbloodModItems.DYNAMIC_PISTON_CASING.get());
 			}).build());
 
 	@SubscribeEvent

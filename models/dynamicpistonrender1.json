@@ -1,0 +1,32 @@
+{
+	"format_version": "1.9.0",
+	"credit": "Made with Blockbench",
+	"texture_size": [32, 32],
+	"textures": {
+		"0": "DynamicPiston",
+		"particle": "DynamicPiston"
+	},
+	"elements": [
+		{
+			"from": [4, 0, 4],
+			"to": [12, 16, 12],
+			"rotation": {"angle": 0, "axis": "y", "origin": [8, 0, 8]},
+			"faces": {
+				"north": {"uv": [9, 7, 5, 15], "texture": "#0"},
+				"east": {"uv": [5, 7, 9, 15], "texture": "#0"},
+				"south": {"uv": [9, 7, 5, 15], "texture": "#0"},
+				"west": {"uv": [5, 7, 9, 15], "texture": "#0"},
+				"up": {"uv": [5, 3, 9, 7], "texture": "#0"},
+				"down": {"uv": [9, 7, 5, 3], "texture": "#0"}
+			}
+		}
+	],
+	"groups": [
+		{
+			"name": "render1",
+			"origin": [0, 0, 0],
+			"color": 0,
+			"children": [0]
+		}
+	]
+}

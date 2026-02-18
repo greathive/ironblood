@@ -14,6 +14,8 @@ import net.mcreator.ironblood.block.VerticalRotatorBlock;
 import net.mcreator.ironblood.block.VerticalHingeBlock;
 import net.mcreator.ironblood.block.SwivelBearingTableBlock;
 import net.mcreator.ironblood.block.SwivelBearingBlock;
+import net.mcreator.ironblood.block.PistonRodRenderBlock;
+import net.mcreator.ironblood.block.PistonCasingRenderBlock;
 import net.mcreator.ironblood.block.PilotSeatBlock;
 import net.mcreator.ironblood.block.MechanicalSwivelJointBlock;
 import net.mcreator.ironblood.block.MechanicalJointBlock;
@@ -23,6 +25,8 @@ import net.mcreator.ironblood.block.HeavyDutyChainLinkBlock;
 import net.mcreator.ironblood.block.HalfmetalVerticalSlabBlock;
 import net.mcreator.ironblood.block.HalfmetalSlabBlock;
 import net.mcreator.ironblood.block.HalfmetalBlockBlock;
+import net.mcreator.ironblood.block.DynamicPistonEndBlock;
+import net.mcreator.ironblood.block.DynamicPistonBlock;
 import net.mcreator.ironblood.block.AssemblerBlock;
 import net.mcreator.ironblood.block.AhabVent3Block;
 import net.mcreator.ironblood.block.AhabVent2Block;
@@ -60,6 +64,10 @@ public class IronbloodModBlocks {
 	public static final RegistryObject<Block> AHAB_VENT_3 = REGISTRY.register("ahab_vent_3", () -> new AhabVent3Block());
 	public static final RegistryObject<Block> VERTICAL_ROTATOR = REGISTRY.register("vertical_rotator", () -> new VerticalRotatorBlock());
 	public static final RegistryObject<Block> VERTICAL_HINGE = REGISTRY.register("vertical_hinge", () -> new VerticalHingeBlock());
+	public static final RegistryObject<Block> DYNAMIC_PISTON = REGISTRY.register("dynamic_piston", () -> new DynamicPistonBlock());
+	public static final RegistryObject<Block> DYNAMIC_PISTON_END = REGISTRY.register("dynamic_piston_end", () -> new DynamicPistonEndBlock());
+	public static final RegistryObject<Block> PISTON_CASING_RENDER = REGISTRY.register("piston_casing_render", () -> new PistonCasingRenderBlock());
+	public static final RegistryObject<Block> PISTON_ROD_RENDER = REGISTRY.register("piston_rod_render", () -> new PistonRodRenderBlock());
 	// Start of user code block custom blocks
 	// End of user code block custom blocks
 }

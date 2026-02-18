@@ -1,0 +1,9 @@
+{
+  "parent": "ironblood:custom/dynamicpiston",
+  "textures": {
+    "all": "ironblood:block/dynamicpiston",
+    "particle": "ironblood:block/dynamicpiston",
+    "0": "ironblood:block/dynamicpiston"
+  },
+  "render_type": "cutout"
+}

@@ -1,6 +1,8 @@
 {
   "replace": false,
   "values": [
+    "ironblood:dynamic_piston_end",
+    "ironblood:dynamic_piston",
     "ironblood:vertical_hinge",
     "ironblood:vertical_rotator"
   ]

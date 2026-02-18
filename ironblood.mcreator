@@ -582,7 +582,7 @@
       "name": "VerticalRotator",
       "type": "block",
       "compiles": true,
-      "locked_code": false,
+      "locked_code": true,
       "registry_name": "vertical_rotator",
       "metadata": {
         "files": [
@@ -599,7 +599,7 @@
       "name": "VerticalHinge",
       "type": "block",
       "compiles": true,
-      "locked_code": false,
+      "locked_code": true,
       "registry_name": "vertical_hinge",
       "metadata": {
         "files": [
@@ -671,8 +671,8 @@
       "block.ironblood.assembler": "Assembler",
       "item.ironblood.heavy_duty_chain.description_0": "Can be used to drag physics objects, and tie them to the world.",
       "block.ironblood.heavy_duty_chain_link": "Heavy Duty Chain Link",
-      "block.ironblood.swivel_bearing": "Swivel Bearing",
       "item.ironblood.assembly_scanner": "Assembly Scanner",
+      "block.ironblood.swivel_bearing": "Swivel Bearing",
       "block.ironblood.mechanical_joint": "Mechanical Joint",
       "gui.ironblood.joint_manager.addjoint": "",
       "item.ironblood.assembly_scanner.description_0": "Right-Click on a block to store its location.",

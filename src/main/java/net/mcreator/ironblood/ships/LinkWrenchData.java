@@ -1,5 +1,6 @@
 package net.mcreator.ironblood.ships;
 
+import net.minecraft.world.level.block.state.properties.AttachFace;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 
@@ -19,17 +20,23 @@ public class LinkWrenchData {
     @Nullable
     private Direction firstBlockFacing;
     @Nullable
-    private String firstBlockType; // "mechanical_joint" or "mechanical_joint_alt"
+    private AttachFace firstFace; // For vertical rotator/hinge
+    @Nullable
+    private String firstBlockType;
 
     public LinkWrenchData() {
         this.reset();
     }
 
-    public void setFirstLink(@Nullable ServerShip ship, BlockPos pos, Direction facing, String blockType) {
+    public void setFirstLink(@Nullable ServerShip ship, BlockPos pos, @Nullable Direction facing, String blockType) {
         this.firstShip = ship;
         this.firstBlockPos = pos;
         this.firstBlockFacing = facing;
         this.firstBlockType = blockType;
+    }
+
+    public void setFirstFace(@Nullable AttachFace face) {
+        this.firstFace = face;
     }
 
     /** True once the player has selected their first block. Ship may still be null. */
@@ -41,6 +48,7 @@ public class LinkWrenchData {
         this.firstShip = null;
         this.firstBlockPos = null;
         this.firstBlockFacing = null;
+        this.firstFace = null;
         this.firstBlockType = null;
     }
 
@@ -57,6 +65,11 @@ public class LinkWrenchData {
     @Nullable
     public Direction getFirstBlockFacing() {
         return this.firstBlockFacing;
+    }
+
+    @Nullable
+    public AttachFace getFirstFace() {
+        return this.firstFace;
     }
 
     @Nullable
